@@ -1,4 +1,11 @@
-.map{
-    height: 50vh;
-    width: 100%;
+.map {
+  height: 500px;
+  width: 1000px;
+}
+
+.mapcontainer {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  margin: 20px 0;
 }
