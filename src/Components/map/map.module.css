@@ -9,3 +9,8 @@
   place-items: center;
   margin: 20px 0;
 }
+.markerImage {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}

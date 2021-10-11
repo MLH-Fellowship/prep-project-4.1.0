@@ -6,7 +6,7 @@ import logo from './mlh-prep.png';
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState('New York City');
+  const [city, setCity] = useState('Delhi');
   const [results, setResults] = useState(null);
   useEffect(() => {
     fetch(
@@ -46,7 +46,7 @@ function App() {
             value={city}
             onChange={(event) => setCity(event.target.value)}
           />
-          <Map />
+          <Map city={city} />
           <div className='Results'>
             {!isLoaded && <h2>Loading...</h2>}
             {console.log(results)}
