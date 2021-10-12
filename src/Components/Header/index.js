@@ -1,4 +1,5 @@
 import Map from '../map/map';
+import './header.css';
 const Header = ({ city, setCity }) => {
   return (
     <>
