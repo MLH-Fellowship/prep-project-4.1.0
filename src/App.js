@@ -42,7 +42,14 @@ function App() {
   } else {
     return (
       <>
-        <Header city={city} onChangeCity={handleCity} />
+        {results && (
+          <Header
+            city={city}
+            onChangeCity={handleCity}
+            results={results}
+            isLoaded={isLoaded}
+          />
+        )}
         <div className="Results">
           {!isLoaded && <h2>Loading...</h2>}
           {console.log(results)}
