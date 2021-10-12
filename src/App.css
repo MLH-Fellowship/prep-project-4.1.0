@@ -56,7 +56,7 @@ Styling of Map and input elemnents start from here
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .mapElement {
@@ -70,51 +70,54 @@ Styling of Map and input elemnents start from here
   justify-content: center;
   align-items: center;
 }
-.insideDiv h2{
+.insideDiv h2 {
   margin: 0px;
   margin-bottom: 10%;
 }
 
-@media only screen and (orientation:portrait) and (max-width:780px){
-  .input-container{
+@media only screen and (orientation: portrait) and (max-width: 780px) {
+  .input-container {
     height: 20rem;
   }
-  .input-div{
+  .input-div {
     width: 70%;
   }
 }
-@media only screen and (orientation:portrait) and (max-width:700px){
-  .insideDiv h2{
+@media only screen and (orientation: portrait) and (max-width: 700px) {
+  .insideDiv h2 {
     font-size: 15px;
   }
 }
-@media only screen and (orientation:portrait) and (max-width:420px){
-  .input-div{
+@media only screen and (orientation: portrait) and (max-width: 420px) {
+  .input-div {
     flex-direction: column;
   }
-  .insideDiv h2{
+  .insideDiv h2 {
     font-size: 15px;
   }
+  .inputElement {
+    border-radius: 10px 10px 0 0;
+  }
 }
-@media only screen and (orientation:landscape) and (max-width:1025px){
-  .input-div{
+@media only screen and (orientation: landscape) and (max-width: 1025px) {
+  .input-div {
     width: 80%;
   }
 }
 
-@media only screen and (orientation:landscape) and (max-width:830px){
-  .insideDiv h2{
+@media only screen and (orientation: landscape) and (max-width: 830px) {
+  .insideDiv h2 {
     font-size: 18px;
   }
 }
-@media only screen and (orientation:landscape) and (max-width:570px){
-  .input-container{
+@media only screen and (orientation: landscape) and (max-width: 570px) {
+  .input-container {
     height: 20rem;
   }
-  .input-div{
+  .input-div {
     width: 90%;
   }
-  .insideDiv h2{
+  .insideDiv h2 {
     font-size: 15px;
   }
 }
