@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
-
+import Background from "./Components/Background";
+import logo from "./mlh-prep.png";
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -43,6 +44,12 @@ function App() {
     return (
       <>
         <Header city={city} onChangeCity={handleCity} />
+        <h2>Enter a city below 👇</h2>
+        <input
+          type="text"
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
+        />
         <div className="Results">
           {!isLoaded && <h2>Loading...</h2>}
           {console.log(results)}
