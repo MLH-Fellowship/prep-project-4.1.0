@@ -46,7 +46,7 @@ function App() {
             value={city}
             onChange={(event) => setCity(event.target.value)}
           />
-          <Map city={city} />
+          <Map city={city} setCity={setCity} />
           <div className='Results'>
             {!isLoaded && <h2>Loading...</h2>}
             {isLoaded && results && (

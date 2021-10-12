@@ -1,21 +1,13 @@
 import React, {useState} from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet';
+import {  Marker, Popup } from 'react-leaflet';
 
 
-function MapMarker({markers,setMarkers}) {
-  const map = useMapEvents({
-    click(e) {
-        console.log(e.latlng)
-      const newMarker = e.latlng
-      setMarkers([newMarker]);
-    },
-  })
-
+function MapMarker({markers,city}) {
   return (
     <>
-      {markers.map(marker => 
-        <Marker position={marker}>
-          <Popup>Marker is at {marker}</Popup>
+      {markers.map((marker, idx) => 
+        <Marker key={idx} position={marker} >
+          <Popup>{city}</Popup>
         </Marker>
       )}
     </>
