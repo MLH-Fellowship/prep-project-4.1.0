@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
-import Background from "./Components/Background";
-import logo from "./mlh-prep.png";
+
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -43,7 +42,14 @@ function App() {
   } else {
     return (
       <>
-        <Header city={city} onChangeCity={handleCity} />
+      {results && (
+          <Header
+            city={city}
+            onChangeCity={handleCity}
+            results={results}
+            isLoaded={isLoaded}
+          />
+        )}
         <h2>Enter a city below 👇</h2>
         <input
           type="text"
