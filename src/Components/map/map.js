@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import styles from './map.module.css';
 import axios from 'axios';
-import L from 'leaflet';
-function Map(props) {
+import './map.css';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Icon } from 'leaflet';
+function OurMap(props) {
   const BASE_URL = 'https://api.openweathermap.org/data/2.5/';
   const [lat, setLat] = useState('');
   const [long, setLong] = useState('');
+  const [showPosition, setShowPosition] = useState(false);
   const API_KEY = process.env.REACT_APP_APIKEY;
   const { city } = props;
-  console.log(city);
+  const markerIcon = new Icon({
+    iconUrl: 'images/bg.jpg',
+    iconSize: [35, 25],
+  });
+
   useEffect(() => {
-    async function initializeLatLong(value) {
+    async function getLatLon() {
       const { data } = await axios.get(
-        `${BASE_URL}weather?q=${value}&units=metric&appid=${API_KEY}`
+        `${BASE_URL}weather?q=${city}&units=metric&appid=${API_KEY}`
       );
 
       const { coord } = data; //log lat
@@ -20,36 +26,21 @@ function Map(props) {
       const { lat, lon } = coord;
       setLat(lat);
       setLong(lon);
-      L.marker([lat, long], {
-        icon: markerIcon,
-      }).addTo(map);
-
-      console.log('Marker added');
+      setShowPosition(true);
     }
-
-    var map = L.map('map').setView([29, 76], 5);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
-
-    var markerIcon = L.icon({
-      iconUrl: `images/bg.jpg`,
-      iconSize: [50, 50], // size of the icon
-      iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
-      popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
-      className: `${styles.markerImage}`,
-    });
-
-    initializeLatLong(city);
-  }, []); // empty dependency
+    getLatLon();
+  });
   return (
     <>
-      <div className={styles.mapcontainer}>
-        <div className={[styles.map, 'map'].join(' ')} id='map'></div>
-      </div>
+      <MapContainer center={[29, 76]} zoom={5}>
+        <TileLayer
+          url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        />
+        {showPosition && <Marker icon={markerIcon} position={[lat, long]} />}
+      </MapContainer>
     </>
   );
 }
 
-export default Map;
+export default OurMap;
