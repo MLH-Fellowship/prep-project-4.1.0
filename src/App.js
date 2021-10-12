@@ -40,13 +40,23 @@ function App() {
       <>
         <img className='logo' src={logo} alt='MLH Prep Logo'></img>
         <div>
-          <h2>Enter a city below 👇</h2>
-          <input
-            type='text'
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
-          <Map city={city} setCity={setCity} />
+          <div className='input-container'>
+            <div className='input-div'>
+              <div className='inputElement'>
+                <div className='insideDiv'>
+                  <h2>Enter a city below 👇</h2>
+                  <input
+                    type='text'
+                    value={city}
+                    onChange={(event) => setCity(event.target.value)}
+                  />
+                </div>
+              </div>
+              <div className='mapElement'>
+                <Map city={city} setCity={setCity} />
+              </div>
+            </div>
+          </div>
           <div className='Results'>
             {!isLoaded && <h2>Loading...</h2>}
             {isLoaded && results && (
