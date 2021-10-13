@@ -40,14 +40,14 @@ function App() {
 		setCity(currentQuery);
 		if (currentQuery !== '') {
 			// Calling the autocomplete API with max 4 results, looking for cities and using the API Key
-			var query = `q=${currentQuery}&limit=4&types=city&apiKey=${process.env.REACT_APP_HEREAPI}`;
+			var query = `q=${currentQuery}&limit=4&apiKey=${process.env.REACT_APP_HEREAPI}`;
 			fetch(`${autocompleteURL}${query}`)
 				.then(res => res.json())
 				.then(
 					result => {
 						// Here are the 0 - 4 results from the API given any input
-						var cities = result.items.map(item => item.title);
-						console.log(cities);
+						const set = result.items.map(item => item.address.city);
+						console.log(set);
 					},
 					error => {
 						setError(error);
