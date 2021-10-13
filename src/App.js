@@ -3,13 +3,14 @@ import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
 import Loader from "react-loader-spinner";
+import logo from './mlh-prep.png';
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
-
+  
   useEffect(() => {
     const options = {
       enableHighAccuracy: false,
@@ -82,7 +83,9 @@ function App() {
   } else {
     return (
       <>
-        <Header city={city} onChangeCity={handleCity} />
+        <img className='logo' src={logo} alt='MLH Prep Logo'></img>
+        <div>
+        <Header city={city} setCity={setCity} />
         <div className="Results">
           {!isLoaded && (
             <Loader
@@ -95,6 +98,7 @@ function App() {
           )}
           {console.log(results)}
           {isLoaded && results && <Card results={results} />}
+        </div>
         </div>
       </>
     );
