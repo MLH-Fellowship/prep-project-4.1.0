@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactSearchBox from "react-search-box";
 
 export default class SearchBox2 extends Component {
+
   data = [
     {
       key: "New Delhi",
@@ -46,7 +47,11 @@ export default class SearchBox2 extends Component {
           var filterdCities = uniqueCities.filter(function (x) {
             return x !== undefined;
           });
-          console.log(filterdCities);
+          this.data = []
+          filterdCities.forEach((city) => {
+            this.data.push({ key: city, value: city });
+          });
+          console.log(this.data);
         });
     }
   }
