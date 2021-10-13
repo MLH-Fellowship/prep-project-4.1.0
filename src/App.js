@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
+import Searchbox from "./Components/Searchbox/SearchBox2";
 
 function App() {
   const [error, setError] = useState(null);
@@ -48,6 +49,8 @@ function App() {
           {console.log(results)}
           {isLoaded && results && <Card results={results} />}
         </div>
+
+        <Searchbox />
       </>
     );
   }
