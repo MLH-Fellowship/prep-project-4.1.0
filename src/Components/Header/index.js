@@ -5,11 +5,11 @@ import "./header.css";
 
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
   return (
-    <div results = {results}> 
+    <div > 
       <img className="logo" src={logo} alt="MLH Prep Logo"></img>
       <div class="center-text-div">
-        <div class="temparature">25 °C</div>
-        <p class="weather">Clear Sky | New York</p>
+        <div class="temparature">{results.main.feels_like}°C</div>
+        <p class="weather">{results.weather[0].main} | {results.name}, {results.sys.country}</p>
       </div>
       <div className='input-container'>
         <div className='input-div'>

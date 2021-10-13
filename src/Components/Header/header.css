@@ -18,7 +18,6 @@
 }
 .weather {
     display: block;
-    overflow: visible;
     width: auto;
     background-color: transparent;
     -webkit-transform: translate3d(0,0,70px);
@@ -34,7 +33,7 @@
 
 }
 
-input {
+/* input {
    margin-top: 5%;
     padding: 10px;
     border-radius: 4px;
@@ -53,7 +52,7 @@ input {
     font-size: larger;
     font-weight: bold;
     font-family: Manrope,sans-serif;
-  }
+  } */
 
 input {
     padding: 10px;
@@ -75,7 +74,9 @@ input {
     width: 55%;
     height: 100%;
   }
-  
+  h2{
+    color : #133667
+  }
   .inputElement {
     display: grid;
     place-items: center;

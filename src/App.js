@@ -83,7 +83,18 @@ function App() {
     return <div>Error: {error.message}</div>;
   } else {
     return (
-      <Background results={results}>
+      <>
+      {!isLoaded && (
+        <Loader
+          type="Oval"
+          color="#00BFFF"
+          height={40}
+          width={40}
+          style={{ marginTop: "40px" }}
+        />
+      )}
+      { results && 
+        <Background results={results}>
       {/* {results && ( */}
           <Header
             city={city}
@@ -103,21 +114,14 @@ function App() {
         <div>
         <Header city={city} setCity={setCity} /> */}
         <div className="Results">
-          {!isLoaded && (
-            <Loader
-              type="Oval"
-              color="#00BFFF"
-              height={40}
-              width={40}
-              style={{ marginTop: "40px" }}
-            />
-          )}
+          
           {console.log(results)}
-          {isLoaded && results && <> <Card results={results} />
-          <Card results={results} />
-          <Card results={results} /> </>}
+          {/* {isLoaded && results && <Card results={results}/>} */}
         </div>
-      </ Background>
+  
+      </Background>
+          }
+          </>
 
     );
   }

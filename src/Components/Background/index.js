@@ -8,7 +8,7 @@ import "./background.css";
 
 const Background = ({ children, results }) => {
   
-  const weather = "Clear"
+  const weather = results.weather[0].main
   if (weather === "Clear"){
     return (
       <ClearSkyBg results={ results} children = {children}/>
