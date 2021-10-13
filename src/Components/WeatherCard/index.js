@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import "./weathercard.css";
 
-const WeatherCard = ({day, index}) => {
-    return <div key={index} style={{margin: '30px'}}>{day.humidity}</div>
-}
+const WeatherCard = ({ day, index }) => {
+  return (
+    <div className="weatherCard" key={index}>
+      {day.humidity}
+    </div>
+  );
+};
 
 export default WeatherCard;
