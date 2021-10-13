@@ -71,21 +71,21 @@ function Index(props) {
   }, []);
 
   return (
-    <div class='card-fav'>
+    <div className='card-fav'>
       <h2>{place}</h2>
-      <h3 class='head-fav'>
+      <h3 className='head-fav'>
         {capitalizeFirstLetter(description)}
         <span>
-          Wind {wind}km/h <span class='dot'>•</span> Humidity {humidity}%
+          Wind {wind}km/h <span className='dot'>•</span> Humidity {humidity}%
         </span>
       </h3>
       <h1>{Math.floor(temperature)}°</h1>
-      {/* <div class='sky'>
-        <div class='sun'></div>
-        <div class='cloud'>
-          <div class='circle-small'></div>
-          <div class='circle-tall'></div>
-          <div class='circle-medium'></div>
+      {/* <div className='sky'>
+        <div className='sun'></div>
+        <div className='cloud'>
+          <div className='circle-small'></div>
+          <div className='circle-tall'></div>
+          <div className='circle-medium'></div>
         </div>
       </div> */}
       <div className='image'>

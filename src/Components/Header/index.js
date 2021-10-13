@@ -13,8 +13,8 @@ const Header = ({ city, setCity }) => {
                 value={city}
                 onChange={(event) => setCity(event.target.value)}
               />
-              <div class='favo'>
-                <i class='far fa-bookmark'></i>
+              <div className='favo'>
+                <i className='far fa-bookmark'></i>
                 <span
                   onClick={() => {
                     let bookMarkarray = localStorage.getItem('bookMarks');
