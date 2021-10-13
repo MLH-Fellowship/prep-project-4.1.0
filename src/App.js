@@ -1,126 +1,129 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import Header from './Components/Header';
-import Card from './Components/Card';
-import Loader from 'react-loader-spinner';
-import logo from './mlh-prep.png';
+import { useEffect, useState } from "react";
+import "./App.css";
+import Header from "./Components/Header";
+import Card from "./Components/Card";
+import Loader from "react-loader-spinner";
+import logo from "./mlh-prep.png";
+import Searchbox from "./Components/Searchbox/SearchBox2";
 
 function App() {
-	const [error, setError] = useState(null);
-	const [isLoaded, setIsLoaded] = useState(false);
-	const [city, setCity] = useState('');
-	const [results, setResults] = useState(null);
-	const autocompleteURL =
-		'https://autocomplete.search.hereapi.com/v1/autocomplete?';
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [city, setCity] = useState("");
+  const [results, setResults] = useState(null);
+  const autocompleteURL =
+    "https://autocomplete.search.hereapi.com/v1/autocomplete?";
 
-	useEffect(() => {
-		const options = {
-			enableHighAccuracy: false,
-			timeout: 5000,
-			maximumAge: Infinity,
-		};
+  useEffect(() => {
+    const options = {
+      enableHighAccuracy: false,
+      timeout: 5000,
+      maximumAge: Infinity,
+    };
 
-		function onSuccess(position) {
-			let latitude = position.coords.latitude;
-			let longitude = position.coords.longitude;
+    function onSuccess(position) {
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
 
-			fetch(
-				`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_APIKEY}`
-			)
-				.then(res => res.json())
-				.then(
-					result => {
-						setCity(result.name);
-					},
-					error => {
-						setIsLoaded(true);
-						setError(error);
-					}
-				);
-		}
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_APIKEY}`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            setCity(result.name);
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }
 
-		function onError(error) {
-			setError(error);
-		}
+    function onError(error) {
+      setError(error);
+    }
 
-		window.navigator.geolocation.getCurrentPosition(
-			onSuccess,
-			onError,
-			options
-		);
-	}, []);
+    window.navigator.geolocation.getCurrentPosition(
+      onSuccess,
+      onError,
+      options
+    );
+  }, []);
 
-	useEffect(() => {
-		if (city !== '') {
-			fetch(
-				'https://api.openweathermap.org/data/2.5/weather?q=' +
-					city +
-					'&units=metric' +
-					'&appid=' +
-					process.env.REACT_APP_APIKEY
-			)
-				.then(res => res.json())
-				.then(
-					result => {
-						if (result['cod'] !== 200) {
-							setIsLoaded(false);
-						} else {
-							setIsLoaded(true);
-							setResults(result);
-						}
-					},
-					error => {
-						setIsLoaded(true);
-						setError(error);
-					}
-				);
-		}
-	}, [city]);
+  useEffect(() => {
+    if (city !== "") {
+      fetch(
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+          city +
+          "&units=metric" +
+          "&appid=" +
+          process.env.REACT_APP_APIKEY
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if (result["cod"] !== 200) {
+              setIsLoaded(false);
+            } else {
+              setIsLoaded(true);
+              setResults(result);
+            }
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }
+  }, [city]);
 
-	const handleCity = city => {
-		setCity(city);
-		if (city !== '') {
-			// Calling the autocomplete API with max 4 results, looking for cities and using the API Key
-			var query = `q=${city}&limit=4&apiKey=${process.env.REACT_APP_HEREAPI}`;
-			fetch(`${autocompleteURL}${query}`)
-				.then(res => res.json())
-				.then(
-					result => {
-						// Here are the 0 - 4 results from the API given any input
-						const set = result.items.map(item => item.address.city);
-						console.log(set);
-					},
-					error => {
-						setError(error);
-					}
-				);
-		}
-	};
-	if (error) {
-		return <div>Error: {error.message}</div>;
-	} else {
-		return (
-			<>
-				<img className="logo" src={logo} alt="MLH Prep Logo"></img>
-				<div>
-					<Header city={city} setCity={setCity} />
-					<div className="Results">
-						{!isLoaded && (
-							<Loader
-								type="Oval"
-								color="#00BFFF"
-								height={40}
-								width={40}
-								style={{ marginTop: '40px' }}
-							/>
-						)}
-						{console.log(results)}
-						{isLoaded && results && <Card results={results} />}
-					</div>
-				</div>
-			</>
-		);
-	}
+  const handleCity = (city) => {
+    setCity(city);
+    if (city !== "") {
+      // Calling the autocomplete API with max 4 results, looking for cities and using the API Key
+      var query = `q=${city}&limit=4&apiKey=${process.env.REACT_APP_HEREAPI}`;
+      fetch(`${autocompleteURL}${query}`)
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            // Here are the 0 - 4 results from the API given any input
+            const set = result.items.map((item) => item.address.city);
+            console.log(set);
+          },
+          (error) => {
+            setError(error);
+          }
+        );
+    }
+  };
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else {
+    return (
+      <>
+        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+        <div>
+          <Header city={city} setCity={setCity} />
+          <div className="Results">
+            {!isLoaded && (
+              <Loader
+                type="Oval"
+                color="#00BFFF"
+                height={40}
+                width={40}
+                style={{ marginTop: "40px" }}
+              />
+            )}
+            {console.log(results)}
+            {isLoaded && results && <Card results={results} />}
+          </div>
+
+          <Searchbox />
+        </div>
+      </>
+    );
+  }
 }
 
 export default App;
