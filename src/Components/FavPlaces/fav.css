@@ -2,11 +2,23 @@
 
 .fav-container {
   height: fit-content;
-  width: 94%;
-  display: flex;
+  width: 75%;
+  /* display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   margin: 0px !important;
   padding: 3%;
+}
+.slider-wrapper {
+  height: 530px !important;
+}
+.slider-wrapper>ul{
+  height: 450px !important;
+  width: calc( 33.33% ) !important;
+  
+}
+
+.slider-wrapper li {
+
 }

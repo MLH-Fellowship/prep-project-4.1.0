@@ -1,7 +1,7 @@
 .card-fav {
   margin: 2%;
   padding: 5px 30px;
-  width: 20%;
+  width: 95%;
   min-height: 450px;
   border-radius: 3px;
   background-color: #fff;
@@ -19,10 +19,7 @@
   }
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   position: relative;
 }
 
@@ -30,7 +27,7 @@ h1 {
   float: right;
   color: #666;
   font-weight: 300;
-  font-size: 6.59375em;
+  font-size: 5.59375em;
   line-height: 0.2em;
   -webkit-animation: up 2s cubic-bezier(0.39, 0, 0.38, 1) 0.2s;
 }
@@ -42,8 +39,7 @@ h2 {
 }
 
 .head-fav {
-  float: left;
-  margin-right: 33px;
+  margin: auto;
   color: #777;
   font-weight: 400;
   font-size: 1em;
@@ -51,7 +47,7 @@ h2 {
 }
 
 .head-fav span {
-  margin-left: 24px;
+align-content: center;
   color: #999;
   font-weight: 300;
 }
@@ -91,8 +87,7 @@ h2 {
   -webkit-animation: up 2s cubic-bezier(0.39, 0, 0.38, 1) 0.7s;
 }
 
-.cloud:before,
-.cloud:after {
+.cloud:before, .cloud:after {
   position: absolute;
   display: block;
   content: '';
@@ -124,35 +119,22 @@ table {
   color: black;
 }
 
-tr:nth-child(1) td:nth-child(1),
-tr:nth-child(1) td:nth-child(2),
-tr:nth-child(1) td:nth-child(3),
-tr:nth-child(1) td:nth-child(4),
-tr:nth-child(1) td:nth-child(5) {
+tr:nth-child(1) td:nth-child(1), tr:nth-child(1) td:nth-child(2), tr:nth-child(1) td:nth-child(3), tr:nth-child(1) td:nth-child(4), tr:nth-child(1) td:nth-child(5) {
   padding-bottom: 32px;
   -webkit-animation: up 2s cubic-bezier(0.39, 0, 0.38, 1) 0.7s;
 }
 
-tr:nth-child(2) td:nth-child(1),
-tr:nth-child(2) td:nth-child(2),
-tr:nth-child(2) td:nth-child(3),
-tr:nth-child(2) td:nth-child(4),
-tr:nth-child(2) td:nth-child(5) {
+tr:nth-child(2) td:nth-child(1), tr:nth-child(2) td:nth-child(2), tr:nth-child(2) td:nth-child(3), tr:nth-child(2) td:nth-child(4), tr:nth-child(2) td:nth-child(5) {
   padding-bottom: 7px;
   -webkit-animation: up 2s cubic-bezier(0.39, 0, 0.38, 1) 0.9s;
 }
 
-tr:nth-child(3) td:nth-child(1),
-tr:nth-child(3) td:nth-child(2),
-tr:nth-child(3) td:nth-child(3),
-tr:nth-child(3) td:nth-child(4),
-tr:nth-child(3) td:nth-child(5) {
+tr:nth-child(3) td:nth-child(1), tr:nth-child(3) td:nth-child(2), tr:nth-child(3) td:nth-child(3), tr:nth-child(3) td:nth-child(4), tr:nth-child(3) td:nth-child(5) {
   padding-bottom: 7px;
   -webkit-animation: up 2s cubic-bezier(0.39, 0, 0.38, 1) 0.9s;
 }
 
-tr:nth-child(2),
-tr:nth-child(3) {
+tr:nth-child(2), tr:nth-child(3) {
   font-size: 0.9em;
 }
 
@@ -178,6 +160,6 @@ tr:nth-child(3) {
 }
 
 .imageicon {
-  height: 100px;
-  width: 100px;
+  height: 100px !important;
+  width: 100px !important;
 }

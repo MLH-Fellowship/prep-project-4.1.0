@@ -71,10 +71,12 @@ function Index(props) {
   }, []);
 
   return (
+    <div style={{padding:"25px"}}>
     <div className='card-fav'>
       <h2>{place}</h2>
       <h3 className='head-fav'>
         {capitalizeFirstLetter(description)}
+        <br />
         <span>
           Wind {wind}km/h <span className='dot'>•</span> Humidity {humidity}%
         </span>
@@ -104,6 +106,7 @@ function Index(props) {
           })}
         </tr>
       </table>
+    </div>
     </div>
   );
 }
