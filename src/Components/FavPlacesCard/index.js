@@ -80,19 +80,11 @@ function Index(props) {
         </span>
       </h3>
       <h1>{Math.floor(temperature)}°</h1>
-      {/* <div className='sky'>
-        <div className='sun'></div>
-        <div className='cloud'>
-          <div className='circle-small'></div>
-          <div className='circle-tall'></div>
-          <div className='circle-medium'></div>
-        </div>
-      </div> */}
       <div className='image'>
         <img
           src={`http://openweathermap.org/img/w/${icon}.png`}
           className='imageicon'
-          alt='Image icon'
+          alt='icon'
         />
       </div>
       <table>
