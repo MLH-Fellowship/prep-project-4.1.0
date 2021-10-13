@@ -13,6 +13,10 @@ const Header = ({ city, setCity }) => {
                 value={city}
                 onChange={(event) => setCity(event.target.value)}
               />
+              <div class = "favo">
+              <i class="far fa-bookmark"></i>
+                <span>Bookmark</span>
+              </div>
             </div>
           </div>
           <div className='mapElement'>

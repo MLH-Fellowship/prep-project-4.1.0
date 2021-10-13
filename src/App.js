@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
 import logo from './mlh-prep.png';
+import FavPlaceCard from "./Components/FavPlaces";
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -49,6 +50,7 @@ function App() {
           {console.log(results)}
           {isLoaded && results && <Card results={results} />}
         </div>
+        <FavPlaceCard />
         </div>
       </>
     );
