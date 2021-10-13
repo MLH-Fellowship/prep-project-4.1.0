@@ -1,35 +1,38 @@
-import React, { useState, useEffect, useRef } from "react";
-import CLOUDS from "vanta/dist/vanta.clouds.min";
-import noise from "./noise.png";
+
+import ClearSkyBg from "./ClearSkyBg";
+import CloudsBg from "./CloudsBg";
+import SunnyBg from "./SunnyBg";
+import RainBg from "./RainBg";
+import SnowBg from "./SnowBg";
 import "./background.css";
 
-const Background = ({ children }) => {
-  const [vantaEffect, setVantaEffect] = useState(0);
-  const myRef = useRef(null);
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        CLOUDS({
-          el: myRef.current,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          scale: 1.0,
-          texturePath: noise,
-        })
-      );
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
-  return (
-    <div id="background" ref={myRef}>
+const Background = ({ children, results }) => {
+  
+  const weather = "Clear"
+  if (weather === "Clear"){
+    return (
+      <ClearSkyBg results={ results} children = {children}/>
+      )
+  }else if (weather === "Clouds"){
+    return(
+      <CloudsBg results={ results} children = {children}/>
+    )
+  }else if (weather === "Sunny"){
+    return(
+    <SunnyBg results={ results} children = {children} /> )
+  }
+  else if (weather === "Snow"){
+    return(
+    <SnowBg results={ results} children = {children} /> )
+  } 
+  else{
+    return(
+      <div className = "background">
       {children}
     </div>
-  );
+    )
+  }
+ 
 };
 
 export default Background;

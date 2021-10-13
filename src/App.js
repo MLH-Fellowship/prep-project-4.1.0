@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
+import Background from "./Components/Background";
 
 function App() {
   const [error, setError] = useState(null);
@@ -41,15 +42,15 @@ function App() {
     return <div>Error: {error.message}</div>;
   } else {
     return (
-      <>
-      {results && (
+      <Background results={results}>
+      {/* {results && ( */}
           <Header
             city={city}
             onChangeCity={handleCity}
             results={results}
             isLoaded={isLoaded}
           />
-        )}
+        {/* )} */}
         <h2>Enter a city below 👇</h2>
         <input
           type="text"
@@ -59,9 +60,11 @@ function App() {
         <div className="Results">
           {!isLoaded && <h2>Loading...</h2>}
           {console.log(results)}
-          {isLoaded && results && <Card results={results} />}
+          {isLoaded && results && <> <Card results={results} />
+          <Card results={results} />
+          <Card results={results} /> </>}
         </div>
-      </>
+      </ Background>
     );
   }
 }
