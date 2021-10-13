@@ -13,9 +13,23 @@ const Header = ({ city, setCity }) => {
                 value={city}
                 onChange={(event) => setCity(event.target.value)}
               />
-              <div class = "favo">
-              <i class="far fa-bookmark"></i>
-                <span>Bookmark</span>
+              <div class='favo'>
+                <i class='far fa-bookmark'></i>
+                <span
+                  onClick={() => {
+                    let bookMarkarray = localStorage.getItem('bookMarks');
+                    if (bookMarkarray === null) bookMarkarray = [];
+                    else bookMarkarray = JSON.parse(bookMarkarray);
+                    if (!bookMarkarray.includes(city)) bookMarkarray.push(city);
+
+                    localStorage.setItem(
+                      'bookMarks',
+                      JSON.stringify(bookMarkarray)
+                    );
+                  }}
+                >
+                  Bookmark
+                </span>
               </div>
             </div>
           </div>
