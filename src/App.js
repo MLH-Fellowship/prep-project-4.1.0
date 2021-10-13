@@ -85,7 +85,13 @@ function App() {
         <Header city={city} onChangeCity={handleCity} />
         <div className="Results">
           {!isLoaded && (
-            <Loader type="Oval" color="#00BFFF" height={40} width={40} />
+            <Loader
+              type="Oval"
+              color="#00BFFF"
+              height={40}
+              width={40}
+              style={{ marginTop: "40px" }}
+            />
           )}
           {console.log(results)}
           {isLoaded && results && <Card results={results} />}
