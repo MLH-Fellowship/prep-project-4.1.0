@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
-
+import logo from './mlh-prep.png';
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("New York City");
   const [results, setResults] = useState(null);
-
   useEffect(() => {
     fetch(
       "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -20,7 +19,7 @@ function App() {
       .then((res) => res.json())
       .then(
         (result) => {
-          if (result["cod"] !== 200) {
+          if (result['cod'] !== 200) {
             setIsLoaded(false);
           } else {
             setIsLoaded(true);
@@ -42,11 +41,14 @@ function App() {
   } else {
     return (
       <>
-        <Header city={city} onChangeCity={handleCity} />
+        <img className='logo' src={logo} alt='MLH Prep Logo'></img>
+        <div>
+        <Header city={city} setCity={setCity} />
         <div className="Results">
           {!isLoaded && <h2>Loading...</h2>}
           {console.log(results)}
           {isLoaded && results && <Card results={results} />}
+        </div>
         </div>
       </>
     );
