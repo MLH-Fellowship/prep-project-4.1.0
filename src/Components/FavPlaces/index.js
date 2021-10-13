@@ -8,7 +8,7 @@ function FavPlaceCard() {
     if (bookMarkarray !== null) setPlaces(JSON.parse(bookMarkarray));
   }, [places]);
   return (
-    <div class='fav-container'>
+    <div className='fav-container'>
       {places.map((place) => {
         return <Card place={place} />;
       })}
