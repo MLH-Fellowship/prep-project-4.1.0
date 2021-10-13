@@ -1,16 +1,26 @@
-import logo from "../../mlh-prep.png";
-
-const Header = ({ city, onChangeCity }) => {
+import Map from '../map/map';
+import './header.css';
+const Header = ({ city, setCity }) => {
   return (
-    <div>
-      <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-      <h2>Enter a city below 👇</h2>
-      <input
-        type="text"
-        value={city}
-        onChange={(event) => onChangeCity(event.target.value)}
-      />
-    </div>
+    <>
+      <div className='input-container'>
+        <div className='input-div'>
+          <div className='inputElement'>
+            <div className='insideDiv'>
+              <h2>Enter a city below 👇</h2>
+              <input
+                type='text'
+                value={city}
+                onChange={(event) => setCity(event.target.value)}
+              />
+            </div>
+          </div>
+          <div className='mapElement'>
+            <Map city={city} setCity={setCity} />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
