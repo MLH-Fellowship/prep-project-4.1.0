@@ -14,6 +14,10 @@ function Index(props) {
   const [weekly, setWeekly] = useState([]);
   const [minTemp, setminTemp] = useState([]);
   const [maxTemp, setmaxTemp] = useState([]);
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   useEffect(() => {
     async function getDetails() {
       const { data } = await axios.get(
@@ -34,7 +38,7 @@ function Index(props) {
       setDescription(current.weather[0].description);
 
       let temp = current.temp;
-      temp = (5 / 9) * temp - 32;
+      // temp = (5 / 9) * temp - 32;
 
       setTemperature(temp);
 
@@ -68,43 +72,44 @@ function Index(props) {
 
   return (
     <div class='card-fav'>
-      <h2>Brussels</h2>
+      <h2>{place}</h2>
       <h3 class='head-fav'>
-        Cloudy
+        {capitalizeFirstLetter(description)}
         <span>
-          Wind 10km/h <span class='dot'>•</span> Precip 0%
+          Wind {wind}km/h <span class='dot'>•</span> Humidity {humidity}%
         </span>
       </h3>
-      <h1>23°</h1>
-      <div class='sky'>
+      <h1>{Math.floor(temperature)}°</h1>
+      {/* <div class='sky'>
         <div class='sun'></div>
         <div class='cloud'>
           <div class='circle-small'></div>
           <div class='circle-tall'></div>
           <div class='circle-medium'></div>
         </div>
+      </div> */}
+      <div className='image'>
+        <img
+          src={`http://openweathermap.org/img/w/${icon}.png`}
+          className='imageicon'
+          alt='Image icon'
+        />
       </div>
       <table>
         <tr>
-          <td>TUE</td>
-          <td>WED</td>
-          <td>THU</td>
-          <td>FRI</td>
-          <td>SAT</td>
+          {weekly.map((day) => {
+            return <td>{day}</td>;
+          })}
         </tr>
         <tr>
-          <td>30°</td>
-          <td>34°</td>
-          <td>36°</td>
-          <td>34°</td>
-          <td>37°</td>
+          {minTemp.map((temp) => {
+            return <td>{Math.floor(temp)}°</td>;
+          })}
         </tr>
         <tr>
-          <td>17°</td>
-          <td>22°</td>
-          <td>19°</td>
-          <td>23°</td>
-          <td>19°</td>
+          {maxTemp.map((temp) => {
+            return <td>{Math.floor(temp)}°</td>;
+          })}
         </tr>
       </table>
     </div>

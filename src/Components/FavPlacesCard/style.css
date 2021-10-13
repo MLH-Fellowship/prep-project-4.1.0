@@ -176,3 +176,8 @@ tr:nth-child(3) {
     opacity: 1;
   }
 }
+
+.imageicon {
+  height: 100px;
+  width: 100px;
+}
