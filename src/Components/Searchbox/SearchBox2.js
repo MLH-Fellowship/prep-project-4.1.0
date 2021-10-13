@@ -1,32 +1,16 @@
 import React, { Component } from "react";
 import ReactSearchBox from "react-search-box";
+import "./searchbox.css";
 
 export default class SearchBox2 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+    };
 
-  data = [
-    {
-      key: "New Delhi",
-      value: "New Delhi",
-    },
-    {
-      key: "Mumbai",
-      value: "Mumbai",
-    },
-    {
-      key: "",
-      value: "Mary Phillips",
-    },
-    {
-      key: "robert",
-      value: "Robert",
-    },
-    {
-      key: "karius",
-      value: "Karius",
-    },
-  ];
-
-  city = "New york city";
+    this.autoCompleteCity = this.autoCompleteCity.bind(this);
+  }
 
   // onChange Function
   autoCompleteCity(city) {
@@ -47,11 +31,12 @@ export default class SearchBox2 extends Component {
           var filterdCities = uniqueCities.filter(function (x) {
             return x !== undefined;
           });
-          this.data = []
+          let newdata = [];
           filterdCities.forEach((city) => {
-            this.data.push({ key: city, value: city });
+            newdata.push({ key: city, value: city });
           });
-          console.log(this.data);
+
+          this.setState({ data: newdata });
         });
     }
   }
@@ -62,16 +47,12 @@ export default class SearchBox2 extends Component {
   render() {
     return (
       <ReactSearchBox
+        id="searchbox"
         placeholder="Placeholder"
-        value="Mumbai"
-        data={this.data}
+        value="New York City"
+        data={this.state.data}
         onChange={(record) => this.autoCompleteCity(record)}
-        // searchCityWeather
         onSelect={(finalCity) => console.log("finalCity", finalCity)}
-        styles={{
-          headerTitle: { color: "red" },
-          listItem: { color: "black" },
-        }}
       />
     );
   }
