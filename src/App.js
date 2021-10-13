@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
+import WeeklyForecast from "./Components/WeeklyForecast";
 
 function App() {
   const [error, setError] = useState(null);
@@ -45,8 +46,17 @@ function App() {
         <Header city={city} onChangeCity={handleCity} />
         <div className="Results">
           {!isLoaded && <h2>Loading...</h2>}
-          {console.log(results)}
+          {/* {console.log(results)} */}
           {isLoaded && results && <Card results={results} />}
+        </div>
+        <div className="weeklyForecast" style={{marginTop: '30px'}}>
+          {isLoaded && results && (
+            <WeeklyForecast
+              city={city}
+              latitude={results.coord.lat}
+              longitude={results.coord.lon}
+            />
+          )}
         </div>
       </>
     );
