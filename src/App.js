@@ -11,8 +11,6 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
-  const autocompleteURL =
-    "https://autocomplete.search.hereapi.com/v1/autocomplete?";
 
   useEffect(() => {
     const options = {
@@ -80,23 +78,8 @@ function App() {
 
   const handleCity = (city) => {
     setCity(city);
-    if (city !== "") {
-      // Calling the autocomplete API with max 4 results, looking for cities and using the API Key
-      var query = `q=${city}&limit=4&apiKey=${process.env.REACT_APP_HEREAPI}`;
-      fetch(`${autocompleteURL}${query}`)
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            // Here are the 0 - 4 results from the API given any input
-            const set = result.items.map((item) => item.address.city);
-            console.log(set);
-          },
-          (error) => {
-            setError(error);
-          }
-        );
-    }
   };
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
@@ -104,6 +87,7 @@ function App() {
       <>
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
+          <Searchbox />
           <Header city={city} setCity={setCity} />
           <div className="Results">
             {!isLoaded && (
@@ -118,8 +102,6 @@ function App() {
             {console.log(results)}
             {isLoaded && results && <Card results={results} />}
           </div>
-
-          <Searchbox />
         </div>
       </>
     );
