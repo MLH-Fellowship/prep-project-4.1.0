@@ -13,6 +13,12 @@
   height: 450px !important;
   width: calc(33.33%) !important;
 }
+.one .slider-wrapper > ul {
+  width: 100% !important;
+}
+.two .slider-wrapper > ul {
+  width: 50% !important;
+}
 
 .cards-container {
   display: flex;

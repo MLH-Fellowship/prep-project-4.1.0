@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Loader from "react-loader-spinner";
-import WeatherCard from "../WeatherCard";
-import "./weeklyforecast.css";
+import React, { useState, useEffect } from 'react';
+import Loader from 'react-loader-spinner';
+import WeatherCard from '../WeatherCard';
+import './weeklyforecast.css';
 
 const WeeklyForecast = ({ city, latitude, longitude }) => {
   const [error, setError] = useState(null);
@@ -32,15 +32,16 @@ const WeeklyForecast = ({ city, latitude, longitude }) => {
     return (
       <>
         {!isLoaded && (
-          <Loader type="Oval" color="#00BFFF" height={40} width={40} />
+          <Loader type='Oval' color='#00BFFF' height={40} width={40} />
         )}
         {isLoaded && results && (
-          <div className="weatherCards">
-            {results.daily.map((day, index) => {
-              if (index !== 0) {
-                return <WeatherCard day={day} index={index} key={index} />;
-              }
-            })}
+          <div className='weatherCards'>
+            {results &&
+              results?.daily?.map((day, index) => {
+                if (index !== 0) {
+                  return <WeatherCard day={day} index={index} key={index} />;
+                }
+              })}
           </div>
         )}
       </>

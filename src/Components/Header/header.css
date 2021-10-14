@@ -117,7 +117,6 @@ h2 {
     height: 20rem;
   }
   .input-div {
-<<<<<<< HEAD
     width: 80%;
   }
   .insideDiv h2 {
@@ -172,13 +171,12 @@ h2 {
   }
   .input-div {
     width: 90%;
-=======
     width: 70%;
   }
-  .temparature{
+  .temparature {
     font-size: 90px;
   }
-  .weather{
+  .weather {
     font-size: 20px;
   }
 }
@@ -190,28 +188,26 @@ h2 {
 @media only screen and (orientation: portrait) and (max-width: 480px) {
   .input-div {
     flex-direction: column;
->>>>>>> e829409ec20033401172ca94115992c128b110a3
   }
   .insideDiv h2 {
     font-size: 15px;
   }
-<<<<<<< HEAD
 
   .favo .fa-bookmark {
     font-size: 12px;
     margin-right: 10px;
-=======
+  }
   .inputElement {
     border-radius: 10px 10px 0 0;
   }
   .center-text-div {
-    width : 60%
+    width: 60%;
   }
-  .temparature{
+  .temparature {
     font-size: 60px;
     line-height: 80px;
   }
-  .weather{
+  .weather {
     font-size: 15px;
     margin: 0;
   }
@@ -236,6 +232,5 @@ h2 {
   }
   .insideDiv h2 {
     font-size: 15px;
->>>>>>> e829409ec20033401172ca94115992c128b110a3
   }
 }

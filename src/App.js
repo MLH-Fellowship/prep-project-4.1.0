@@ -88,7 +88,6 @@ function App() {
   } else {
     return (
       <>
-        <img className='logo' src={logo} alt='MLH Prep Logo'></img>
         {!isLoaded && (
           <Loader
             type='Oval'

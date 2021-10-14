@@ -71,42 +71,42 @@ function Index(props) {
   }, []);
 
   return (
-    <div style={{padding:"25px"}}>
-    <div className='card-fav'>
-      <h2>{place}</h2>
-      <h3 className='head-fav'>
-        {capitalizeFirstLetter(description)}
-        <br />
-        <span>
-          Wind {wind}km/h <span className='dot'>•</span> Humidity {humidity}%
-        </span>
-      </h3>
-      <h1>{Math.floor(temperature)}°</h1>
-      <div className='image'>
-        <img
-          src={`http://openweathermap.org/img/w/${icon}.png`}
-          className='imageicon'
-          alt='icon'
-        />
+    <div style={{ padding: '25px' }}>
+      <div className='card-fav'>
+        <h2>{place}</h2>
+        <h3 className='head-fav'>
+          {capitalizeFirstLetter(description)}
+          <br />
+          <span>
+            Wind {wind}km/h <span className='dot'>•</span> Humidity {humidity}%
+          </span>
+        </h3>
+        <h1 className='h1-heading'>{Math.floor(temperature)}°</h1>
+        <div className='image'>
+          <img
+            src={`http://openweathermap.org/img/w/${icon}.png`}
+            className='imageicon'
+            alt='icon'
+          />
+        </div>
+        <table>
+          <tr>
+            {weekly.map((day) => {
+              return <td>{day}</td>;
+            })}
+          </tr>
+          <tr>
+            {minTemp.map((temp) => {
+              return <td>{Math.floor(temp)}°</td>;
+            })}
+          </tr>
+          <tr>
+            {maxTemp.map((temp) => {
+              return <td>{Math.floor(temp)}°</td>;
+            })}
+          </tr>
+        </table>
       </div>
-      <table>
-        <tr>
-          {weekly.map((day) => {
-            return <td>{day}</td>;
-          })}
-        </tr>
-        <tr>
-          {minTemp.map((temp) => {
-            return <td>{Math.floor(temp)}°</td>;
-          })}
-        </tr>
-        <tr>
-          {maxTemp.map((temp) => {
-            return <td>{Math.floor(temp)}°</td>;
-          })}
-        </tr>
-      </table>
-    </div>
     </div>
   );
 }

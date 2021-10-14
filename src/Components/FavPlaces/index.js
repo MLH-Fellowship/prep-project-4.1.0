@@ -17,24 +17,44 @@ function FavPlaceCard() {
         <h1 className='heading-h1'>Bookmarked locations</h1>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <div className='fav-container'>
-          <Carousel
-            interval={20000}
-            transitionTime={1000}
-            autoPlay={false}
-            axis='horizontal'
-            infiniteLoop={true}
-            showStatus={false}
-            showIndicators={true}
-            showThumbs={false}
-            showArrows={false}
-            dynamicHeight={true}
+        {places?.length === 0 ? (
+          <h2>No Bookmarks yet!</h2>
+        ) : (
+          <div
+            className={
+              places?.length === 1
+                ? `fav-container one`
+                : places?.length === 2
+                ? `fav-container two`
+                : `fav-container`
+            }
+            style={{
+              width:
+                places?.length === 1
+                  ? `25%`
+                  : places?.length === 2
+                  ? `50%`
+                  : `75%`,
+            }}
           >
-            {places.map((place, idx) => {
-              return <Card key={idx} place={place} />;
-            })}
-          </Carousel>
-        </div>
+            <Carousel
+              interval={20000}
+              transitionTime={1000}
+              autoPlay={false}
+              axis='horizontal'
+              infiniteLoop={false}
+              showStatus={false}
+              showIndicators={true}
+              showThumbs={false}
+              showArrows={false}
+              dynamicHeight={true}
+            >
+              {places.map((place, idx) => {
+                return <Card key={idx} place={place} />;
+              })}
+            </Carousel>
+          </div>
+        )}
       </div>
     </div>
   );
