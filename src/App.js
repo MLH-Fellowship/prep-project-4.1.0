@@ -4,7 +4,6 @@ import Header from "./Components/Header";
 import Card from "./Components/Card";
 import Loader from "react-loader-spinner";
 import logo from "./mlh-prep.png";
-import Searchbox from "./Components/Searchbox/SearchBox2";
 
 function App() {
   const [error, setError] = useState(null);
@@ -87,7 +86,6 @@ function App() {
       <>
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
-          <Searchbox city={city} setCity={setCity} />
           <Header city={city} setCity={setCity} />
           <div className="Results">
             {!isLoaded && (

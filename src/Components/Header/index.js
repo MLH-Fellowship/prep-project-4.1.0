@@ -1,21 +1,19 @@
-import Map from '../map/map';
-import './header.css';
+import Map from "../map/map";
+import "./header.css";
+import SearchBox from "../Searchbox";
+
 const Header = ({ city, setCity }) => {
   return (
     <>
-      <div className='input-container'>
-        <div className='input-div'>
-          <div className='inputElement'>
-            <div className='insideDiv'>
+      <div className="input-container">
+        <div className="input-div">
+          <div className="inputElement">
+            <div className="insideDiv">
               <h2>Enter a city below 👇</h2>
-              <input
-                type='text'
-                value={city}
-                onChange={(event) => setCity(event.target.value)}
-              />
+              <SearchBox city={city} setCity={setCity} />
             </div>
           </div>
-          <div className='mapElement'>
+          <div className="mapElement">
             <Map city={city} setCity={setCity} />
           </div>
         </div>
