@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Background from "./Components/Background";
+import Card from "./Components/Card";
+import logo from "./mlh-prep.png";
+import FavPlaceCard from "./Components/FavPlaces";
+import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
-import logo from "./mlh-prep.png";
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("New York City");
   const [results, setResults] = useState(null);
-
+  const [bookmarks, setBookMarks] = useState([]);
+  const [places, setPlaces] = useState([]);
   useEffect(() => {
     const options = {
       enableHighAccuracy: false,
@@ -95,26 +98,29 @@ function App() {
           />
         )}
         {results && (
-          <Background results={results}>
-            <Header
-              city={city}
-              onChangeCity={handleCity}
-              results={results}
-              isLoaded={isLoaded}
-            />
-            <div className="heading">
-              <h1 className="heading-h1">Weekly Forecast</h1>
-            </div>
-            <div className="weeklyForecast" style={{ marginTop: "30px" }}>
-              {isLoaded && results && (
-                <WeeklyForecast
-                  city={city}
-                  latitude={results.coord.lat}
-                  longitude={results.coord.lon}
-                />
-              )}
-            </div>
-          </Background>
+          <placeContext.Provider value={[places, setPlaces]}>
+            <>
+              <Header
+                city={city}
+                onChangeCity={handleCity}
+                results={results}
+                isLoaded={isLoaded}
+              />
+              <div className="heading">
+                <h1 className="heading-h1">Weekly Forecast</h1>
+              </div>
+              <div className="weeklyForecast" style={{ marginTop: "30px" }}>
+                {isLoaded && results && (
+                  <WeeklyForecast
+                    city={city}
+                    latitude={results.coord.lat}
+                    longitude={results.coord.lon}
+                  />
+                )}
+              </div>
+              <FavPlaceCard />
+            </>
+          </placeContext.Provider>
         )}
       </>
     );
