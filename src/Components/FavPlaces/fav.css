@@ -13,11 +13,22 @@
 .slider-wrapper {
   height: 530px !important;
 }
-.slider-wrapper>ul{
+.slider-wrapper > ul {
   height: 450px !important;
-  width: calc( 33.33% ) !important;
+  width: calc(33.33%) !important;
 }
 
-.slider-wrapper li {
+.cards-container {
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  flex: 0.1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.heading-h1 {
+  color: #fff;
 }
