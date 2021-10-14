@@ -2,9 +2,9 @@
 
 /* color variables */
 /* border radius */
-*,
-*::before,
-*::after {
+.weatherCard,
+.weatherCard::before,
+.weatherCard::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -18,7 +18,7 @@
 .weatherCard {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 220px;
   /* width: calc(33.3% - 20px); */
   font-size: 16px;
   background-color: var(--content-bg);

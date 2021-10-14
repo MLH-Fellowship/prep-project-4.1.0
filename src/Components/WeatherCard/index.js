@@ -10,9 +10,15 @@ const WeatherCard = ({ day, index }) => {
   const dateObject = new Date(milliseconds);
 
   const weekday = dateObject.toLocaleString("en-US", { weekday: "long" }); // Monday
+  const month = dateObject
+    .toLocaleString("en-US", { month: "long" })
+    .slice(0, 3); // December
+  const date = dateObject.toLocaleString("en-US", { day: "numeric" }); // 9
   return (
     <div className="weatherCard" key={index}>
-      <div className="app-card__subtext">{weekday}</div>
+      <div className="app-card__subtext">
+        {weekday}, {date} {month}
+      </div>
       <span>
         <img
           src={icon}

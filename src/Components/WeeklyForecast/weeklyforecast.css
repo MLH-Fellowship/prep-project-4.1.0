@@ -7,19 +7,22 @@
 
 /* color variables */
 /* border radius */
-*,
-*::before,
-*::after {
+.weatherCards,
+.weatherCards::before,
+.weatherCards::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 .weatherCards {
   margin: 3rem;
-  display: grid;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
   gap: 1rem;
   grid-template-columns: 1fr;
   justify-content: center;
+  place-items: center;
 }
 
 @media screen and (min-width: 600px) {
