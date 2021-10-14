@@ -163,3 +163,12 @@ tr:nth-child(3) {
   height: 100px !important;
   width: 100px !important;
 }
+
+@media only screen and (orientation: portrait) and (max-width: 300px) {
+  .card-fav{
+    min-height: 410px;
+  }
+  .card-fav h1{
+     font-size: 2.59375em;;
+  }
+}
