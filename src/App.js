@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Card from "./Components/Card";
 import Background from "./Components/Background";
 import Loader from "react-loader-spinner";
 

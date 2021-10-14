@@ -5,6 +5,7 @@ import SnowBg from "./SnowBg";
 import ThunderStromBg from "./ThunderstromBg";
 import FogBg from "./FogBg";
 import DustBg from "./DustBg";
+import RainyBg from "./RainyBg";
 import "./background.css";
 
 const Background = ({ children, results }) => {
@@ -19,6 +20,8 @@ const Background = ({ children, results }) => {
     return <SnowBg children={children} />;
   } else if (weather === "Thunderstorm") {
     return <ThunderStromBg children={children} />;
+  } else if (weather === "Rain" || weather === "Drizzle") {
+    return <RainyBg children={children} />;
   } else if (
     weather === "Mist" ||
     weather === "Smoke" ||

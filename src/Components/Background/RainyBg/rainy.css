@@ -1,0 +1,28 @@
+#rainy {
+  position: fixed;
+  min-height: 100vh;
+  background: url(./city.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  background-attachment: fixed !important;
+}
+
+.rain {
+  min-height: 100vh;
+  background: url(https://i.ibb.co/sjP941w/rain-png-45862.png);
+  animation: rain 0.3s linear infinite;
+  -webkit-animation: rain 0.5s linear infinite;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+@keyframes rain {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 20% 100%;
+  }
+}

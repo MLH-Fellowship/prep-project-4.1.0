@@ -1,4 +1,3 @@
-import { useState } from "react";
 import logo from "../../mlh-prep.png";
 import Map from '../map/map';
 import "./header.css";
