@@ -7,12 +7,11 @@
   background-attachment: fixed !important;
   background-repeat: no-repeat;
   background-size: cover;
- 
+  overflow: hidden;
 }
-#ag-sparks h2{
+#ag-sparks h2 {
   color: whitesmoke;
 }
-
 
 .ag-lightning {
   position: absolute;
@@ -933,4 +932,3 @@
     opacity: 0;
   }
 }
-

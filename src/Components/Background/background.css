@@ -6,10 +6,12 @@
 
 #snow {
   background-image: url("./SnowBg/snow.jpeg");
-  background-repeat: no-repeat, repeat;
+  background-repeat: no-repeat;
   background-color: #cccccc;
   background-size: cover;
   color: #133667;
+  overflow: hidden;
+  background-attachment: fixed !important;
 }
 .vanta-canvas {
   position: fixed !important;
