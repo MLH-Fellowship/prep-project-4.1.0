@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
+import WeeklyForecast from "./Components/WeeklyForecast";
 import Loader from "react-loader-spinner";
-import logo from './mlh-prep.png';
+import logo from "./mlh-prep.png";
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
-  
+
   useEffect(() => {
     const options = {
       enableHighAccuracy: false,
@@ -83,22 +84,34 @@ function App() {
   } else {
     return (
       <>
-        <img className='logo' src={logo} alt='MLH Prep Logo'></img>
+        <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
-        <Header city={city} setCity={setCity} />
-        <div className="Results">
-          {!isLoaded && (
-            <Loader
-              type="Oval"
-              color="#00BFFF"
-              height={40}
-              width={40}
-              style={{ marginTop: "40px" }}
-            />
-          )}
-          {console.log(results)}
-          {isLoaded && results && <Card results={results} />}
-        </div>
+          <Header city={city} setCity={setCity} />
+          <div className="Results">
+            {!isLoaded && (
+              <Loader
+                type="Oval"
+                color="#00BFFF"
+                height={40}
+                width={40}
+                style={{ marginTop: "40px" }}
+              />
+            )}
+            {console.log(results)}
+            {isLoaded && results && <Card results={results} />}
+          </div>
+          <div className="heading">
+            <h1 className="heading-h1">Weekly Forecast</h1>
+          </div>
+          <div className="weeklyForecast" style={{ marginTop: "30px" }}>
+            {isLoaded && results && (
+              <WeeklyForecast
+                city={city}
+                latitude={results.coord.lat}
+                longitude={results.coord.lon}
+              />
+            )}
+          </div>
         </div>
       </>
     );
