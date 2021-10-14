@@ -5,6 +5,8 @@ import Card from './Components/Card';
 import logo from './mlh-prep.png';
 import FavPlaceCard from './Components/FavPlaces';
 import placeContext from './Context/placesContext';
+import Loader from 'react-loader-spinner';
+
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -13,28 +15,67 @@ function App() {
   const [bookmarks, setBookMarks] = useState([]);
   const [places, setPlaces] = useState([]);
   useEffect(() => {
-    fetch(
-      'https://api.openweathermap.org/data/2.5/weather?q=' +
-        city +
-        '&units=metric' +
-        '&appid=' +
-        process.env.REACT_APP_APIKEY
-    )
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          if (result['cod'] !== 200) {
-            setIsLoaded(false);
-          } else {
+    const options = {
+      enableHighAccuracy: false,
+      timeout: 5000,
+      maximumAge: Infinity,
+    };
+
+    function onSuccess(position) {
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
+
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_APIKEY}`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            setCity(result.name);
+          },
+          (error) => {
             setIsLoaded(true);
-            setResults(result);
+            setError(error);
           }
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
+        );
+    }
+
+    function onError(error) {
+      setError(error);
+    }
+
+    window.navigator.geolocation.getCurrentPosition(
+      onSuccess,
+      onError,
+      options
+    );
+  }, []);
+
+  useEffect(() => {
+    if (city !== '') {
+      fetch(
+        'https://api.openweathermap.org/data/2.5/weather?q=' +
+          city +
+          '&units=metric' +
+          '&appid=' +
+          process.env.REACT_APP_APIKEY
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if (result['cod'] !== 200) {
+              setIsLoaded(false);
+            } else {
+              setIsLoaded(true);
+              setResults(result);
+            }
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }
   }, [city]);
 
   const handleCity = (city) => {
@@ -50,12 +91,20 @@ function App() {
           <div>
             <Header city={city} setCity={setCity} />
             <div className='Results'>
-              {!isLoaded && <h2>Loading...</h2>}
+              {!isLoaded && (
+                <Loader
+                  type='Oval'
+                  color='#00BFFF'
+                  height={40}
+                  width={40}
+                  style={{ marginTop: '40px' }}
+                />
+              )}
               {console.log(results)}
               {isLoaded && results && <Card results={results} />}
             </div>
-            <FavPlaceCard />
           </div>
+          <FavPlaceCard />
         </placeContext.Provider>
       </>
     );
