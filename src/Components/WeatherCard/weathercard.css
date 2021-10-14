@@ -40,9 +40,7 @@
   margin-right: 12px;
   flex-shrink: 0;
 }
-/* .weatherCard + .weatherCard {
-    margin-left: 20px;
-  } */
+
 .weatherCard span {
   display: flex;
   align-items: center;
@@ -52,7 +50,6 @@
 }
 span.app-card__precip_wind {
   display: flex;
-  /* align-items: center; */
   font-size: 14px;
   margin-bottom: 2px;
   font-weight: 200;
@@ -96,7 +93,6 @@ span.app-card__precip_wind {
     width: calc(100% - 20px);
   }
   .weatherCard:last-child {
-    /* margin-top: 20px; */
     margin-left: 0px;
   }
 }
