@@ -1,0 +1,107 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+
+.fav-container {
+  height: fit-content;
+  width: 75%;
+  margin: 0px !important;
+  padding: 3%;
+}
+.slider-wrapper {
+  height: 530px !important;
+}
+.slider-wrapper > ul {
+  height: 450px !important;
+  width: calc(33.33%) !important;
+}
+.one .slider-wrapper > ul {
+  width: 100% !important;
+}
+.two .slider-wrapper > ul {
+  width: 50% !important;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  flex: 0.3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4%;
+}
+
+.heading-h1 {
+  margin: 1em 0 0.5em 0;
+  font-weight: 600;
+  position: relative;
+  font-size: 35px;
+  line-height: 40px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+@media only screen and (orientation: portrait) and (max-width: 1080px) {
+  .slider-wrapper > ul {
+    height: 450px !important;
+    width: calc(50%) !important;
+  }
+  .two .slider-wrapper > ul {
+    width: 100% !important;
+  }
+}
+@media only screen and (orientation: portrait) and (max-width: 800px) {
+  .slider-wrapper > ul {
+    height: 450px !important;
+    width: calc(100%) !important;
+  }
+  .two .slider-wrapper > ul {
+    width: 100% !important;
+  }
+}
+@media only screen and (orientation: portrait) and (max-width: 600px) {
+  .slider-wrapper > ul {
+    height: 450px !important;
+    width: calc(100%) !important;
+  }
+  .fav-container {
+    width: 100% !important;
+    padding: 0%;
+  }
+  .two .slider-wrapper > ul {
+    width: 100% !important;
+  }
+}
+@media only screen and (orientation: portrait) and (max-width: 320px) {
+  .slider-wrapper {
+    height: 490px !important;
+  }
+  .two .slider-wrapper > ul {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 1300px) {
+  .slider-wrapper > ul {
+    height: 450px !important;
+    width: calc(50%) !important;
+  }
+  .two .slider-wrapper > ul {
+    width: 100% !important;
+  }
+  .one {
+    width: 50% !important;
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 930px) {
+  .slider-wrapper > ul {
+    height: 450px !important;
+    width: calc(100%) !important;
+  }
+  .two .slider-wrapper > ul {
+    width: 100% !important;
+  }
+  .one {
+    width: 75% !important;
+  }
+}
