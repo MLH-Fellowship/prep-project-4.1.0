@@ -1,10 +1,10 @@
-import logo from "../../mlh-prep.png";
+import logo from '../../mlh-prep.png';
 import Map from '../map/map';
 import './header.css';
 import { useContext, useEffect, useState } from 'react';
 import placeContext from '../../Context/placesContext';
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
-// const Header = ({ city, setCity }) => {
+  // const Header = ({ city, setCity }) => {
   const [included, setIncluded] = useState(false);
   const [places, setPlaces] = useContext(placeContext);
   function capitalizeFirstLetter(string) {
@@ -15,15 +15,17 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
     if (bookMarkarray === null) bookMarkarray = [];
     else bookMarkarray = JSON.parse(bookMarkarray);
 
-    if (bookMarkarray.includes(city)) setIncluded(true);
+    if (bookMarkarray.includes(city.toLowerCase())) setIncluded(true);
     else setIncluded(false);
   }, [city]);
   return (
-    <div > 
-      <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-      <div class="center-text-div">
-        <div class="temparature">{results.main.feels_like}°C</div>
-        <p class="weather">{results.weather[0].main} | {results.name}, {results.sys.country}</p>
+    <div>
+      <img className='logo' src={logo} alt='MLH Prep Logo'></img>
+      <div class='center-text-div'>
+        <div class='temparature'>{results.main.feels_like}°C</div>
+        <p class='weather'>
+          {results.weather[0].main} | {results.name}, {results.sys.country}
+        </p>
       </div>
       <div className='input-container'>
         <div className='input-div'>
@@ -38,7 +40,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
                         let bookMarkarray = localStorage.getItem('bookMarks');
                         if (bookMarkarray === null) bookMarkarray = [];
                         else bookMarkarray = JSON.parse(bookMarkarray);
-                        const index = bookMarkarray.indexOf(city);
+                        const index = bookMarkarray.indexOf(city.toLowerCase());
                         if (index > -1) {
                           bookMarkarray.splice(index, 1);
                         }
@@ -61,7 +63,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
                         if (bookMarkarray === null) bookMarkarray = [];
                         else bookMarkarray = JSON.parse(bookMarkarray);
                         if (!bookMarkarray.includes(city)) {
-                          bookMarkarray.push(capitalizeFirstLetter(city));
+                          bookMarkarray.push(city.toLowerCase());
                         }
 
                         setPlaces([...bookMarkarray]);
@@ -91,5 +93,6 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
         </div>
       </div>
     </div>
-  )}
+  );
+};
 export default Header;

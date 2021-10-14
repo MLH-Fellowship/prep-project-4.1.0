@@ -38,7 +38,6 @@ function Index(props) {
       setDescription(current.weather[0].description);
 
       let temp = current.temp;
-      // temp = (5 / 9) * temp - 32;
 
       setTemperature(temp);
 
@@ -73,7 +72,7 @@ function Index(props) {
   return (
     <div style={{ padding: '25px' }}>
       <div className='card-fav'>
-        <h2>{place}</h2>
+        <h2>{capitalizeFirstLetter(place)}</h2>
         <h3 className='head-fav'>
           {capitalizeFirstLetter(description)}
           <br />
