@@ -100,6 +100,9 @@ function App() {
             {console.log(results)}
             {isLoaded && results && <Card results={results} />}
           </div>
+          <div className="heading">
+            <h1 className="heading-h1">Weekly Forecast</h1>
+          </div>
           <div className="weeklyForecast" style={{ marginTop: "30px" }}>
             {isLoaded && results && (
               <WeeklyForecast

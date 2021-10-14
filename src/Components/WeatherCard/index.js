@@ -1,6 +1,10 @@
 import React from "react";
 import "./weathercard.css";
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const WeatherCard = ({ day, index }) => {
   const icon = `http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`;
   const unixTimestamp = day.dt;
@@ -30,7 +34,7 @@ const WeatherCard = ({ day, index }) => {
         {day.temp.day} °C
       </span>
       <div className="app-card__subtext" style={{ color: "#ccd1d9" }}>
-        {day.weather[0].description}
+        {capitalizeFirstLetter(day.weather[0].description)}
       </div>
       <span className="app-card__precip_wind">
         <div className="precip">
