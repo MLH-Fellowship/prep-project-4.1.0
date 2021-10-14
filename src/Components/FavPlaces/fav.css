@@ -30,7 +30,7 @@
     width: calc( 100% ) !important;
   }  
 }
-@media only screen and (orientation: portrait) and (max-width: 420px) {
+@media only screen and (orientation: portrait) and (max-width: 450px) {
   .slider-wrapper>ul{
     height: 450px !important;
     width: calc( 100% ) !important;
@@ -40,7 +40,7 @@
     padding: 0%;
   }
 }
-@media only screen and (orientation: portrait) and (max-width: 300px) {
+@media only screen and (orientation: portrait) and (max-width: 320px) {
   .slider-wrapper {
     height: 490px !important;
   }
