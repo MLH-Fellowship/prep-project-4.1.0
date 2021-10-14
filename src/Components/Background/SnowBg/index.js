@@ -1,11 +1,10 @@
-import Snowfall from 'react-snowfall'
+import Snowfall from "react-snowfall";
 import "../background.css";
 
-const SnowBg = ({ children, results }) => {
-
+const SnowBg = ({ children }) => {
   return (
     <div className="background" id="snow">
-        <Snowfall  />
+      <Snowfall />
       {children}
     </div>
   );

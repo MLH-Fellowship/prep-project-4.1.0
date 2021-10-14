@@ -5,13 +5,12 @@ import Card from "./Components/Card";
 import Background from "./Components/Background";
 import Loader from "react-loader-spinner";
 
-
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
-  
+
   useEffect(() => {
     const options = {
       enableHighAccuracy: false,
@@ -84,45 +83,26 @@ function App() {
   } else {
     return (
       <>
-      {!isLoaded && (
-        <Loader
-          type="Oval"
-          color="#00BFFF"
-          height={40}
-          width={40}
-          style={{ marginTop: "40px" }}
-        />
-      )}
-      { results && 
-        <Background results={results}>
-      {/* {results && ( */}
-          <Header
-            city={city}
-            onChangeCity={handleCity}
-            results={results}
-            isLoaded={isLoaded}
+        {!isLoaded && (
+          <Loader
+            type="Oval"
+            color="#00BFFF"
+            height={40}
+            width={40}
+            style={{ marginTop: "40px" }}
           />
-        {/* )} */}
-        {/* <h2>Enter a city below 👇</h2>
-        <input
-          type="text"
-          value={city}
-          onChange={(event) => setCity(event.target.value)}
-        /> */}
-      
-        {/* <img className='logo' src={logo} alt='MLH Prep Logo'></img>
-        <div>
-        <Header city={city} setCity={setCity} /> */}
-        <div className="Results">
-          
-          {console.log(results)}
-          {/* {isLoaded && results && <Card results={results}/>} */}
-        </div>
-  
-      </Background>
-          }
-          </>
-
+        )}
+        {results && (
+          <Background results={results}>
+            <Header
+              city={city}
+              onChangeCity={handleCity}
+              results={results}
+              isLoaded={isLoaded}
+            />
+          </Background>
+        )}
+      </>
     );
   }
 }

@@ -9,6 +9,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 20%;
+  z-index: 5;
+  position: relative;
 }
 
 .Results {

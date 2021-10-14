@@ -1,16 +1,16 @@
 .background {
-    min-height: 100vh;
-    background-color: #133667;
-    background-attachment: fixed;
+  min-height: 100vh;
+  background-color: #133667;
+  background-attachment: fixed !important;
 }
 
-#snow{
-    /* background-image: url("./SnowBg/snow.jpeg"); */
-    background-repeat: no-repeat, repeat;
- /* background-color: #cccccc; */
- background-size: cover;
- color: #133667;
+#snow {
+  background-image: url("./SnowBg/snow.jpeg");
+  background-repeat: no-repeat, repeat;
+  background-color: #cccccc;
+  background-size: cover;
+  color: #133667;
 }
 .vanta-canvas {
-    position: fixed !important;
+  position: fixed !important;
 }
