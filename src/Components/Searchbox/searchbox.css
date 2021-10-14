@@ -2,11 +2,19 @@
   color: black;
 }
 
-.search {
+.parentSearchbox {
+  display: flex;
+  margin: auto;
+}
+
+.button {
+  height: 40px;
 }
 
 .dePyzG {
-  margin: auto;
-  align-items: center;
-  width: 90%;
+  width: 140%;
+}
+
+.zNoeh {
+  width: 70%;
 }

@@ -97,7 +97,7 @@ function App() {
                 style={{ marginTop: "40px" }}
               />
             )}
-            {console.log(results)}
+            {/* {console.log(results)} */}
             {isLoaded && results && <Card results={results} />}
           </div>
         </div>

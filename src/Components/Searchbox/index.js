@@ -44,23 +44,28 @@ export default class SearchBox2 extends Component {
   }
 
   render() {
+    var currentCity = this.props.city;
+    console.log(currentCity);
     return (
       <>
-        <div className="flex-container">
-          <ReactSearchBox
-            id="searchbox"
-            placeholder="Enter City"
-            value={this.props.city}
-            data={this.state.data}
-            onChange={(record) => this.autoCompleteCity(record)}
-            onSelect={(city) => this.props.setCity(city.value)}
-          />
-          <button
-            className="btn btn-default"
-            onClick={() => this.props.setCity(this.state.city)}
-          >
-            🔍
-          </button>
+        <div className="parentSearchbox">
+          <div>
+            <ReactSearchBox
+              id="searchbox"
+              placeholder={currentCity}
+              data={this.state.data}
+              onChange={(record) => this.autoCompleteCity(record)}
+              onSelect={(city) => this.props.setCity(city.value)}
+            />
+          </div>
+          <div>
+            <button
+              className="button"
+              onClick={() => this.props.setCity(this.state.city)}
+            >
+              🔍
+            </button>
+          </div>
         </div>
       </>
     );
