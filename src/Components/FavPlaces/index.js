@@ -14,7 +14,7 @@ function FavPlaceCard() {
   return (
     <div className='cards-container'>
       <div className='heading'>
-        <h1 className='heading-h1'>Your Bookmarked locations:</h1>
+        <h1 className='heading-h1'>Bookmarked locations</h1>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div className='fav-container'>
