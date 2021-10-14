@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Background from "./Components/Background";
 import Card from "./Components/Card";
 import logo from "./mlh-prep.png";
 import FavPlaceCard from "./Components/FavPlaces";
@@ -99,7 +98,7 @@ function App() {
         )}
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
-            <Background results={results}>
+            <>
               <Header
                 city={city}
                 onChangeCity={handleCity}
@@ -119,7 +118,7 @@ function App() {
                 )}
               </div>
               <FavPlaceCard />
-            </Background>
+            </>
           </placeContext.Provider>
         )}
       </>
