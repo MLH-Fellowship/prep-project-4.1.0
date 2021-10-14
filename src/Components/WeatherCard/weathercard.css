@@ -48,6 +48,7 @@
   align-items: center;
   font-size: 20px;
   font-weight: 700;
+  justify-content: center;
 }
 span.app-card__precip_wind {
   display: flex;
