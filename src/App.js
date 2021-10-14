@@ -87,7 +87,7 @@ function App() {
       <>
         <img className="logo" src={logo} alt="MLH Prep Logo"></img>
         <div>
-          <Searchbox />
+          <Searchbox city={city} />
           <Header city={city} setCity={setCity} />
           <div className="Results">
             {!isLoaded && (
