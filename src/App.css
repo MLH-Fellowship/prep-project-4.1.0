@@ -20,3 +20,20 @@ input {
   border: 10px;
   width: 200px;
 }
+.heading {
+  flex: 0.3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4%;
+}
+
+.heading-h1 {
+  margin: 1em 0 0.5em 0;
+  font-weight: 600;
+  position: relative;
+  font-size: 35px;
+  line-height: 40px;
+  color: #ffffff;
+  text-transform: uppercase;
+}

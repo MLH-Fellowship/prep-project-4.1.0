@@ -6,6 +6,7 @@ import logo from './mlh-prep.png';
 import FavPlaceCard from './Components/FavPlaces';
 import placeContext from './Context/placesContext';
 import Loader from 'react-loader-spinner';
+import WeeklyForecast from './Components/WeeklyForecast';
 
 function App() {
   const [error, setError] = useState(null);
@@ -103,8 +104,20 @@ function App() {
               {console.log(results)}
               {isLoaded && results && <Card results={results} />}
             </div>
+            <div className='heading'>
+              <h1 className='heading-h1'>Weekly Forecast</h1>
+            </div>
+            <div className='weeklyForecast' style={{ marginTop: '30px' }}>
+              {isLoaded && results && (
+                <WeeklyForecast
+                  city={city}
+                  latitude={results.coord.lat}
+                  longitude={results.coord.lon}
+                />
+              )}
+            </div>
+            <FavPlaceCard />
           </div>
-          <FavPlaceCard />
         </placeContext.Provider>
       </>
     );
