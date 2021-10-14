@@ -3,10 +3,6 @@
 .fav-container {
   height: fit-content;
   width: 75%;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center; */
   margin: 0px !important;
   padding: 3%;
 }
@@ -27,16 +23,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: azure; */
   margin-top: 4%;
 }
 
 .heading-h1 {
   margin: 1em 0 0.5em 0;
   font-weight: 600;
-  font-family: 'Titillium Web', sans-serif;
   position: relative;
-
   font-size: 35px;
   line-height: 40px;
   color: #ffffff;
@@ -53,7 +46,6 @@
     height: 450px !important;
     width: calc(100%) !important;
   }
-  
 }
 @media only screen and (orientation: portrait) and (max-width: 450px) {
   .slider-wrapper > ul {
