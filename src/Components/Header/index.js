@@ -22,39 +22,38 @@ const Header = ({ city, setCity }) => {
         <div className='input-div'>
           <div className='inputElement'>
             <div className='insideDiv'>
-              <h2>Enter a city below 👇</h2>
-              <input
-                type='text'
-                value={city}
-                onChange={(event) => setCity(event.target.value)}
-              />
               <div className='favo'>
                 {included ? (
                   <i className='fas fa-bookmark'></i>
                 ) : (
-                  <i className='far fa-bookmark'></i>
+                  <i className='far fa-bookmark'
+                    onClick={() => {
+                      let bookMarkarray = localStorage.getItem('bookMarks');
+                      if (bookMarkarray === null) bookMarkarray = [];
+                      else bookMarkarray = JSON.parse(bookMarkarray);
+                      if (!bookMarkarray.includes(city)) {
+                        bookMarkarray.push(capitalizeFirstLetter(city));
+                      }
+
+                      setPlaces([...bookMarkarray]);
+                      localStorage.setItem(
+                        'bookMarks',
+                        JSON.stringify(bookMarkarray)
+                      );
+                      setIncluded(true);
+                    }}
+                  ></i>
                 )}
-
-                <span
-                  onClick={() => {
-                    let bookMarkarray = localStorage.getItem('bookMarks');
-                    if (bookMarkarray === null) bookMarkarray = [];
-                    else bookMarkarray = JSON.parse(bookMarkarray);
-                    if (!bookMarkarray.includes(city)) {
-                      bookMarkarray.push(capitalizeFirstLetter(city));
-                    }
-
-                    setPlaces([...bookMarkarray]);
-                    localStorage.setItem(
-                      'bookMarks',
-                      JSON.stringify(bookMarkarray)
-                    );
-                    setIncluded(true);
-                  }}
-                >
-                  Bookmark
-                </span>
               </div>
+              <div className="Wrapper-fav">
+                <h2>Enter a city below 👇</h2>
+                <input
+                  type='text'
+                  value={city}
+                  onChange={(event) => setCity(event.target.value)}
+                />
+              </div>
+
             </div>
           </div>
           <div className='mapElement'>
