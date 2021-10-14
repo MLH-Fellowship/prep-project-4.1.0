@@ -24,11 +24,29 @@ const Header = ({ city, setCity }) => {
             <div className='insideDiv'>
               <div className='favo'>
                 {included ? (
-                  <abbr title='World Health Organization'>
-                    <i className='fas fa-bookmark'></i>
+                  <abbr title=' Remove your current bookmarked location'>
+                    <i
+                      className='fas fa-bookmark'
+                      onClick={() => {
+                        let bookMarkarray = localStorage.getItem('bookMarks');
+                        if (bookMarkarray === null) bookMarkarray = [];
+                        else bookMarkarray = JSON.parse(bookMarkarray);
+                        const index = bookMarkarray.indexOf(city);
+                        if (index > -1) {
+                          bookMarkarray.splice(index, 1);
+                        }
+
+                        setPlaces([...bookMarkarray]);
+                        localStorage.setItem(
+                          'bookMarks',
+                          JSON.stringify(bookMarkarray)
+                        );
+                        setIncluded(false);
+                      }}
+                    ></i>
                   </abbr>
                 ) : (
-                  <abbr title='World Health Organization'>
+                  <abbr title='Bookmark your current location'>
                     <i
                       className='far fa-bookmark'
                       onClick={() => {

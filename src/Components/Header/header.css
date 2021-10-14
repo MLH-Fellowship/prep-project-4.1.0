@@ -45,7 +45,7 @@ input {
   justify-content: flex-start;
   align-items: center;
 }
-.Wrapper-fav{
+.Wrapper-fav {
   height: 80%;
   width: 100%;
   display: flex;
@@ -63,9 +63,8 @@ input {
   justify-content: flex-end;
   align-items: center;
   height: 10%;
-  width: 100%;
+  width: 90%;
   cursor: pointer;
-  
 }
 
 .favo .fa-bookmark {
@@ -73,7 +72,7 @@ input {
 }
 
 @media only screen and (orientation: portrait) and (max-width: 1030px) {
-  .input-div{
+  .input-div {
     width: 70%;
   }
 }
@@ -85,10 +84,9 @@ input {
   .input-div {
     width: 80%;
   }
-  .insideDiv h2{
+  .insideDiv h2 {
     font-size: 20px;
   }
-
 }
 
 @media only screen and (orientation: portrait) and (max-width: 700px) {
@@ -96,7 +94,7 @@ input {
     font-size: 15px;
   }
 
-  .favo .fa-bookmark{
+  .favo .fa-bookmark {
     font-size: 12px;
     margin-right: 10px;
   }
@@ -112,13 +110,12 @@ input {
   .inputElement {
     border-radius: 10px 10px 0 0;
   }
-  .favo{
-    margin-top: 4%;
+  .favo {
+    margin-top: 6%;
   }
-  .favo i{
-    font-size: 13px;
+  .insideDiv {
+    margin-bottom: 5%;
   }
-  
 }
 
 @media only screen and (orientation: landscape) and (max-width: 1300px) {
@@ -143,10 +140,9 @@ input {
   .insideDiv h2 {
     font-size: 15px;
   }
-  
-  .favo .fa-bookmark{
+
+  .favo .fa-bookmark {
     font-size: 12px;
     margin-right: 10px;
   }
 }
-
