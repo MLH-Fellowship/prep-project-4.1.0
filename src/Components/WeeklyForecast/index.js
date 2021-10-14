@@ -38,7 +38,7 @@ const WeeklyForecast = ({ city, latitude, longitude }) => {
           <div className="weatherCards">
             {results.daily.map((day, index) => {
               if (index !== 0) {
-                return <WeatherCard day={day} index={index} />;
+                return <WeatherCard day={day} index={index} key={index} />;
               }
             })}
           </div>
