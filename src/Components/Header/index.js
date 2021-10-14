@@ -1,6 +1,7 @@
 import logo from "../../mlh-prep.png";
 import Map from '../map/map';
 import "./header.css";
+import SearchBox from "../Searchbox";
 
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
   return (
@@ -15,11 +16,12 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
           <div className='inputElement'>
             <div className='insideDiv'>
               <h2>Enter a city below 👇</h2>
-              <input
+              {/* <input
                 type='text'
                 value={city}
                 onChange={(event) => onChangeCity(event.target.value)}
-              />
+              /> */}
+              <SearchBox city={city} setCity={onChangeCity} />
             </div>
           </div>
           <div className='mapElement'>

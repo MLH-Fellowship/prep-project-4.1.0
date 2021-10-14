@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import Background from "./Components/Background";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
+import logo from "./mlh-prep.png";
 
 function App() {
   const [error, setError] = useState(null);
@@ -78,6 +79,7 @@ function App() {
   const handleCity = (city) => {
     setCity(city);
   };
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
