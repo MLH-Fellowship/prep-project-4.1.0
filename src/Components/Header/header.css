@@ -130,7 +130,7 @@ input {
   
 }
 
-@media only screen and (orientation: landscape) and (max-width: 1025px) {
+@media only screen and (orientation: landscape) and (max-width: 1300px) {
   .input-div {
     width: 80%;
   }
