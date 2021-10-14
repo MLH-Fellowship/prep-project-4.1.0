@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import './fav.css';
 import Card from '../FavPlacesCard/index';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import placeContext from '../../Context/placesContext';
 function FavPlaceCard() {
-  const [places, setPlaces] = useState([]);
+  const [places, setPlaces] = useContext(placeContext);
+  console.log(places);
   useEffect(() => {
     const bookMarkarray = localStorage.getItem('bookMarks');
     if (bookMarkarray !== null) setPlaces(JSON.parse(bookMarkarray));
@@ -12,7 +14,7 @@ function FavPlaceCard() {
   return (
     <div className='cards-container'>
       <div className='heading'>
-        <h2 className='heading-h1'>Your Bookmarked locations:</h2>
+        <h1 className='heading-h1'>Your Bookmarked locations:</h1>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div className='fav-container'>

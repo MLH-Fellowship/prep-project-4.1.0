@@ -1,8 +1,10 @@
 import Map from '../map/map';
 import './header.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import placeContext from '../../Context/placesContext';
 const Header = ({ city, setCity }) => {
   const [included, setIncluded] = useState(false);
+  const [places, setPlaces] = useContext(placeContext);
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -32,6 +34,7 @@ const Header = ({ city, setCity }) => {
                 ) : (
                   <i className='far fa-bookmark'></i>
                 )}
+
                 <span
                   onClick={() => {
                     let bookMarkarray = localStorage.getItem('bookMarks');
@@ -41,6 +44,7 @@ const Header = ({ city, setCity }) => {
                       bookMarkarray.push(capitalizeFirstLetter(city));
                     }
 
+                    setPlaces([...bookMarkarray]);
                     localStorage.setItem(
                       'bookMarks',
                       JSON.stringify(bookMarkarray)
