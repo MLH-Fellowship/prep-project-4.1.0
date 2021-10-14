@@ -46,16 +46,15 @@
 .fog-img-first {
   background: url("./fog-1.png");
   background-repeat: repeat-x;
-  background-size: contain;
-  background-position: center;
+  background-size: cover;
   animation: marquee 60s linear infinite;
+ 
 }
 
 .fog-img-second {
   background: url("./fog-2.png");
   background-repeat: repeat-x;
-  background-size: contain;
-  background-position: center;
+  background-size: cover;
   animation: marquee 30s linear infinite;
 }
 
