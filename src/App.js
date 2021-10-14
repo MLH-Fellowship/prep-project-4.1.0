@@ -7,7 +7,6 @@ import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
-import logo from "./mlh-prep.png";
 
 function App() {
   const [error, setError] = useState(null);

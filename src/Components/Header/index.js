@@ -3,8 +3,8 @@ import Map from "../map/map";
 import "./header.css";
 import { useContext, useEffect, useState } from "react";
 import placeContext from "../../Context/placesContext";
+import SearchBox from "../Searchbox";
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
-  // const Header = ({ city, setCity }) => {
   const [included, setIncluded] = useState(false);
   const [places, setPlaces] = useContext(placeContext);
   function capitalizeFirstLetter(string) {
@@ -14,7 +14,6 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
     let bookMarkarray = localStorage.getItem("bookMarks");
     if (bookMarkarray === null) bookMarkarray = [];
     else bookMarkarray = JSON.parse(bookMarkarray);
-import SearchBox from "../Searchbox";
 
     if (bookMarkarray.includes(city.toLowerCase())) setIncluded(true);
     else setIncluded(false);
