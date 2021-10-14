@@ -71,7 +71,6 @@ h2 {
 }
 .insideDiv {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,10 +88,10 @@ h2 {
   .input-div {
     width: 70%;
   }
-  .temparature{
+  .temparature {
     font-size: 90px;
   }
-  .weather{
+  .weather {
     font-size: 20px;
   }
 }
@@ -112,13 +111,13 @@ h2 {
     border-radius: 10px 10px 0 0;
   }
   .center-text-div {
-    width : 60%
+    width: 60%;
   }
-  .temparature{
+  .temparature {
     font-size: 60px;
     line-height: 80px;
   }
-  .weather{
+  .weather {
     font-size: 15px;
     margin: 0;
   }
