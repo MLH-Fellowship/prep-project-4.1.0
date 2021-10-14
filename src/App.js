@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import './App.css';
 import Header from './Components/Header';
-import Background from "./Components/Background";
+import Background from './Components/Background';
 import Card from './Components/Card';
 import logo from './mlh-prep.png';
 import FavPlaceCard from './Components/FavPlaces';
@@ -88,67 +88,41 @@ function App() {
   } else {
     return (
       <>
-<<<<<<< HEAD
-        <placeContext.Provider value={[places, setPlaces]}>
-          <img className='logo' src={logo} alt='MLH Prep Logo'></img>
-          <div>
-            <Header city={city} setCity={setCity} />
-            <div className='Results'>
-              {!isLoaded && (
-                <Loader
-                  type='Oval'
-                  color='#00BFFF'
-                  height={40}
-                  width={40}
-                  style={{ marginTop: '40px' }}
-                />
-              )}
-              {console.log(results)}
-              {isLoaded && results && <Card results={results} />}
-            </div>
-            <div className='heading'>
-              <h1 className='heading-h1'>Weekly Forecast</h1>
-            </div>
-            <div className='weeklyForecast' style={{ marginTop: '30px' }}>
-=======
+        <img className='logo' src={logo} alt='MLH Prep Logo'></img>
         {!isLoaded && (
           <Loader
-            type="Oval"
-            color="#00BFFF"
+            type='Oval'
+            color='#00BFFF'
             height={40}
             width={40}
-            style={{ marginTop: "40px" }}
+            style={{ marginTop: '40px' }}
           />
         )}
         {results && (
-          <Background results={results}>
-            <Header
-              city={city}
-              onChangeCity={handleCity}
-              results={results}
-              isLoaded={isLoaded}
-            />
-            <div className="heading">
-              <h1 className="heading-h1">Weekly Forecast</h1>
-            </div>
-            <div className="weeklyForecast" style={{ marginTop: "30px" }}>
->>>>>>> e829409ec20033401172ca94115992c128b110a3
-              {isLoaded && results && (
-                <WeeklyForecast
-                  city={city}
-                  latitude={results.coord.lat}
-                  longitude={results.coord.lon}
-                />
-              )}
-            </div>
-<<<<<<< HEAD
-            <FavPlaceCard />
-          </div>
-        </placeContext.Provider>
-=======
-          </Background>
+          <placeContext.Provider value={[places, setPlaces]}>
+            <Background results={results}>
+              <Header
+                city={city}
+                onChangeCity={handleCity}
+                results={results}
+                isLoaded={isLoaded}
+              />
+              <div className='heading'>
+                <h1 className='heading-h1'>Weekly Forecast</h1>
+              </div>
+              <div className='weeklyForecast' style={{ marginTop: '30px' }}>
+                {isLoaded && results && (
+                  <WeeklyForecast
+                    city={city}
+                    latitude={results.coord.lat}
+                    longitude={results.coord.lon}
+                  />
+                )}
+              </div>
+              <FavPlaceCard />
+            </Background>
+          </placeContext.Provider>
         )}
->>>>>>> e829409ec20033401172ca94115992c128b110a3
       </>
     );
   }
