@@ -1,8 +1,8 @@
-import logo from '../../mlh-prep.png';
-import Map from '../map/map';
-import './header.css';
-import { useContext, useEffect, useState } from 'react';
-import placeContext from '../../Context/placesContext';
+import logo from "../../mlh-prep.png";
+import Map from "../map/map";
+import "./header.css";
+import { useContext, useEffect, useState } from "react";
+import placeContext from "../../Context/placesContext";
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
   // const Header = ({ city, setCity }) => {
   const [included, setIncluded] = useState(false);
@@ -11,7 +11,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   useEffect(() => {
-    let bookMarkarray = localStorage.getItem('bookMarks');
+    let bookMarkarray = localStorage.getItem("bookMarks");
     if (bookMarkarray === null) bookMarkarray = [];
     else bookMarkarray = JSON.parse(bookMarkarray);
 
@@ -20,24 +20,24 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
   }, [city]);
   return (
     <div>
-      <img className='logo' src={logo} alt='MLH Prep Logo'></img>
-      <div class='center-text-div'>
-        <div class='temparature'>{results.main.feels_like}°C</div>
-        <p class='weather'>
+      <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+      <div class="center-text-div">
+        <div class="temparature">{results.main.feels_like}°C</div>
+        <p class="weather">
           {results.weather[0].main} | {results.name}, {results.sys.country}
         </p>
       </div>
-      <div className='input-container'>
-        <div className='input-div'>
-          <div className='inputElement'>
-            <div className='insideDiv'>
-              <div className='favo'>
+      <div className="input-container">
+        <div className="input-div">
+          <div className="inputElement">
+            <div className="insideDiv">
+              <div className="favo">
                 {included ? (
-                  <abbr title=' Remove your current bookmarked location'>
+                  <abbr title=" Remove your current bookmarked location">
                     <i
-                      className='fas fa-bookmark'
+                      className="fas fa-bookmark"
                       onClick={() => {
-                        let bookMarkarray = localStorage.getItem('bookMarks');
+                        let bookMarkarray = localStorage.getItem("bookMarks");
                         if (bookMarkarray === null) bookMarkarray = [];
                         else bookMarkarray = JSON.parse(bookMarkarray);
                         const index = bookMarkarray.indexOf(city.toLowerCase());
@@ -47,7 +47,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
 
                         setPlaces([...bookMarkarray]);
                         localStorage.setItem(
-                          'bookMarks',
+                          "bookMarks",
                           JSON.stringify(bookMarkarray)
                         );
                         setIncluded(false);
@@ -55,11 +55,11 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
                     ></i>
                   </abbr>
                 ) : (
-                  <abbr title='Bookmark your current location'>
+                  <abbr title="Bookmark your current location">
                     <i
-                      className='far fa-bookmark'
+                      className="far fa-bookmark"
                       onClick={() => {
-                        let bookMarkarray = localStorage.getItem('bookMarks');
+                        let bookMarkarray = localStorage.getItem("bookMarks");
                         if (bookMarkarray === null) bookMarkarray = [];
                         else bookMarkarray = JSON.parse(bookMarkarray);
                         if (!bookMarkarray.includes(city)) {
@@ -68,7 +68,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
 
                         setPlaces([...bookMarkarray]);
                         localStorage.setItem(
-                          'bookMarks',
+                          "bookMarks",
                           JSON.stringify(bookMarkarray)
                         );
                         setIncluded(true);
@@ -77,17 +77,17 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
                   </abbr>
                 )}
               </div>
-              <div className='Wrapper-fav'>
+              <div className="Wrapper-fav">
                 <h2>Enter a city below 👇</h2>
                 <input
-                  type='text'
+                  type="text"
                   value={city}
                   onChange={(event) => onChangeCity(event.target.value)}
                 />
               </div>
             </div>
           </div>
-          <div className='mapElement'>
+          <div className="mapElement">
             <Map city={city} setCity={onChangeCity} />
           </div>
         </div>
