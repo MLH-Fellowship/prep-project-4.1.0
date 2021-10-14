@@ -1,0 +1,18 @@
+.background {
+  min-height: 100vh;
+  background-color: #133667;
+  background-attachment: fixed !important;
+}
+
+#snow {
+  background-image: url("./SnowBg/snow.jpeg");
+  background-repeat: no-repeat;
+  background-color: #cccccc;
+  background-size: cover;
+  color: #133667;
+  overflow: hidden;
+  background-attachment: fixed !important;
+}
+.vanta-canvas {
+  position: fixed !important;
+}
