@@ -8968,11 +8968,6 @@ raf@^3.4.1:
   dependencies:
     performance-now "^2.1.0"
 
-rainyday.js@^0.1.7:
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/rainyday.js/-/rainyday.js-0.1.7.tgz#6c7feb65a26470669b5c82479b3e038f85f9e060"
-  integrity sha512-47SHKQSLYOe5N5P5KZ2pP4Gk5a7KYL69bnmIcs9cDdnhErm4Dv42lHYjLmdxemsr1lx76tSDMc190zYTJvAPHA==
-
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"

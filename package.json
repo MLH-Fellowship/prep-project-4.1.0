@@ -9,7 +9,6 @@
     "axios": "^0.23.0",
     "leaflet": "^1.7.1",
     "leaflet-control-geocoder": "^2.3.0",
-    "rainyday.js": "^0.1.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-leaflet": "^2.1.3",
