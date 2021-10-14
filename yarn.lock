@@ -1170,7 +1170,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.9.2":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -1768,33 +1768,6 @@
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/@terraformer/common/-/common-2.0.7.tgz#bec626f331b9f0cc3aefb16f9f88e2d3684107ff"
   integrity sha512-8bl+/JT0Rw6FYe2H3FfJS8uQwgzGl+UHs+8JX0TQLHgA4sMDEwObbMwo0iP3FVONwPXrPHEpC5YH7Grve0cl9A==
-
-"@testing-library/dom@*":
-  version "8.7.2"
-  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-8.7.2.tgz#234315c6971be380fc9cbf0b031ada3e9f0bfe09"
-  integrity sha512-2zN0Zv9dMnaMAd4c/1E1ZChu4QrICyvWtkUvHFQBPhS1oG3VYGcM7SLGLYdda7187ILRXzIUOvOsbXQm4EASjA==
-  dependencies:
-    "@babel/code-frame" "^7.10.4"
-    "@babel/runtime" "^7.12.5"
-    "@types/aria-query" "^4.2.0"
-    aria-query "^4.2.2"
-    chalk "^4.1.0"
-    dom-accessibility-api "^0.5.6"
-    lz-string "^1.4.4"
-    pretty-format "^27.0.2"
-
-"@testing-library/dom@^6.15.0":
-  version "6.16.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-6.16.0.tgz#04ada27ed74ad4c0f0d984a1245bb29b1fd90ba9"
-  integrity sha512-lBD88ssxqEfz0wFL6MeUyyWZfV/2cjEZZV3YRpb2IoJRej/4f1jB0TzqIOznTpfR1r34CNesrubxwIlAQ8zgPA==
-  dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@sheerun/mutationobserver-shim" "^0.3.2"
-    "@types/testing-library__dom" "^6.12.1"
-    aria-query "^4.0.2"
-    dom-accessibility-api "^0.3.0"
-    pretty-format "^25.1.0"
-    wait-for-expect "^3.0.2"
 
 "@testing-library/dom@^7.28.1":
   version "7.31.2"
@@ -9484,7 +9457,7 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
-react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
+react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -9582,15 +9555,12 @@ react-scripts@4.0.3:
   optionalDependencies:
     fsevents "^2.1.3"
 
-react-search-box@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/react-search-box/-/react-search-box-2.0.2.tgz#035ea6a7953cfde7d65e95340ec768723cabe855"
-  integrity sha512-pM/xSzM2ctKeBArbYfqmuK1P/ShXtmi10qo96ne1qZK6e7yQ4tRvKrGYyCYQx0vvUuZSmit1bmO1PdfJ7clUbg==
+react-snowfall@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-snowfall/-/react-snowfall-1.1.0.tgz#96f5ecfacc67677c78f47170c1fda57c934f9961"
+  integrity sha512-AhV9EIuOIvYM2XJFpYaEZCqcS4XUmNwsOfImZhzQQ4DTcYuJwJJAehQn6eaCfu3uMPtwb6Ya6musAD7s4BkFZA==
   dependencies:
-    "@testing-library/jest-dom" "^4.2.3"
-    "@testing-library/react" "^9.3.1"
-    fuse.js "^3.4.5"
-    styled-components "^4.4.1"
+    react-fast-compare "^3.2.0"
 
 react@^17.0.2:
   version "17.0.2"
@@ -11443,6 +11413,11 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+vanta@^0.5.21:
+  version "0.5.21"
+  resolved "https://registry.yarnpkg.com/vanta/-/vanta-0.5.21.tgz#f3548b531ac0a53ea0b161f12c880474f0d92b29"
+  integrity sha512-UYW6rYXVl8klFbQrhmgDMZ7SCys9hKROIuTlq5M+v6j346BPu1wqBwVRQPHiYsuooWkUYY6HSXV/9HrJBSuo6g==
 
 vary@~1.1.2:
   version "1.1.2"

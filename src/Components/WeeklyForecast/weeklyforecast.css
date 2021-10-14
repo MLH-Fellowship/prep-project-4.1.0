@@ -1,0 +1,33 @@
+/* .weatherCards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+} */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+
+/* color variables */
+/* border radius */
+.weatherCards,
+.weatherCards::before,
+.weatherCards::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.weatherCards {
+  margin: 3rem;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  place-items: center;
+  position: relative;
+}
+
+@media screen and (min-width: 600px) {
+  .weatherCards {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 16rem));
+  }
+}
