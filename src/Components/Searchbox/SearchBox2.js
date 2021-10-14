@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import ReactSearchBox from "react-search-box";
 import "./searchbox.css";
 
-export default class SearchBox2 extends Component() {
+export default class SearchBox2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      selectedCity: this.props.city,
     };
 
     this.autoCompleteCity = this.autoCompleteCity.bind(this);
@@ -49,11 +48,11 @@ export default class SearchBox2 extends Component() {
     return (
       <ReactSearchBox
         id="searchbox"
-        placeholder={this.state.selectedCity}
-        value="New York City"
+        placeholder="Enter City"
+        value={this.props.city}
         data={this.state.data}
         onChange={(record) => this.autoCompleteCity(record)}
-        onSelect={(finalCity) => console.log("finalCity", finalCity)}
+        onSelect={(city) => this.props.setCity(city.value)}
       />
     );
   }
