@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Background from "./Components/Background";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
 
@@ -93,7 +92,7 @@ function App() {
           />
         )}
         {results && (
-          <Background results={results}>
+          <>
             <Header
               city={city}
               onChangeCity={handleCity}
@@ -112,7 +111,7 @@ function App() {
                 />
               )}
             </div>
-          </Background>
+          </>
         )}
       </>
     );
