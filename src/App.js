@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./Components/Header";
 import Background from "./Components/Background";
 import Loader from "react-loader-spinner";
+import WeeklyForecast from "./Components/WeeklyForecast";
 
 function App() {
   const [error, setError] = useState(null);
@@ -99,6 +100,18 @@ function App() {
               results={results}
               isLoaded={isLoaded}
             />
+            <div className="heading">
+              <h1 className="heading-h1">Weekly Forecast</h1>
+            </div>
+            <div className="weeklyForecast" style={{ marginTop: "30px" }}>
+              {isLoaded && results && (
+                <WeeklyForecast
+                  city={city}
+                  latitude={results.coord.lat}
+                  longitude={results.coord.lon}
+                />
+              )}
+            </div>
           </Background>
         )}
       </>
