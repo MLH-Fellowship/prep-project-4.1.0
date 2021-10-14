@@ -24,28 +24,33 @@ const Header = ({ city, setCity }) => {
             <div className='insideDiv'>
               <div className='favo'>
                 {included ? (
-                  <i className='fas fa-bookmark'></i>
+                  <abbr title='World Health Organization'>
+                    <i className='fas fa-bookmark'></i>
+                  </abbr>
                 ) : (
-                  <i className='far fa-bookmark'
-                    onClick={() => {
-                      let bookMarkarray = localStorage.getItem('bookMarks');
-                      if (bookMarkarray === null) bookMarkarray = [];
-                      else bookMarkarray = JSON.parse(bookMarkarray);
-                      if (!bookMarkarray.includes(city)) {
-                        bookMarkarray.push(capitalizeFirstLetter(city));
-                      }
+                  <abbr title='World Health Organization'>
+                    <i
+                      className='far fa-bookmark'
+                      onClick={() => {
+                        let bookMarkarray = localStorage.getItem('bookMarks');
+                        if (bookMarkarray === null) bookMarkarray = [];
+                        else bookMarkarray = JSON.parse(bookMarkarray);
+                        if (!bookMarkarray.includes(city)) {
+                          bookMarkarray.push(capitalizeFirstLetter(city));
+                        }
 
-                      setPlaces([...bookMarkarray]);
-                      localStorage.setItem(
-                        'bookMarks',
-                        JSON.stringify(bookMarkarray)
-                      );
-                      setIncluded(true);
-                    }}
-                  ></i>
+                        setPlaces([...bookMarkarray]);
+                        localStorage.setItem(
+                          'bookMarks',
+                          JSON.stringify(bookMarkarray)
+                        );
+                        setIncluded(true);
+                      }}
+                    ></i>
+                  </abbr>
                 )}
               </div>
-              <div className="Wrapper-fav">
+              <div className='Wrapper-fav'>
                 <h2>Enter a city below 👇</h2>
                 <input
                   type='text'
@@ -53,7 +58,6 @@ const Header = ({ city, setCity }) => {
                   onChange={(event) => setCity(event.target.value)}
                 />
               </div>
-
             </div>
           </div>
           <div className='mapElement'>
