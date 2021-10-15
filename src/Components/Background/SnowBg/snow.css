@@ -1,0 +1,14 @@
+#snow {
+  background-image: url("./snow.jpeg");
+  background-repeat: no-repeat;
+  background-color: #cccccc;
+  background-size: cover;
+  overflow: hidden;
+  background-attachment: fixed !important;
+}
+#snow .center-text-div {
+  color: #133667;
+}
+#snow .heading-h1 {
+  color: #133667;
+}

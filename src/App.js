@@ -81,7 +81,6 @@ function App() {
   const handleCity = (city) => {
     setCity(city);
   };
-
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
@@ -98,8 +97,7 @@ function App() {
         )}
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
-          <>
-            <Background results= {results} >
+            <Background results={results}>
               <Header
                 city={city}
                 onChangeCity={handleCity}
@@ -119,8 +117,7 @@ function App() {
                 )}
               </div>
               <FavPlaceCard />
-              </Background>
-            </>
+            </Background>
           </placeContext.Provider>
         )}
       </>

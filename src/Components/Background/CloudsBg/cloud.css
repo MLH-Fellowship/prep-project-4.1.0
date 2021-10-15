@@ -7,17 +7,9 @@
   z-index: 0;
 }
 #cloud {
-  background: #000428; 
-  background: -webkit-linear-gradient(
-    to bottom,
-    #000428,
-    #004e92
-  );
-  background: linear-gradient(
-    to bottom,
-    #000428,
-    #004e92
-  ); 
+  background: #000428;
+  background: -webkit-linear-gradient(to bottom, #000428, #004e92);
+  background: linear-gradient(to bottom, #000428, #004e92);
 }
 .cloud-container {
   position: absolute;
@@ -29,12 +21,11 @@
 }
 
 .cloud-container img {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   max-width: 100%;
   animation: cloud calc(40s * var(--i)) linear infinite;
 }
-
 
 @keyframes cloud {
   0% {
