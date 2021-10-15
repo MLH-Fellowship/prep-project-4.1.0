@@ -82,7 +82,6 @@ function App() {
   const handleCity = (city) => {
     setCity(city);
   };
-
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
