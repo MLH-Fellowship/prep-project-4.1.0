@@ -7,6 +7,7 @@ import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
+import alanBtn from "@alan-ai/alan-sdk-web";
 
 function App() {
   const [error, setError] = useState(null);
@@ -50,6 +51,10 @@ function App() {
       onError,
       options
     );
+    alanBtn({
+      key: process.env.REACT_APP_ALAN_APIKEY,
+      onCommand: ({ command }) => {},
+    });
   }, []);
 
   useEffect(() => {
