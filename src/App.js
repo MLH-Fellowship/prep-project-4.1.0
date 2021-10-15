@@ -7,6 +7,7 @@ import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
+import Navbar from "./Components/navbar/Navbar";
 
 function App() {
   const [error, setError] = useState(null);
@@ -97,6 +98,7 @@ function App() {
             style={{ marginTop: "40px" }}
           />
         )}
+        <Navbar/>
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
             <>
@@ -106,7 +108,7 @@ function App() {
                 results={results}
                 isLoaded={isLoaded}
               />
-              <div className="heading">
+              <div className="heading" id="Weekly">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
               <div className="weeklyForecast" style={{ marginTop: "30px" }}>
