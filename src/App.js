@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
+import Card from "./Components/Card"
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
@@ -125,6 +126,10 @@ function App() {
                 results={results}
                 isLoaded={isLoaded}
               />
+              <div className="heading">
+                <h1 className="heading-h1">Don't forget to bring your</h1>
+              </div>
+              <Card results={results}/>
               <div className="heading">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
