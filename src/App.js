@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Itemcard from "./Components/Itemcard"
+import Itemcard from "./Components/Itemcard";
 import logo from "./mlh-prep.png";
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
