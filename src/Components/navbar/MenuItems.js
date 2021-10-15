@@ -13,5 +13,10 @@ export const MenuItems = [
         title:'Bookmarks',
         url:'#Bookmarks',
         cName:'nav-links'
+    },
+    {
+        title:'Sign up',
+        url:'#',
+        cName:'nav-links-mobile'
     }, 
 ]
