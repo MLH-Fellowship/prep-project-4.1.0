@@ -106,6 +106,7 @@ function App() {
                 results={results}
                 isLoaded={isLoaded}
               />
+              <Card results={results}/>
               <div className="heading">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
