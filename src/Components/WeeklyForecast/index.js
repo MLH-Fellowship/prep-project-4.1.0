@@ -32,7 +32,7 @@ const WeeklyForecast = ({ city, latitude, longitude }) => {
     return (
       <>
         {!isLoaded && (
-          <Loader type="Oval" color="#00BFFF" height={40} width={40} />
+          <Loader type="TailSpin" color="#00BFFF" height={40} width={40} />
         )}
         {isLoaded && results && (
           <div className="weatherCards">
