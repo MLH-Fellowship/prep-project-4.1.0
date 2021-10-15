@@ -4,7 +4,6 @@
 
 .parentSearchbox {
   display: flex;
-  margin: auto;
 }
 
 .button {
@@ -13,9 +12,9 @@
   border-width: thin;
 }
 
-.dePyzG {
+/* .dePyzG {
   width: 140%;
-}
+} */
 
 .zNoeh {
   width: 70%;
