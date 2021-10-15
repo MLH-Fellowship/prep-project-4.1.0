@@ -79,7 +79,7 @@ const Itemcard = (props) => {
                 <img src={itemIcon[0]}/>
             </div>
             <div class="contentBx">
-                    <h3>{item[0]}</h3>
+                <h3>{item[0]}</h3>
             </div>
         </div>
       </div>
@@ -89,7 +89,7 @@ const Itemcard = (props) => {
               <img src={itemIcon[1]}/>
             </div>
             <div class="contentBx">
-                    <h3>{item[1]}</h3>
+                <h3>{item[1]}</h3>
             </div>
         </div>
       </div>
@@ -99,7 +99,7 @@ const Itemcard = (props) => {
                 <img src={itemIcon[2]}/>
             </div>
             <div class="contentBx">
-                    <h3>{item[2]}</h3>
+                <h3>{item[2]}</h3>
             </div>
         </div>
       </div>
