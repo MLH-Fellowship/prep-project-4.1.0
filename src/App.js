@@ -2,11 +2,11 @@ import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card"
-import logo from "./mlh-prep.png";
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
+import Background from "./Components/Background";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -119,7 +119,7 @@ function App() {
 
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
-            <>
+            <Background results={results}>
               <Header
                 city={city}
                 onChangeCity={handleCity}
@@ -151,7 +151,7 @@ function App() {
                 )}
               </div>
               <FavPlaceCard />
-            </>
+            </Background>
           </placeContext.Provider>
         )}
       </>
