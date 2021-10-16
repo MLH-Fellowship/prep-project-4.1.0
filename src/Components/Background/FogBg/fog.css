@@ -41,6 +41,7 @@
   position: absolute;
   height: 100vh;
   width: 300vw;
+  z-index: 3;
 }
 
 .fog-img-first {
@@ -48,7 +49,6 @@
   background-repeat: repeat-x;
   background-size: cover;
   animation: marquee 60s linear infinite;
- 
 }
 
 .fog-img-second {

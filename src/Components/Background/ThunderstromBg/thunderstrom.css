@@ -14,7 +14,7 @@
 }
 
 .ag-lightning {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -49,10 +49,10 @@
   top: -10.1875em;
   right: -6.1875em;
 
-  -webkit-animation: an-lightning-second 30s linear 3s infinite;
-  -moz-animation: an-lightning-second 30s linear 3s infinite;
-  -o-animation: an-lightning-second 30s linear 3s infinite;
-  animation: an-lightning-second 30s linear 3s infinite;
+  -webkit-animation: an-lightning-second 30s linear 5s infinite;
+  -moz-animation: an-lightning-second 30s linear 5s infinite;
+  -o-animation: an-lightning-second 30s linear 5s infinite;
+  animation: an-lightning-second 30s linear 5s infinite;
 }
 
 @-webkit-keyframes an-blink {
