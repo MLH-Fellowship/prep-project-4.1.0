@@ -3,8 +3,8 @@ import Map from "../map/map";
 import "./header.css";
 import { useContext, useEffect, useState } from "react";
 import placeContext from "../../Context/placesContext";
-import SearchBox from "../Searchbox";
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
+  // const Header = ({ city, setCity }) => {
   const [included, setIncluded] = useState(false);
   const [places, setPlaces] = useContext(placeContext);
   function capitalizeFirstLetter(string) {
@@ -79,7 +79,11 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
               </div>
               <div className="Wrapper-fav">
                 <h2>Enter a city below 👇</h2>
-              <SearchBox city={city} setCity={onChangeCity} />
+                <input
+                  type="text"
+                  value={city}
+                  onChange={(event) => onChangeCity(event.target.value)}
+                />
               </div>
             </div>
           </div>

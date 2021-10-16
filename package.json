@@ -19,6 +19,7 @@
     "react-scripts": "4.0.3",
     "react-search-box": "^2.0.2",
     "react-snowfall": "^1.1.0",
+    "react-toastify": "^8.0.3",
     "react-touch-carousel": "^0.10.2",
     "reactjs-dropdown-component": "^1.2.0",
     "vanta": "^0.5.21",
