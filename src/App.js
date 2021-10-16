@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Card from "./Components/Card"
+import Card from "./Components/Card";
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
@@ -39,7 +39,7 @@ function App() {
       let longitude = position.coords.longitude;
 
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_APIKEY}`
       )
         .then((res) => res.json())
         .then(
@@ -70,10 +70,16 @@ function App() {
           setCity(commandData.text);
         }
         if (commandData.command === "bookmark") {
-          setBookMarks(places);
+          setBookMarks(commandData.cityname);
         }
         if (commandData.command === "handleCity") {
           setCity(commandData.cityname);
+        }
+        if (commandData.command === "scrollToWeeklyForecast") {
+          window.scrollTo({
+            top: document.querySelector(".weatherCards").offsetTop,
+            behavior: "smooth",
+          });
         }
       },
     });
@@ -125,7 +131,7 @@ function App() {
               top: "25%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              zIndex: 9999
+              zIndex: 9999,
             }}
           />
         )}
@@ -144,7 +150,7 @@ function App() {
               <div className="heading">
                 <h1 className="heading-h1">Don't forget to bring your</h1>
               </div>
-              <Card results={results}/>
+              <Card results={results} />
               <div className="heading">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>

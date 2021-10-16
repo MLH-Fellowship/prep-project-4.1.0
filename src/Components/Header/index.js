@@ -22,7 +22,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
     <div>
       <img className="logo" src={logo} alt="MLH Prep Logo"></img>
       <div class="center-text-div">
-        <div class="temparature">{results.main.feels_like}°C</div>
+        <div class="temparature">{results.main.temp}°C</div>
         <p class="weather">
           {results.weather[0].main} | {results.name}, {results.sys.country}
         </p>
