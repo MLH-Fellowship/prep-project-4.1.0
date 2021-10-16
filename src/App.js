@@ -131,7 +131,6 @@ function App() {
                 results={results}
                 isLoaded={isLoaded}
               />
-              <div className="heading" id="Weekly">
               <div className="heading">
                 <h1 className="heading-h1">Don't forget to bring your</h1>
               </div>
@@ -155,7 +154,6 @@ function App() {
                     longitude={results.coord.lon}
                   />
                 )}
-              </div>
               </div>
               <FavPlaceCard />
             </Background>
