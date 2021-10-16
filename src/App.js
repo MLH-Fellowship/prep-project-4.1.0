@@ -156,6 +156,7 @@ function App() {
                   />
                 )}
               </div>
+              </div>
               <FavPlaceCard />
             </Background>
           </placeContext.Provider>
