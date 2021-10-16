@@ -28,7 +28,7 @@ function App() {
       let longitude = position.coords.longitude;
 
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_APIKEY}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
       )
         .then((res) => res.json())
         .then(
@@ -53,7 +53,17 @@ function App() {
     );
     alanBtn({
       key: process.env.REACT_APP_ALAN_APIKEY,
-      onCommand: ({ command }) => {},
+      onCommand: function (commandData) {
+        if (commandData.command === "search") {
+          setCity(commandData.text);
+        }
+        if (commandData.command === "bookmark") {
+          setBookMarks(places);
+        }
+        if (commandData.command === "handleCity") {
+          setCity(commandData.cityname);
+        }
+      },
     });
   }, []);
 
