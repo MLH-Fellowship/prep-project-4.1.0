@@ -58,6 +58,9 @@ export default class SearchBox extends React.Component {
                 onSearch={(record) => this.autoCompleteCity(record)}
                 onSelect={(city) => this.props.setCity(city.name)}
                 autoFocus
+                styling = {{
+                  borderRadius: "12px",
+                }}
               />
           </header>
         </div>
