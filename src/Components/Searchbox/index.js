@@ -46,12 +46,17 @@ export default class SearchBox extends React.Component {
     }
   }
 
+  _handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      this.props.setCity(this.state.city);
+    }
+  };
+
   render() {
     var currentCity = this.props.city;
-    console.log(currentCity);
     return (
       <>
-        <div className="search-box">
+        <div className="search-box" onKeyDown={this._handleKeyDown}>
           <header className="box-header">
               <ReactSearchAutocomplete
                 items={this.state.items}
@@ -61,6 +66,7 @@ export default class SearchBox extends React.Component {
                 styling = {{
                   borderRadius: "12px",
                 }}
+                placeholder="Search for a city"
               />
           </header>
         </div>
