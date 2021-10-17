@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ReactSearchBox from "react-search-box";
-import "./searchbox.css";
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+import './searchbox.css'
 
-export default class SearchBox2 extends Component {
+export default class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      items: [],
       city: "",
     };
 
@@ -20,8 +20,8 @@ export default class SearchBox2 extends Component {
       "https://autocomplete.search.hereapi.com/v1/autocomplete?";
 
     if (city !== "") {
-      // Calling the autocomplete API with max 6 results, looking for cities and using the API Key
-      var query = `q=${city}&limit=5&types=city&apiKey=${process.env.REACT_APP_HEREAPI}`;
+      // Calling the autocomplete API with max 4 results, looking for cities and using the API Key
+      var query = `q=${city}&limit=4&types=city&apiKey=${process.env.REACT_APP_HEREAPI}`;
       fetch(`${autocompleteURL}${query}`)
         .then((res) => res.json())
         .then((result) => {
@@ -33,12 +33,15 @@ export default class SearchBox2 extends Component {
           var filterdCities = uniqueCities.filter(function (x) {
             return x !== undefined;
           });
-          let newdata = [];
+          let newitems = [];
+          var count = 0;
           filterdCities.forEach((city) => {
-            newdata.push({ key: city, value: city });
+            newitems.push({ id: count, name: city });
+            count += 1;
           });
 
-          this.setState({ data: newdata });
+          this.setState({ items: newitems });
+          console.log(this.state.items);
         });
     }
   }
@@ -48,24 +51,15 @@ export default class SearchBox2 extends Component {
     console.log(currentCity);
     return (
       <>
-        <div className="parentSearchbox">
-          <div>
-            <ReactSearchBox
-              id="searchbox"
-              placeholder={currentCity}
-              data={this.state.data}
-              onChange={(record) => this.autoCompleteCity(record)}
-              onSelect={(city) => this.props.setCity(city.value)}
-            />
-          </div>
-          <div>
-            <button
-              className="button"
-              onClick={() => this.props.setCity(this.state.city)}
-            >
-              🔍
-            </button>
-          </div>
+        <div className="search-box">
+          <header className="box-header">
+              <ReactSearchAutocomplete
+                items={this.state.items}
+                onSearch={(record) => this.autoCompleteCity(record)}
+                onSelect={(city) => this.props.setCity(city.name)}
+                autoFocus
+              />
+          </header>
         </div>
       </>
     );

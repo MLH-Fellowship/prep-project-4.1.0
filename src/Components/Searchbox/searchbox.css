@@ -1,21 +1,10 @@
-.react-search-box-dropdown-list-item {
-  color: black;
+.search-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
 
-.parentSearchbox {
-  display: flex;
-}
-
-.button {
-  height: 40px;
-  border-radius: 8px;
-  border-width: thin;
-}
-
-/* .dePyzG {
-  width: 140%;
-} */
-
-.zNoeh {
-  width: 70%;
+.box-header {
+  padding-left: 10%;
+  padding-right: 10%;
 }
