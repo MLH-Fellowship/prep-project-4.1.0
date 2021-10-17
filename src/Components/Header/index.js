@@ -20,7 +20,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
   }, [city]);
   return (
     <div>
-      <img className="logo" src={logo} alt="MLH Prep Logo"></img>
+     
       <div class="center-text-div">
         <div class="temparature">{results.main.feels_like}°C</div>
         <p class="weather">

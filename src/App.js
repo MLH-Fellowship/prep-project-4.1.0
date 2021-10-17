@@ -117,7 +117,8 @@ function App() {
             }}
           />
         )}
-        <Navbar/>
+
+        
 
         {isLoaded && results && <ToastContainer autoClose={4000} />}
 
@@ -125,6 +126,7 @@ function App() {
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
             <Background results={results}>
+              <Navbar/>
               <Header
                 city={city}
                 onChangeCity={handleCity}
