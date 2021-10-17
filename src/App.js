@@ -137,7 +137,7 @@ function App() {
                 <h1 className="heading-h1">Don't forget to bring your</h1>
               </div>
               <Card results={results}/>
-              <div className="heading">
+              <div className="heading" id="Weekly">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
               <div className="weeklyForecast" style={{ marginTop: "30px" }}>
