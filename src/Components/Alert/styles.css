@@ -203,15 +203,19 @@
     margin: 0 5px;
   }
 }
+
+/* This is targeting scrollbar which we needed */
 .swiper-scrollbar {
-  width: 11px;
+  /* width: 11px;
   height: 11px;
   display: block;
-  border-radius: 10px;
-  background: #062744;
-  opacity: 0.2;
-  transition: all 0.3s;
+  border-radius: 10px; */
+  background: #be349c;
+  opacity: 1;
+  /* transition: all 0.3s; */
 }
+
+/*
 .swiper-scrollbar-active {
   opacity: 1;
   background: #fd3838;
@@ -224,6 +228,7 @@
     width: 30px;
   }
 }
+*/
 
 /* This is Basically removing the buttons */
 .swiper-button-next {
