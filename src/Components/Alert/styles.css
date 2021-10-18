@@ -206,22 +206,28 @@
 
 /* This is targeting scrollbar which we needed */
 .swiper-scrollbar {
-  /* width: 11px;
-  height: 11px;
   display: block;
-  border-radius: 10px; */
+  width: 20px !important;
+  border-radius: 10px;
+  height: 100px !important;
   background: #be349c;
   opacity: 1;
-  /* transition: all 0.3s; */
+  transition: all 0.3s;
+}
+/* This is the class which is overwriting our rules in above one */
+.swiper-container-vertical > .swiper-scrollbar {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-/*
-.swiper-scrollbar-active {
+/* This is the bullet point for current slide */
+.swiper-scrollbar-drag {
   opacity: 1;
   background: #fd3838;
-  height: 30px;
+  height: 30px !important;
   box-shadow: 0px 0px 20px rgba(252, 56, 56, 0.3);
 }
+/*
 @media screen and (max-width: 768px) {
   .swiper-scrollbar-active {
     height: 11px;
