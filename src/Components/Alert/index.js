@@ -9,7 +9,8 @@ function Index() {
     <>
       <Swiper
         // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={["Navigation", "Pagination", "Scrollbar", "A11y"]}
+        // modules={["Navigation", "Pagination", "Scrollbar", "A11y"]}
         spaceBetween={50}
         effect={"fade"}
         loop={true}
@@ -19,6 +20,7 @@ function Index() {
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
+        {/* swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev */}
         <SwiperSlide>
           <div className="blog-slider__img">
             <img
@@ -33,14 +35,8 @@ function Index() {
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Recusandae voluptate repellendus magni illo ea animi?{" "}
             </div>
-            <a href="/" className="blog-slider__button">
-              READ MORE
-            </a>
           </div>
         </SwiperSlide>
-        {/* <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide> */}
       </Swiper>
     </>
   );
