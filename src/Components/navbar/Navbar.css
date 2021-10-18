@@ -6,6 +6,7 @@
     font-size: 1.2rem;
     position: relative;
     background: #18437f52;
+    opacity: 100;
 }
 
 .navbar-logo{
@@ -65,20 +66,24 @@
      display: flex;
      flex-direction: column;
      width: 100%;
-     height: 438px;
+     height: 430px;
      position:absolute;
      top: 80px;
      left: -109%;
-     opacity: 1;
+     /* opacity: ; */
      transition: all 0.5s ease;
  }
+
+ #fog .nav-menu.active{
+     background: black;
+ }
  .nav-menu.active{
-     background: #18437f63;
+     background: lightsteelblue;
      left: 0;
      opacity: 1;
      transition: all 0.5s ease;
      z-index: 99999999;
-     margin-top: -14px;
+     margin-top: 2px;
      margin-left: -40px;
  }
 
@@ -88,6 +93,7 @@
      width: 100%;
      display: table;
      margin-left: -36px;
+     color: midnightblue;
  }
 .nav-links:hover{
     background-color: #7577fa;

@@ -124,15 +124,19 @@ function App() {
 
 
         {results && (
+          
           <placeContext.Provider value={[places, setPlaces]}>
             <Background results={results}>
-              <Navbar/>
+            <Navbar />
+
               <Header
                 city={city}
                 onChangeCity={handleCity}
                 results={results}
                 isLoaded={isLoaded}
               />
+                      
+
               <div className="heading">
                 <h1 className="heading-h1">Don't forget to bring your</h1>
               </div>
