@@ -1,0 +1,51 @@
+.swiper {
+  width: 95%;
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 25px;
+  border-radius: 25px;
+  height: 400px;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 992px) {
+  .swiper {
+    max-width: 680px;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .swiper {
+    min-height: 500px;
+    height: auto;
+    margin: 180px auto;
+  }
+}
+
+@media screen and (max-height: 500px) and (min-width: 992px) {
+  .swiper {
+    height: 350px;
+  }
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .swiper-slide {
+    flex-direction: column;
+  }
+}
+
+.blog-slider__img img {
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+.blog-slider__content > * {
+  opacity: 1;
+  transform: none;
+}

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Card from "./Components/Card"
+import Card from "./Components/Card";
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
@@ -9,7 +9,7 @@ import WeeklyForecast from "./Components/WeeklyForecast";
 import Background from "./Components/Background";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Alert from "./Components/Alert/index";
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -111,7 +111,7 @@ function App() {
               top: "25%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              zIndex: 9999
+              zIndex: 9999,
             }}
           />
         )}
@@ -130,7 +130,7 @@ function App() {
               <div className="heading">
                 <h1 className="heading-h1">Don't forget to bring your</h1>
               </div>
-              <Card results={results}/>
+              <Card results={results} />
               <div className="heading">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
@@ -152,6 +152,7 @@ function App() {
                 )}
               </div>
               <FavPlaceCard />
+              <Alert />
             </Background>
           </placeContext.Provider>
         )}
