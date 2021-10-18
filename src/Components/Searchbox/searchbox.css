@@ -1,0 +1,10 @@
+.search-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.box-header {
+  padding-left: 10%;
+  padding-right: 10%;
+}
