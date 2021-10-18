@@ -14,7 +14,7 @@ function Index() {
         effect={"fade"}
         loop={true}
         navigation
-        pagination={{ clickable: true }}
+        pagination={{ clickable: true, el: "blog-slider__pagination" }}
         scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
