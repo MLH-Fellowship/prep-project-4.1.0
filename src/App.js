@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Card from "./Components/Card"
+import Card from "./Components/Card";
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
@@ -18,11 +18,17 @@ function App() {
   const [bookmarks, setBookMarks] = useState([]);
   const [places, setPlaces] = useState([]);
 
-  const notify = () => {
-    toast.info("Permission denied. Showing results for New York City.", {
+  const notifyForPermissionDenied = () => {
+    toast.info("Permission denied. Showing results for New York.", {
       theme: "colored",
       hideProgressBar: true,
-      closeButton: false,
+    });
+  };
+
+  const notifyForInvalidLocation = () => {
+    toast.info("Showing results for New York.", {
+      theme: "colored",
+      hideProgressBar: true,
     });
   };
 
@@ -53,7 +59,7 @@ function App() {
     }
 
     function onError(error) {
-      notify();
+      notifyForPermissionDenied();
       setCity("New York City");
     }
 
@@ -77,7 +83,9 @@ function App() {
         .then(
           (result) => {
             if (result["cod"] !== 200) {
-              setIsLoaded(false);
+              alert("Location not found!");
+              notifyForInvalidLocation();
+              setCity("New York City");
             } else {
               setIsLoaded(true);
               setResults(result);
@@ -111,7 +119,7 @@ function App() {
               top: "25%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              zIndex: 9999
+              zIndex: 9999,
             }}
           />
         )}
@@ -130,7 +138,7 @@ function App() {
               <div className="heading">
                 <h1 className="heading-h1">Don't forget to bring your</h1>
               </div>
-              <Card results={results}/>
+              <Card results={results} />
               <div className="heading">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
