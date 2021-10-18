@@ -18,7 +18,7 @@ function FavPlaceCard() {
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         {places?.length === 0 ? (
-          <h2>No Bookmarks yet!</h2>
+          <h2 style={{ color: "white" }}>No Bookmarks yet!</h2>
         ) : (
           <div
             className={
