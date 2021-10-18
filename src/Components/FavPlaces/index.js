@@ -13,7 +13,7 @@ function FavPlaceCard() {
   }, []);
   return (
     <div className="cards-container">
-      <div className="heading">
+      <div className="heading" id="Bookmarks">
         <h1 className="heading-h1">Bookmarked locations</h1>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
