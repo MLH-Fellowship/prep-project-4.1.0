@@ -224,3 +224,11 @@
     width: 30px;
   }
 }
+
+/* This is Basically removing the buttons */
+.swiper-button-next {
+  display: none;
+}
+.swiper-button-prev {
+  display: none;
+}
