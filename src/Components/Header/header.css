@@ -1,94 +1,237 @@
-input {
-    padding: 10px;
-    border-radius: 4px;
-    border: 10px;
-    width: 70%;
-    height: 5%;
+.center-text-div {
+  position: relative;
+  margin: auto;
+  width: 50%;
+  padding-top: 2%;
+  text-align: center;
+  color: white;
 }
+.temparature {
+  display: inline-block;
+  margin: auto;
+  -webkit-transform: translate3d(0, 0, 85px);
+  transform: translate3d(0, 0, 85px);
+  font-family: Manrope, sans-serif;
+  font-size: 140px;
+  line-height: 140px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.weather {
+  display: block;
+  width: auto;
+  background-color: transparent;
+  -webkit-transform: translate3d(0, 0, 70px);
+  transform: translate3d(0, 0, 70px);
+  font-family: Manrope, sans-serif;
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  text-align: center;
+}
+input {
+  padding: 10px;
+  border-radius: 4px;
+  border: 10px;
+  width: 70%;
+  height: 5%;
+}
+
 .input-container {
-    display: grid;
-    place-items: center;
-    margin: 4% 0;
-    height: 26rem;
+  display: grid;
+  place-items: center;
+  margin: 4% 0;
+  height: 26rem;
+  z-index: 9999;
+}
+.input-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 55%;
+  height: 100%;
+}
+h2 {
+  color: #133667;
+}
+.inputElement {
+  display: grid;
+  place-items: center;
+  flex: 0.35;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px 0 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.mapElement {
+  flex: 0.65;
+}
+
+.insideDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Wrapper-fav {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.insideDiv h2 {
+  margin: 0px;
+  margin-bottom: 10%;
+}
+
+.favo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 10%;
+  width: 90%;
+  cursor: pointer;
+}
+
+.favo .fa-bookmark {
+  margin-right: 5%;
+}
+
+@media only screen and (orientation: portrait) and (max-width: 1030px) {
+  .input-div {
+    width: 70%;
+  }
+}
+
+@media only screen and (orientation: portrait) and (max-width: 780px) {
+  .input-container {
+    height: 20rem;
   }
   .input-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 55%;
-    height: 100%;
-  }
-  
-  .inputElement {
-    display: grid;
-    place-items: center;
-    flex: 0.35;
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border-radius: 10px 0 0 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-  }
-  .mapElement {
-    flex: 0.65;
-  }
-  .insideDiv {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 80%;
   }
   .insideDiv h2 {
-    margin: 0px;
-    margin-bottom: 10%;
+    font-size: 20px;
   }
-  
-  @media only screen and (orientation: portrait) and (max-width: 780px) {
-    .input-container {
-      height: 20rem;
-    }
-    .input-div {
-      width: 70%;
-    }
+}
+
+@media only screen and (orientation: portrait) and (max-width: 700px) {
+  .insideDiv h2 {
+    font-size: 15px;
   }
-  @media only screen and (orientation: portrait) and (max-width: 700px) {
-    .insideDiv h2 {
-      font-size: 15px;
-    }
+
+  .favo .fa-bookmark {
+    font-size: 12px;
+    margin-right: 10px;
   }
-  @media only screen and (orientation: portrait) and (max-width: 420px) {
-    .input-div {
-      flex-direction: column;
-    }
-    .insideDiv h2 {
-      font-size: 15px;
-    }
-    .inputElement {
-      border-radius: 10px 10px 0 0;
-    }
+}
+
+@media only screen and (orientation: portrait) and (max-width: 420px) {
+  .input-div {
+    flex-direction: column;
   }
-  @media only screen and (orientation: landscape) and (max-width: 1025px) {
-    .input-div {
-      width: 80%;
-    }
+  .insideDiv h2 {
+    font-size: 15px;
   }
-  
-  @media only screen and (orientation: landscape) and (max-width: 830px) {
-    .insideDiv h2 {
-      font-size: 18px;
-    }
+  .inputElement {
+    border-radius: 10px 10px 0 0;
   }
-  @media only screen and (orientation: landscape) and (max-width: 570px) {
-    .input-container {
-      height: 20rem;
-    }
-    .input-div {
-      width: 90%;
-    }
-    .insideDiv h2 {
-      font-size: 15px;
-    }
+  .favo {
+    margin-top: 6%;
   }
+  .insideDiv {
+    margin-bottom: 5%;
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 1300px) {
+  .input-div {
+    width: 80%;
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 830px) {
+  .insideDiv h2 {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 570px) {
+  .input-container {
+    height: 20rem;
+  }
+  .input-div {
+    width: 90%;
+    width: 70%;
+  }
+  .temparature {
+    font-size: 90px;
+  }
+  .weather {
+    font-size: 20px;
+  }
+}
+@media only screen and (orientation: portrait) and (max-width: 700px) {
+  .insideDiv h2 {
+    font-size: 15px;
+  }
+}
+@media only screen and (orientation: portrait) and (max-width: 480px) {
+  .input-div {
+    flex-direction: column;
+  }
+  .insideDiv h2 {
+    font-size: 15px;
+  }
+
+  .favo .fa-bookmark {
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  .inputElement {
+    border-radius: 10px 10px 0 0;
+  }
+  .center-text-div {
+    width: 60%;
+  }
+  .temparature {
+    font-size: 60px;
+    line-height: 80px;
+  }
+  .weather {
+    font-size: 15px;
+    margin: 0;
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 1025px) {
+  .input-div {
+    width: 80%;
+  }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 830px) {
+  .insideDiv h2 {
+    font-size: 18px;
+  }
+}
+@media only screen and (orientation: landscape) and (max-width: 570px) {
+  .input-container {
+    height: 20rem;
+  }
+  .input-div {
+    width: 90%;
+  }
+  .insideDiv h2 {
+    font-size: 15px;
+  }
+}

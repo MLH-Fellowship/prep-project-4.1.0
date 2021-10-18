@@ -1,0 +1,10 @@
+.background {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #133667;
+  background-attachment: fixed !important;
+}
+
+.vanta-canvas {
+  position: fixed !important;
+}
