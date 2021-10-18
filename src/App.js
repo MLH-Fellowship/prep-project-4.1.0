@@ -1,20 +1,31 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Card from "./Components/Card";
-import logo from "./mlh-prep.png";
+import Card from "./Components/Card"
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
+import Background from "./Components/Background";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState("New York City");
+  const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
   const [bookmarks, setBookMarks] = useState([]);
   const [places, setPlaces] = useState([]);
+
+  const notify = () => {
+    toast.info("Permission denied. Showing results for New York City.", {
+      theme: "colored",
+      hideProgressBar: true,
+      closeButton: false,
+    });
+  };
+
   useEffect(() => {
     const options = {
       enableHighAccuracy: false,
@@ -42,7 +53,8 @@ function App() {
     }
 
     function onError(error) {
-      setError(error);
+      notify();
+      setCity("New York City");
     }
 
     window.navigator.geolocation.getCurrentPosition(
@@ -82,6 +94,7 @@ function App() {
   const handleCity = (city) => {
     setCity(city);
   };
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else {
@@ -89,16 +102,25 @@ function App() {
       <>
         {!isLoaded && (
           <Loader
-            type="Oval"
+            type="TailSpin"
             color="#00BFFF"
-            height={40}
-            width={40}
-            style={{ marginTop: "40px" }}
+            height={70}
+            width={70}
+            style={{
+              position: "absolute",
+              top: "25%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 9999
+            }}
           />
         )}
+
+        {isLoaded && results && <ToastContainer autoClose={4000} />}
+
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
-            <>
+            <Background results={results}>
               <Header
                 city={city}
                 onChangeCity={handleCity}
@@ -106,9 +128,21 @@ function App() {
                 isLoaded={isLoaded}
               />
               <div className="heading">
+                <h1 className="heading-h1">Don't forget to bring your</h1>
+              </div>
+              <Card results={results}/>
+              <div className="heading">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
               <div className="weeklyForecast" style={{ marginTop: "30px" }}>
+                {!isLoaded && (
+                  <Loader
+                    type="TailSpin"
+                    color="#00BFFF"
+                    height={40}
+                    width={40}
+                  />
+                )}
                 {isLoaded && results && (
                   <WeeklyForecast
                     city={city}
@@ -118,7 +152,7 @@ function App() {
                 )}
               </div>
               <FavPlaceCard />
-            </>
+            </Background>
           </placeContext.Provider>
         )}
       </>

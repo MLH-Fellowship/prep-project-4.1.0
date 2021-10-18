@@ -1,5 +1,6 @@
 import Snowfall from "react-snowfall";
 import "../background.css";
+import "./snow.css";
 
 const SnowBg = ({ children }) => {
   return (
