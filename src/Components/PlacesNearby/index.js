@@ -22,8 +22,7 @@ export default class PlacesNearby extends React.Component {
     this.setState({ loading: true });
     const { lat, lng } = this.props;
     // const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=500&type=restaurant&key=${process.env.REACT_APP_GMAPSAPI}`;
-    const url =
-      "https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.6517%2C73.7684&radius=5000&type=restaurant|food&key=AIzaSyA3T5O8Z9lnmMwPf7fRX9r-fklvTFuqD80";
+    const url = `https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.6517%2C73.7684&radius=5000&type=restaurant|food&key=${process.env.REACT_APP_GMAPSAPI}`;
     fetch(url, {
       method: "GET",
       headers: {},
