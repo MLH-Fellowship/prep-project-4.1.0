@@ -80,7 +80,7 @@ function Index(props) {
             Wind {wind}km/h <span className="dot">•</span> Humidity {humidity}%
           </span>
         </h3>
-        <h1 className="h1-heading">{Math.floor(temperature)}°</h1>
+        <h1 className="h1-heading">{Math.floor(temperature)}°C</h1>
         <div className="image">
           <img
             src={`http://openweathermap.org/img/w/${icon}.png`}
@@ -96,12 +96,12 @@ function Index(props) {
           </tr>
           <tr>
             {minTemp.map((temp) => {
-              return <td>{Math.floor(temp)}°</td>;
+              return <td>{Math.floor(temp)}°C</td>;
             })}
           </tr>
           <tr>
             {maxTemp.map((temp) => {
-              return <td>{Math.floor(temp)}°</td>;
+              return <td>{Math.floor(temp)}°C</td>;
             })}
           </tr>
         </table>
