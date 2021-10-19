@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
+import Card from "./Components/Card";
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
@@ -37,10 +38,18 @@ function App() {
             color="#00BFFF"
             height={70}
             width={70}
-            className="loader"
+            style={{
+              position: "absolute",
+              top: "25%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              zIndex: 9999,
+            }}
           />
         )}
+
         {isLoaded && results && <ToastContainer autoClose={4000} />}
+
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
             <Background results={results}>
