@@ -35,3 +35,9 @@
     transform: translate(+100%);
   }
 }
+#cloud .nav-menu.active{
+  background: #133667 !important;
+ }
+ #cloud .nav-links{
+  color: white !important;
+ }
