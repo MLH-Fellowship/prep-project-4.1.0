@@ -1,23 +1,21 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Card from "./Components/Card";
-
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
-import WeeklyForecast from "./Components/WeeklyForecast";
 import Navbar from "./Components/navbar/Navbar";
 import Background from "./Components/Background";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RequiredThings from "./Components/RequiredThings";
+import WeeklyForecastContainer from "./Components/WeeklyForecastContainer";
 
 function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [city, setCity] = useState("");
   const [results, setResults] = useState(null);
-  const [bookmarks, setBookMarks] = useState([]);
   const [places, setPlaces] = useState([]);
 
   const notify = () => {
@@ -70,10 +68,10 @@ function App() {
     if (city !== "") {
       fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=" +
-          city +
-          "&units=metric" +
-          "&appid=" +
-          process.env.REACT_APP_APIKEY
+        city +
+        "&units=metric" +
+        "&appid=" +
+        process.env.REACT_APP_APIKEY
       )
         .then((res) => res.json())
         .then(
@@ -108,59 +106,22 @@ function App() {
             color="#00BFFF"
             height={70}
             width={70}
-            style={{
-              position: "absolute",
-              top: "25%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              zIndex: 9999
-            }}
+            className = "loader"
           />
         )}
-
-        
-
         {isLoaded && results && <ToastContainer autoClose={4000} />}
-
-
         {results && (
-          
           <placeContext.Provider value={[places, setPlaces]}>
             <Background results={results}>
-            <Navbar />
-
+              <Navbar />
               <Header
                 city={city}
                 onChangeCity={handleCity}
                 results={results}
                 isLoaded={isLoaded}
               />
-                      
-
-              <div className="heading">
-                <h1 className="heading-h1">Don't forget to bring your</h1>
-              </div>
-              <Card results={results}/>
-              <div className="heading" id="Weekly">
-                <h1 className="heading-h1">Weekly Forecast</h1>
-              </div>
-              <div className="weeklyForecast" style={{ marginTop: "30px" }}>
-                {!isLoaded && (
-                  <Loader
-                    type="TailSpin"
-                    color="#00BFFF"
-                    height={40}
-                    width={40}
-                  />
-                )}
-                {isLoaded && results && (
-                  <WeeklyForecast
-                    city={city}
-                    latitude={results.coord.lat}
-                    longitude={results.coord.lon}
-                  />
-                )}
-              </div>
+              <RequiredThings results={results} />
+              <WeeklyForecastContainer results={results} city={city} isLoaded={isLoaded} />
               <FavPlaceCard />
             </Background>
           </placeContext.Provider>
