@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { ReactSearchAutocomplete } from 'react-search-autocomplete'
-import './searchbox.css'
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import "./searchbox.css";
 
 export default class SearchBox extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export default class SearchBox extends React.Component {
         .then((result) => {
           // Here are the 0 - 6 results from the API given any input
 
-          const set = result.items.map((item) => item.address.city);
+          const set = result?.items?.map((item) => item.address.city);
           const uniqueCities = [...new Set(set)];
 
           var filterdCities = uniqueCities.filter(function (x) {
@@ -58,16 +58,16 @@ export default class SearchBox extends React.Component {
       <>
         <div className="search-box" onKeyDown={this._handleKeyDown}>
           <header className="box-header">
-              <ReactSearchAutocomplete
-                items={this.state.items}
-                onSearch={(record) => this.autoCompleteCity(record)}
-                onSelect={(city) => this.props.setCity(city.name)}
-                autoFocus
-                styling = {{
-                  borderRadius: "12px",
-                }}
-                placeholder="Search for a city"
-              />
+            <ReactSearchAutocomplete
+              items={this.state.items}
+              onSearch={(record) => this.autoCompleteCity(record)}
+              onSelect={(city) => this.props.setCity(city.name)}
+              autoFocus
+              styling={{
+                borderRadius: "12px",
+              }}
+              placeholder="Search for a city"
+            />
           </header>
         </div>
       </>
