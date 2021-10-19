@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
-
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
@@ -21,10 +20,16 @@ function App() {
   const [places, setPlaces] = useState([]);
 
   const notify = () => {
-    toast.info("Permission denied. Showing results for New York City.", {
+    toast.info("Permission denied. Showing results for New York.", {
       theme: "colored",
       hideProgressBar: true,
-      closeButton: false,
+    });
+  };
+
+  const notifyForInvalidLocation = () => {
+    toast.info("Showing results for New York.", {
+      theme: "colored",
+      hideProgressBar: true,
     });
   };
 
@@ -79,7 +84,9 @@ function App() {
         .then(
           (result) => {
             if (result["cod"] !== 200) {
-              setIsLoaded(false);
+              alert("Location not found!");
+              notifyForInvalidLocation();
+              setCity("New York City");
             } else {
               setIsLoaded(true);
               setResults(result);
@@ -113,21 +120,17 @@ function App() {
               top: "25%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              zIndex: 9999
+              zIndex: 9999,
             }}
           />
         )}
 
-        
-
         {isLoaded && results && <ToastContainer autoClose={4000} />}
 
-
         {results && (
-          
           <placeContext.Provider value={[places, setPlaces]}>
             <Background results={results}>
-            <Navbar />
+              <Navbar />
 
               <Header
                 city={city}
@@ -135,12 +138,11 @@ function App() {
                 results={results}
                 isLoaded={isLoaded}
               />
-                      
 
               <div className="heading">
                 <h1 className="heading-h1">Don't forget to bring your</h1>
               </div>
-              <Card results={results}/>
+              <Card results={results} />
               <div className="heading" id="Weekly">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
