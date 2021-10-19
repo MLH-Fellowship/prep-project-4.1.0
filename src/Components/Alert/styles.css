@@ -227,14 +227,13 @@
   height: 30px !important;
   box-shadow: 0px 0px 20px rgba(252, 56, 56, 0.3);
 }
-/*
+
 @media screen and (max-width: 768px) {
-  .swiper-scrollbar-active {
+  .swiper-scrollbar-drag {
     height: 11px;
     width: 30px;
   }
 }
-*/
 
 /* This is Basically removing the buttons */
 .swiper-button-next {
