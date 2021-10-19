@@ -12,6 +12,8 @@ import WeeklyForecastContainer from "./Components/WeeklyForecastContainer";
 import useWeather from "./customHooks/useWeather";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PlacesNearby from "./Components/PlacesNearby"
+
 function App() {
   const {
     city,
@@ -67,6 +69,7 @@ function App() {
                 isLoaded={isLoaded}
               />
               <FavPlaceCard />
+              <PlacesNearby />
             </Background>
           </placeContext.Provider>
         )}
