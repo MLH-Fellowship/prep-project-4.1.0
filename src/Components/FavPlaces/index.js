@@ -13,12 +13,12 @@ function FavPlaceCard() {
   }, []);
   return (
     <div className="cards-container">
-      <div className="heading">
+      <div className="heading" id="Bookmarks">
         <h1 className="heading-h1">Bookmarked locations</h1>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         {places?.length === 0 ? (
-          <h2>No Bookmarks yet!</h2>
+          <h2 style={{ color: "white" }}>No Bookmarks yet!</h2>
         ) : (
           <div
             className={
