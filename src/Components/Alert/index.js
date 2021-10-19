@@ -16,8 +16,9 @@ function Index({ city }) {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (typeof res !== "undefined" && res.length > 0)
-          setData(res?.alerts?.alert);
+        console.log(res.alerts.alert);
+        const apiData = res.alerts.alert;
+        setData(apiData);
       })
       .catch((err) => {
         alert(err);
