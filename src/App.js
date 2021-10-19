@@ -1,11 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
-import Card from "./Components/Card"
+import Card from "./Components/Card";
+
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
+import Navbar from "./Components/navbar/Navbar";
 import Background from "./Components/Background";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -116,22 +118,30 @@ function App() {
           />
         )}
 
+        
+
         {isLoaded && results && <ToastContainer autoClose={4000} />}
 
+
         {results && (
+          
           <placeContext.Provider value={[places, setPlaces]}>
             <Background results={results}>
+            <Navbar />
+
               <Header
                 city={city}
                 onChangeCity={handleCity}
                 results={results}
                 isLoaded={isLoaded}
               />
+                      
+
               <div className="heading">
                 <h1 className="heading-h1">Don't forget to bring your</h1>
               </div>
               <Card results={results}/>
-              <div className="heading">
+              <div className="heading" id="Weekly">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
               <div className="weeklyForecast" style={{ marginTop: "30px" }}>
