@@ -12,7 +12,7 @@
 :root {
   --theme-bg-color: rgba(16 18 27 / 40%);
   --border-color: rgba(113 119 144 / 25%);
-  --content-bg: rgb(146 151 179 / 13%);
+  --content-bg: rgb(146 151 179 / 35%);
 }
 
 .weatherCard {
