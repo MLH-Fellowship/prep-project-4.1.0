@@ -1,0 +1,96 @@
+.grid-container {
+  margin: 2em auto;
+  max-width: 800px;
+  color: white;
+  padding: 5px;
+  background: rgba(154, 150, 170, 0.288);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+}
+
+.top-row,
+.middle-row,
+.other-information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px;
+}
+
+.other-information {
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.item3,
+.item4,
+.grid-sub-item {
+  display: flex;
+  align-items: center;
+}
+
+.item-icon {
+  margin-right: 10px;
+}
+
+.grid-item {
+  font-size: 20px;
+}
+
+.item1 {
+  font-size: 40px;
+}
+
+.item-name {
+  font-size: 16px;
+}
+
+.weather-icon {
+  width: 30px;
+}
+
+.temp-head {
+  font-size: 60px;
+}
+
+.temp-status {
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 570px) {
+  .item-icon {
+    margin-right: 10px;
+  }
+
+  .grid-item {
+    font-size: 15px;
+  }
+
+  .item1 {
+    font-size: 30px;
+  }
+
+  .item-name {
+    font-size: 12px;
+  }
+
+  .weather-icon {
+    width: 20px;
+  }
+
+  .temp-head {
+    font-size: 40px;
+  }
+
+  .temp-status-icon img {
+    width: 60px;
+  }
+
+  .temp-status {
+    margin-left: 5px;
+  }
+}

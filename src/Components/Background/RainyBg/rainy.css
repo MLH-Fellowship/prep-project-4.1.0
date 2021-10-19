@@ -16,7 +16,12 @@
   overflow: hidden;
   z-index: 5;
 }
-
+#rainy .nav-menu.active{
+  background: #133667 !important;
+ }
+ #rainy .nav-links{
+  color: white !important;
+ }
 @keyframes rain {
   0% {
     background-position: 0% 0%;
