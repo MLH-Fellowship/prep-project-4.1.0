@@ -12,3 +12,9 @@
 #snow .heading-h1 {
   color: #133667;
 }
+#snow .nav-menu.active{
+  background: #133667 !important;
+ }
+ #snow .nav-links{
+  color: white !important;
+ }

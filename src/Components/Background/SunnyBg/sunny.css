@@ -107,3 +107,9 @@
     transform: translateY(0vh) translateX(110vw) scale(0.45);
   }
 }
+#sunny .nav-menu.active{
+  background: #133667 !important;
+ }
+ #sunny .nav-links{
+  color: white !important;
+ }
