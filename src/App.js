@@ -152,7 +152,7 @@ function App() {
                 )}
               </div>
               <FavPlaceCard />
-              <Alert />
+              <Alert city={city} />
             </Background>
           </placeContext.Provider>
         )}
