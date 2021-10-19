@@ -12,13 +12,11 @@ function Index({ city }) {
   const [data, setData] = useState([]);
   useEffect(() => {
     async function getData() {
-      console.log(process.env.REACT_ALERT_APIKEY);
       const apiData = await axios.get(
         `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_ALERTKEY}&q=${city}&alerts=yes`
       );
-
-      if (apiData !== null) setData(data);
-      console.log(apiData);
+      if (apiData !== null && typeof apiData!=='undefined' && apiData.length>0) setData(apiData);
+      console.log(data);
     }
     getData();
   }, [city]);
