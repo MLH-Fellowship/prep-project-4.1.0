@@ -1,12 +1,13 @@
 .toggle-container {
   width: 70px;
-  background-color: #c4c4c4;
+  background-color: rgb(146 151 179 / 55%);
   cursor: pointer;
   user-select: none;
   border-radius: 3px;
   padding: 2px;
   height: 32px;
   position: relative;
+  margin: 5px;
 }
 
 .dialog-button {
@@ -36,4 +37,11 @@
 .disabled {
   background-color: #707070;
   left: 2px;
+}
+
+@media screen and (max-width: 960px) {
+  .toggle-container {
+    margin-left: auto;
+    margin-right: 48px;
+  }
 }
