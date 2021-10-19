@@ -42,7 +42,7 @@ function OurMap({ city, setCity }) {
         onClick={(e) => {
           geocoder.reverse(
             e.latlng,
-            map.options.crs.scale(map.getZoom()),
+            map?.options?.crs?.scale(map.getZoom()),
             (results) => {
               if (results.length > 0) {
                 setCity(results[0].name);
