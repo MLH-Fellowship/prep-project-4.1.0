@@ -1,8 +1,14 @@
 import React from "react";
-
+import "./styles.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Pagination, Scrollbar } from "swiper";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+import "swiper/swiper.min.css";
+import "swiper/components/pagination/pagination.min.css";
 function Index() {
   return (
-    <>
+    <SwiperSlide>
       <div className="blog-slider__img">
         <img src="images/warning_without_bg.png" alt="" />
       </div>
@@ -14,7 +20,7 @@ function Index() {
           voluptate repellendus magni illo ea animi?{" "}
         </div>
       </div>
-    </>
+    </SwiperSlide>
   );
 }
 

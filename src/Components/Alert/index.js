@@ -6,16 +6,23 @@ import "swiper/swiper.min.css";
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import axios from "axios";
-
+import AlertCard from "../AlertCard/index";
 import "./styles.css";
 function Index({ city }) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([1]);
+  const [showData, setShowData] = useState(false);
   useEffect(() => {
     async function getData() {
       const apiData = await axios.get(
         `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_ALERTKEY}&q=${city}&alerts=yes`
       );
-      if (apiData !== null && typeof apiData!=='undefined' && apiData.length>0) setData(apiData);
+      if (
+        apiData !== null &&
+        typeof apiData !== "undefined" &&
+        apiData.length > 0
+      )
+        setData(apiData);
+      setShowData(true);
       console.log(data);
     }
     getData();
@@ -45,20 +52,26 @@ function Index({ city }) {
         onSlideChange={() => console.log("slide change")}
         direction={"vertical"}
       >
-        {/* swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev */}
-        <SwiperSlide>
-          <div className="blog-slider__img">
-            <img src="images/warning_without_bg.png" alt="" />
-          </div>
-          <div className="blog-slider__content">
-            <span className="blog-slider__code">30 December 2019</span>
-            <div className="blog-slider__title">Lorem Ipsum Dolor</div>
-            <div className="blog-slider__text">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Recusandae voluptate repellendus magni illo ea animi?{" "}
-            </div>
-          </div>
-        </SwiperSlide>
+        {showData &&
+          data.map((alert) => {
+            return (
+              <SwiperSlide>
+                <div className="blog-slider__img">
+                  <img src="images/warning_without_bg.png" alt="" />
+                </div>
+                <div className="blog-slider__content">
+                  <span className="blog-slider__code">
+                    Effective from: {alert?.effective}
+                  </span>
+                  <span className="blog-slider__code">
+                    Expires on: {alert?.expires}
+                  </span>
+                  <div className="blog-slider__title">{alert?.event}</div>
+                  <div className="blog-slider__text">{alert?.desc}</div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </>
   );
