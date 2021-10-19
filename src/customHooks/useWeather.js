@@ -15,6 +15,13 @@ function useWeather() {
       closeButton: false,
     });
   };
+  const notifyForInvalidLocation = () => {
+    toast.info("Showing results for New York City.", {
+      theme: "colored",
+      hideProgressBar: true,
+      closeButton: false,
+    });
+  };
 
   useEffect(() => {
     const options = {
@@ -67,7 +74,9 @@ function useWeather() {
         .then(
           (result) => {
             if (result["cod"] !== 200) {
-              setIsLoaded(false);
+              alert("Location not found!");
+              notifyForInvalidLocation();
+              setCity("New York City");
             } else {
               setIsLoaded(true);
               setResults(result);
