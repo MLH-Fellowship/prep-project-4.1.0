@@ -932,3 +932,9 @@
     opacity: 0;
   }
 }
+#thunderstrom .nav-menu.active{
+  background: #133667 !important;
+ }
+ #thunderstrom .nav-links{
+  color: white !important;
+ }
