@@ -16,13 +16,14 @@ export default class PlacesNearby extends React.Component {
   }
 
   // reference Link : https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
+  // https://cors-anywhere.herokuapp.com/corsdemo
 
   getPlacesNearby() {
     this.setState({ loading: true });
     const { lat, lng } = this.props;
     // const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=500&type=restaurant&key=${process.env.REACT_APP_GMAPSAPI}`;
     const url =
-      "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.6517%2C73.7684&radius=5000&type=restaurant|food&key=AIzaSyA3T5O8Z9lnmMwPf7fRX9r-fklvTFuqD80";
+      "https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.6517%2C73.7684&radius=5000&type=restaurant|food&key=AIzaSyA3T5O8Z9lnmMwPf7fRX9r-fklvTFuqD80";
     fetch(url, {
       method: "GET",
       headers: {},
