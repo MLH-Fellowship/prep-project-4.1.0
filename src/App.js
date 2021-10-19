@@ -19,7 +19,7 @@ function App() {
   const [bookmarks, setBookMarks] = useState([]);
   const [places, setPlaces] = useState([]);
 
-  const notifyForPermissionDenied = () => {
+  const notify = () => {
     toast.info("Permission denied. Showing results for New York.", {
       theme: "colored",
       hideProgressBar: true,
@@ -60,7 +60,7 @@ function App() {
     }
 
     function onError(error) {
-      notifyForPermissionDenied();
+      notify();
       setCity("New York City");
     }
 
@@ -125,16 +125,12 @@ function App() {
           />
         )}
 
-        
-
         {isLoaded && results && <ToastContainer autoClose={4000} />}
 
-
         {results && (
-          
           <placeContext.Provider value={[places, setPlaces]}>
             <Background results={results}>
-            <Navbar />
+              <Navbar />
 
               <Header
                 city={city}
@@ -142,12 +138,11 @@ function App() {
                 results={results}
                 isLoaded={isLoaded}
               />
-                      
 
               <div className="heading">
                 <h1 className="heading-h1">Don't forget to bring your</h1>
               </div>
-              <Card results={results}/>
+              <Card results={results} />
               <div className="heading" id="Weekly">
                 <h1 className="heading-h1">Weekly Forecast</h1>
               </div>
