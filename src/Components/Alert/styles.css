@@ -136,7 +136,7 @@
 }
 
 .blog-slider__code {
-  color: #7b7992;
+  color: white;
   margin-bottom: 15px;
   display: block;
   font-weight: 500;
@@ -145,12 +145,12 @@
 .blog-slider__title {
   font-size: 24px;
   font-weight: 700;
-  color: #0d0925;
+  color: white;
   margin-bottom: 20px;
 }
 
 .blog-slider__text {
-  color: #1900bd;
+  color: rgba(255, 255, 255, 0.774);
   margin-bottom: 30px;
   line-height: 1.5em;
 }
