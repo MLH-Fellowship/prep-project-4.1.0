@@ -9,10 +9,19 @@ import {
 
 import "./weatherinfo.css";
 
-const getTime = (timeStamp) => {
-  return `${new Date(timeStamp * 1000).getHours()} : ${new Date(
-    timeStamp * 1000
-  ).getMinutes()}`;
+const getTime = (timestamp) => {
+  var date = new Date(timestamp * 1000);
+  var hours = date.getHours();
+  // Minutes part from the timestamp
+  var minutes = "0" + date.getMinutes();
+  // Seconds part from the timestamp
+  var seconds = "0" + date.getSeconds();
+
+  // Will display time in 10:30:23 format
+  var formattedTime =
+    hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
+
+  return formattedTime;
 };
 
 const WeatherInfo = (props) => {
@@ -85,8 +94,7 @@ const WeatherInfo = (props) => {
             </div>
             <div class="item-information">
               <div class="item-value">
-                {`${getTime(data?.sys[isDay ? "sunset" : "sunrise"])}`}{" "}
-                {isDay ? "am" : "pm"}
+                {`${getTime(data?.sys[isDay ? "sunrise" : "sunset"])}`}{" "}
               </div>
               <div class="item-name">{isDay ? "Sunrise" : "Sunset"}</div>
             </div>
