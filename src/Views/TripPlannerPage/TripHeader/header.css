@@ -8,7 +8,7 @@
 .tripheader form .form-group {
     padding-bottom: .5rem;
     align-items: center;
-    width: 400px !important;
+    /* width: 400px !important; */
     
 }
 
@@ -82,3 +82,4 @@ input[type="date"] {
         margin: .2rem 0rem
     }
 }
+
