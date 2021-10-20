@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
@@ -12,7 +12,12 @@ import WeeklyForecastContainer from "./Components/WeeklyForecastContainer";
 import useWeather from "./customHooks/useWeather";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+export const toggleContext = React.createContext();
+
 function App() {
+  const [selected, toggleSelected] = useState(true);
+
   const {
     city,
     results,
@@ -53,7 +58,9 @@ function App() {
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
             <Background results={results}>
-              <Navbar />
+              <toggleContext.Provider value={selected}>
+                <Navbar />
+              </toggleContext.Provider>
               <Header
                 city={city}
                 onChangeCity={handleCity}
