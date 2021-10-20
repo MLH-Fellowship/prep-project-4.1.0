@@ -13,10 +13,10 @@ import useWeather from "./customHooks/useWeather";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const toggleContext = React.createContext();
+export const ToggleUnitsContext = React.createContext();
 
 function App() {
-  const [selected, toggleSelected] = useState(true);
+  const [selected, setSelected] = useState(true);
 
   const {
     city,
@@ -57,24 +57,24 @@ function App() {
 
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
-            <Background results={results}>
-              <toggleContext.Provider value={selected}>
+            <ToggleUnitsContext.Provider value={[selected, setSelected]}>
+              <Background results={results}>
                 <Navbar />
-              </toggleContext.Provider>
-              <Header
-                city={city}
-                onChangeCity={handleCity}
-                results={results}
-                isLoaded={isLoaded}
-              />
-              <RequiredThings results={results} />
-              <WeeklyForecastContainer
-                results={results}
-                city={city}
-                isLoaded={isLoaded}
-              />
-              <FavPlaceCard />
-            </Background>
+                <Header
+                  city={city}
+                  onChangeCity={handleCity}
+                  results={results}
+                  isLoaded={isLoaded}
+                />
+                <RequiredThings results={results} />
+                <WeeklyForecastContainer
+                  results={results}
+                  city={city}
+                  isLoaded={isLoaded}
+                />
+                <FavPlaceCard />
+              </Background>
+            </ToggleUnitsContext.Provider>
           </placeContext.Provider>
         )}
       </>

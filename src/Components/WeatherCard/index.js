@@ -1,11 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./weathercard.css";
+import { ToggleUnitsContext } from "../../App";
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 const WeatherCard = ({ day, index }) => {
+  const [selected, setSelected] = useContext(ToggleUnitsContext);
+
   const icon = `http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`;
   const unixTimestamp = day.dt;
 
@@ -18,6 +21,8 @@ const WeatherCard = ({ day, index }) => {
     .toLocaleString("en-US", { month: "long" })
     .slice(0, 3); // December
   const date = dateObject.toLocaleString("en-US", { day: "numeric" }); // 9
+
+
   return (
     <div className="weatherCard" key={index}>
       <div className="app-card__subtext">
@@ -31,7 +36,8 @@ const WeatherCard = ({ day, index }) => {
           className="card__img app-card-img-1"
           alt="card__img"
         />
-        {day.temp.day} °C
+        {selected? day.temp.day : "Fahren"}
+        {/* {day.temp.day} °C */}
       </span>
       <div className="app-card__subtext" style={{ color: "#ccd1d9" }}>
         {capitalizeFirstLetter(day.weather[0].description)}
