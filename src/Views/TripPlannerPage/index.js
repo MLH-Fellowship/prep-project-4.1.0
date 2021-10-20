@@ -4,8 +4,10 @@ import TripNavBar from "./TripNavbar"
 const TripPlannerPage = (props) => {
     return(
 <>
+
+<TripHeader >
 <TripNavBar />
-<TripHeader />
+</TripHeader>
 </>
     )
 }

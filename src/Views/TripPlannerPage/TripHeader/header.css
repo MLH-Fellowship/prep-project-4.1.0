@@ -1,0 +1,84 @@
+
+
+.tripheader form {
+   align-items: center;
+
+}
+
+.tripheader form .form-group {
+    padding-bottom: .5rem;
+    align-items: center;
+    width: 400px !important;
+    
+}
+
+
+
+.tripheader form input[type="text"]:focus::placeholder {
+    color: transparent
+}
+
+input[type="date"] {
+    cursor: pointer
+}
+
+.tripheader form .label::after {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    font-size: 0.9rem;
+    margin: 0rem 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    font-weight: 600;
+    color: #999;
+    transition: all .2s ease-in-out;
+    transform: scale(0)
+}
+
+.tripheader form .label#from::after {
+    content: 'From'
+}
+
+.tripheader form .label#to::after {
+    content: 'To'
+}
+
+.tripheader form .label#depart::after {
+    content: 'Depart Date'
+}
+
+.tripheader form .label#return::after {
+    content: 'Return Date'
+}
+
+
+.tripheader form input[type="text"]:focus~.label::after {
+    top: -25px;
+    left: 0px;
+    transform: scale(1)
+}
+
+.tripheader form input[type="date"]:focus~.label::after {
+    top: -25px;
+    left: 0px;
+    transform: scale(1)
+}
+
+.margin {
+    margin: 2rem 0rem
+}
+
+@media(max-width: 575.5px) {
+    .tripheader {
+        margin: 10px
+    }
+
+    .tripheader form {
+        padding: 20px
+    }
+
+    .margin {
+        margin: .2rem 0rem
+    }
+}

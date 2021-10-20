@@ -1,30 +1,33 @@
+import { useState } from "react";
+import {NavItems} from "./NavItems"
+import logo from '../../../mlh-prep.png';
+import "../../../Components/navbar/Navbar.css"
+import "../trip.css"
 const TripNavBar = (props) => {
+    const [clicked, setClicked ]  = useState (false)
+    const handleClick = ()=>{
+        setClicked(!clicked)
+    }
     return(
-<header role="banner">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">Top Ramen</a>
-                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
-                    data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarsExample05">
-                    <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
-                        <li class="nav-item mx-auto">
-                            <a class="nav-link active" href="/"><b>Home</b></a>
-                        </li>
-                        <li class="nav-item mx-auto">
-                            <a class="nav-link" href="#details">Hotels</a>
-                        </li>
-                        <li class="nav-item mx-auto">
-                            <a class="nav-link" href="#varieties">Places to Visit</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+        <nav className="NavbarItems" id="tripPlanner">
+        <h1 className="navbar-logo"> <img src={logo} width="100%" height="50%" /></h1>
+        <div className="menu-icon" onClick={handleClick}>
+        <i className={clicked? 'fas fa-times':'fas fa-bars'}></i>
+        </div>
+        <ul className={clicked ? 'nav-menu active':'nav-menu'}>
+            {NavItems.map((item, index)=>{
+                return (
+                    <li key={index}> 
+                        <a className={item.cName} href={item.url}> 
+                            {item.title}                            
+                        </a>
+                    </li>
+                )
+            })}
+         
+        </ul>
+
+    </nav>
     )
 }
 
