@@ -23,10 +23,6 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
   }, [city]);
   return (
     <div>
-<<<<<<< Updated upstream
-      <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-=======
->>>>>>> Stashed changes
 
       <WeatherInfo data={results} />
 

@@ -26,6 +26,14 @@
   flex-wrap: wrap;
 }
 
+.hourly-information {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 15px;
+}
+
 .item3,
 .item4,
 .grid-sub-item {
@@ -39,10 +47,7 @@
 
 .grid-item {
   font-size: 20px;
-<<<<<<< Updated upstream
-=======
   text-align: left;
->>>>>>> Stashed changes
 }
 
 .item1 {

@@ -21,113 +21,61 @@ const WeatherInfo = (props) => {
   const { data } = props;
 
   const [dates, setddates] = useState(new Date());
+  const [hourlyData, setHourlyData] = useState(new Array());
  
 
-  useEffect(async () => {
-    
-       
-    async function fetchWeather(lat, lon){
-      let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=a47a5bf0eab40bab4032f07926e3e1f6`).then(value=>value.json());
-      // let data = await response.json();
-      // console.log(response);
-      return response;
+  useEffect(async () => {    
+      async function fetchWeather(lat, lon){
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=a47a5bf0eab40bab4032f07926e3e1f6&units=metric`).then(value=>value.json());
+        return response;
       }
-      
+
       async function convertGeoLocation(city, country){
-      let response = await fetch(`https://api.opencagedata.com/geocode/v1/json?key=9b91ce824ad640db8cb4ad90fecb1c88&q=${city}%20${country}&pretty=1`).then(value => value.json());
-      let result = response['results'][0]['geometry'];
-      return result;
+        let response = await fetch(`https://api.opencagedata.com/geocode/v1/json?key=9b91ce824ad640db8cb4ad90fecb1c88&q=${city}%20&pretty=1`).then(value => value.json());
+        console.log(response)
+        let result = response['results'][0]['geometry'];
+        return result;
       }
-      
-      async function fetchDaily(date, lat, ling){
-      let data = await fetchWeather(lat, ling);
-      let daily = data['daily'];
-      for (let i in daily){
-          let converted_date = new Date(0);
-          converted_date.setUTCSeconds(daily[i]['dt']);
-          console.log(date, converted_date);
-          if (date > converted_date || date < converted_date ){
-              continue;   
-          }else{
-              return {
-                  'temp':daily[i]['temp'],
-                  'feels_like':daily[i]['feels_like']
-              };
-          }
-      }
-      return {
-          'error':'sorry your date is not correct daily'
-      };
-      }
-      
-      async function fetchHourly(date, lat, ling){
+
+    
+
+      async function fetchHourly(lat, ling){
+          /*
+          Cjnage the return_arr.push method to add more values to the arrary.
+          Let's say you need to add the windspeed also (hourly windspeed) just add something like
+          'windspeeed':hourly[i]['windspeed']
+          */
+          
           let data = await fetchWeather(lat, ling);
           let hourly = data['hourly'];
-          for(let i in hourly){
-              let converted_date = new Date(0);
-              converted_date.setUTCSeconds(hourly[i]['dt'])
-              // console.log(date, converted_date)
-              if (date > converted_date || date < converted_date ){
-                  continue;   
-              }else{
-                  return {
-                      'temp':hourly[i]['temp'],
-                      'feels_like':hourly[i]['feels_like']
-                  };
-              }
+          let return_arr = []
+          let number_of_hours = 4
+          
+          for(let i = 0; i<number_of_hours; i++){
+              return_arr.push( {
+                  'temp':hourly[i]['temp'],
+                  'feels_like':hourly[i]['feels_like']
+              });
           }
           return {
-              'error':'sorry your date is not correct hourly'
-          };
-         
+              "data":return_arr
+          }        
       }
-      
-      async function checkTime(date, city, country){
-          let ref_date = new Date();
-          let day_ask = date.getDate();
-          if (day_ask > ref_date.getDate()+2){
-              let lat_ling_data = await convertGeoLocation(city, country);
-              let lat = lat_ling_data['lat'];
-              let ling = lat_ling_data['lng'];
-              let return_data = await fetchDaily(date, lat, ling);
-              return return_data;
-          }
-      else{
-          let lat_ling_data = await convertGeoLocation(city, country);
-          let lat = lat_ling_data['lat'];
-          let ling = lat_ling_data['lng']
-          let return_data = await fetchHourly(date, lat, ling);
-          return return_data;
-      }
-      
-      
-      }
-      let glocal = getLocalTime(data.timezone).dater;
-   console.log("Local "+ glocal);
-  //  setddates(getLocalTime(data.timezone).dater);
-   
-   glocal.setHours(glocal.getHours()+1);
-   glocal.setSeconds(0);
-   glocal.setMinutes(0);
-   console.log("dateloc "+ glocal);
-   
-  let a = glocal.getTime() / 1000;
-   
-   
-   
-  let city = "Noida";
-   let country;
-   let datee = new Date(0);
-  // // console.log(date);
 
-   datee.setUTCSeconds(a);
-   console.log(data.name);
-   
-  let x = await checkTime(datee, data.name, country);
- console.log(x);
 
- 
-}, [data]);
+      // How to call this script now????
+      // The answer is that, you will be getting the name of the city from the card yes?
+      // just follow the lines below, any varibale names are just placeholder
+      let geo_lat_ling = await convertGeoLocation(data.name)
+      // now get the lat and ling values 
+      let y = geo_lat_ling['lng']
+      let z = geo_lat_ling['lat']
+      // Now call the fetchhourly function and it will work
+
+      let x = await fetchHourly(z, y); //z is the latittue and y will be the longitude you got from the convertedGeoLocation function call so put the values approproatedly 
+      console.log(x["data"])
+      setHourlyData(x["data"]);
+  }, [data]);
 
 
 
@@ -241,6 +189,24 @@ const WeatherInfo = (props) => {
               <div class="item-name">Wind</div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="grid-item item5">
+        <div class="hourly-information">
+          {
+            hourlyData.map((val, index) => {
+              return <div key={index} class="grid-sub-item">  
+                  <div class="item-icon">
+                    +{index+1} H: 
+                  </div>
+                  <div class="item-information">
+                    <div class="item-value">Feels like: {val.feels_like}</div>
+                    <div class="item-name">Temp: {val.temp}</div>
+                  </div>
+              </div>
+            })
+          }
         </div>
       </div>
     </div>
