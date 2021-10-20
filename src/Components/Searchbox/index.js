@@ -41,7 +41,6 @@ export default class SearchBox extends React.Component {
           });
 
           this.setState({ items: newitems });
-          console.log(this.state.items);
         });
     }
   }
@@ -53,7 +52,6 @@ export default class SearchBox extends React.Component {
   };
 
   render() {
-    var currentCity = this.props.city;
     return (
       <>
         <div className="search-box" onKeyDown={this._handleKeyDown}>
@@ -66,6 +64,7 @@ export default class SearchBox extends React.Component {
               styling={{
                 borderRadius: "12px",
               }}
+              useCaching={false}
               placeholder="Search for a city"
             />
           </header>
