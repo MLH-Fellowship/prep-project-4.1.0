@@ -85,8 +85,7 @@ const WeatherInfo = (props) => {
             </div>
             <div class="item-information">
               <div class="item-value">
-                {`${getTime(data?.sys[isDay ? "sunset" : "sunrise"])}`}{" "}
-                {isDay ? "am" : "pm"}
+                {`${getTime(data?.sys[isDay ? "sunrise" : "sunset"])}`}{" "}
               </div>
               <div class="item-name">{isDay ? "Sunrise" : "Sunset"}</div>
             </div>
