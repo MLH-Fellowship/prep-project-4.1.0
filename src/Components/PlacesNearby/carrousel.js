@@ -2,16 +2,35 @@ import { React, Component } from "react";
 import ReactCardCarousel from "react-card-carousel";
 
 export default class Carrousel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            items : [
+                {
+                    name: 'Empire State',
+                    vicinity: 'New York, NY',
+                    rating: '4.5',
+                },
+                {
+                    name: 'Eiffel Tower',
+                    vicinity: 'Paris, France',
+                    rating: '4.5',
+                },
+                {
+                    name: 'Colliseum',
+                    vicinity: 'Rome, Italy',
+                    rating: '4.5',
+                },
+            ],
+        };
+    }
 
   componentDidMount() {
     this.setState({ items: this.props.items });
   }
+    // componentDidMount() {
+    //     this.setState({items: this.props.items});
+    // }
 
   static get CARD_STYLE() {
     return {

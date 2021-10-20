@@ -84,6 +84,7 @@ function App() {
                 results={results}
                 isLoaded={isLoaded}
               />
+              <PlacesNearby/>
               <RequiredThings results={results} />
               <WeeklyForecastContainer
                 results={results}
@@ -91,7 +92,6 @@ function App() {
                 isLoaded={isLoaded}
               />
               <FavPlaceCard />
-              <PlacesNearby />
             </Background>
           </placeContext.Provider>
         )}
