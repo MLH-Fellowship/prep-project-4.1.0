@@ -21,7 +21,7 @@ const TripPlannerPage = (props) => {
 </TripHeader>
 {/* <WeatherInfo data={results} /> */}
 
-
+{/* <PlacesNearby city={city} setCity={onChangeCity} /> */}
 </>
     )
 }

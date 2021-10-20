@@ -87,7 +87,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
             <Map city={city} setCity={onChangeCity} />
           </div>
         </div>
-        <PlacesNearby city={city} setCity={onChangeCity} />
+        
       </div>
     </div>
   );
