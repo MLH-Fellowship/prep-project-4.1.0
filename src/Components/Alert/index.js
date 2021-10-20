@@ -72,54 +72,59 @@ function Index({ city }) {
   return (
     <>
       {data?.length && (
-        <Swiper
-          // install Swiper modules
-          modules={["Navigation", "Pagination", "Scrollbar", "A11y"]}
-          // modules={["Navigation", "Pagination", "Scrollbar", "A11y"]}
-          spaceBetween={50}
-          effect={"fade"}
-          loop={false}
-          navigation
-          pagination={{
-            clickable: true,
-            el: "blog-slider__pagination",
-            renderBullet: () => {
-              return <span>Hey</span>;
-            },
-          }}
-          scrollbar={{ draggable: true, className: "swiperScrollbar" }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
-          direction={"vertical"}
-        >
-          {data?.map((alert) => {
-            return (
-              <SwiperSlide>
-                <div className="blog-slider__img">
-                  <img src="images/warning_without_bg.png" alt="" />
-                </div>
-                <div className="blog-slider__content">
-                  <span className="blog-slider__code">
-                    <strong>Effective from:</strong> &nbsp;&nbsp;
-                    {new Date(alert?.effective).toUTCString()}
-                  </span>
-                  <span className="blog-slider__code">
-                    <strong>Expires on:</strong> &nbsp;&nbsp;
-                    {new Date(alert?.expires).toUTCString()}
-                  </span>
-                  <div className="blog-slider__title">
-                    <strong>Event: </strong> &nbsp;&nbsp;
-                    {alert?.event}
+        <>
+          <div className="heading" id="Bookmarks">
+            <h1 className="heading-h1">Weather Alerts</h1>
+          </div>
+          <Swiper
+            // install Swiper modules
+            modules={["Navigation", "Pagination", "Scrollbar", "A11y"]}
+            // modules={["Navigation", "Pagination", "Scrollbar", "A11y"]}
+            spaceBetween={50}
+            effect={"fade"}
+            loop={false}
+            navigation
+            pagination={{
+              clickable: true,
+              el: "blog-slider__pagination",
+              renderBullet: () => {
+                return <span>Hey</span>;
+              },
+            }}
+            scrollbar={{ draggable: true, className: "swiperScrollbar" }}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log("slide change")}
+            direction={"vertical"}
+          >
+            {data?.map((alert) => {
+              return (
+                <SwiperSlide>
+                  <div className="blog-slider__img">
+                    <img src="images/warning_without_bg.png" alt="" />
                   </div>
-                  <div className="blog-slider__text">
-                    <strong>Description:</strong>&nbsp;&nbsp;
-                    {alert?.desc}
+                  <div className="blog-slider__content">
+                    <span className="blog-slider__code">
+                      <strong>Effective from:</strong> &nbsp;&nbsp;
+                      {new Date(alert?.effective).toUTCString()}
+                    </span>
+                    <span className="blog-slider__code">
+                      <strong>Expires on:</strong> &nbsp;&nbsp;
+                      {new Date(alert?.expires).toUTCString()}
+                    </span>
+                    <div className="blog-slider__title">
+                      <strong>Event: </strong> &nbsp;&nbsp;
+                      {alert?.event}
+                    </div>
+                    <div className="blog-slider__text">
+                      <strong>Description:</strong>&nbsp;&nbsp;
+                      {alert?.desc}
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </>
       )}
       <div id="alertDiv"></div>
     </>
