@@ -28,7 +28,7 @@ class Navbar extends Component{
                     })}
                  
                 </ul>
-                <Button>Trip Planner</Button>
+                <Button href="/trip-planner">Trip Planner</Button>
             </nav>
         );
     }
