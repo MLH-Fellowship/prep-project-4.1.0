@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
@@ -7,70 +7,31 @@ import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
 import WeeklyForecast from "./Components/WeeklyForecast";
 import alanBtn from "@alan-ai/alan-sdk-web";
+import Navbar from "./Components/navbar/Navbar";
 import Background from "./Components/Background";
+import RequiredThings from "./Components/RequiredThings";
+import WeeklyForecastContainer from "./Components/WeeklyForecastContainer";
+import useWeather from "./customHooks/useWeather";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 function App() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [city, setCity] = useState("");
-  const [results, setResults] = useState(null);
-  const [bookmarks, setBookMarks] = useState([]);
-  const [places, setPlaces] = useState([]);
-
-  const notify = () => {
-    toast.info("Permission denied. Showing results for New York City.", {
-      theme: "colored",
-      hideProgressBar: true,
-      closeButton: false,
-    });
-  };
+  const {
+    city,
+    results,
+    isLoaded,
+    setCity,
+    setResults,
+    places,
+    setPlaces,
+    error,
+  } = useWeather();
 
   useEffect(() => {
-    const options = {
-      enableHighAccuracy: false,
-      timeout: 5000,
-      maximumAge: Infinity,
-    };
-
-    function onSuccess(position) {
-      let latitude = position.coords.latitude;
-      let longitude = position.coords.longitude;
-
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_APIKEY}`
-      )
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            setCity(result.name);
-          },
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        );
-    }
-
-    function onError(error) {
-      notify();
-      setCity("New York City");
-    }
-
-    window.navigator.geolocation.getCurrentPosition(
-      onSuccess,
-      onError,
-      options
-    );
     alanBtn({
       key: process.env.REACT_APP_ALAN_APIKEY,
       onCommand: function (commandData) {
         if (commandData.command === "search") {
           setCity(commandData.text);
-        }
-        if (commandData.command === "bookmark") {
-          setBookMarks(commandData.cityname);
         }
         if (commandData.command === "handleCity") {
           setCity(commandData.cityname);
@@ -84,33 +45,6 @@ function App() {
       },
     });
   }, []);
-
-  useEffect(() => {
-    if (city !== "") {
-      fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-          city +
-          "&units=metric" +
-          "&appid=" +
-          process.env.REACT_APP_APIKEY
-      )
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            if (result["cod"] !== 200) {
-              setIsLoaded(false);
-            } else {
-              setIsLoaded(true);
-              setResults(result);
-            }
-          },
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        );
-    }
-  }, [city]);
 
   const handleCity = (city) => {
     setCity(city);
@@ -141,36 +75,19 @@ function App() {
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
             <Background results={results}>
+              <Navbar />
               <Header
                 city={city}
                 onChangeCity={handleCity}
                 results={results}
                 isLoaded={isLoaded}
               />
-              <div className="heading">
-                <h1 className="heading-h1">Don't forget to bring your</h1>
-              </div>
-              <Card results={results} />
-              <div className="heading">
-                <h1 className="heading-h1">Weekly Forecast</h1>
-              </div>
-              <div className="weeklyForecast" style={{ marginTop: "30px" }}>
-                {!isLoaded && (
-                  <Loader
-                    type="TailSpin"
-                    color="#00BFFF"
-                    height={40}
-                    width={40}
-                  />
-                )}
-                {isLoaded && results && (
-                  <WeeklyForecast
-                    city={city}
-                    latitude={results.coord.lat}
-                    longitude={results.coord.lon}
-                  />
-                )}
-              </div>
+              <RequiredThings results={results} />
+              <WeeklyForecastContainer
+                results={results}
+                city={city}
+                isLoaded={isLoaded}
+              />
               <FavPlaceCard />
             </Background>
           </placeContext.Provider>

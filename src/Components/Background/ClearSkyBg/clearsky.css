@@ -58,3 +58,10 @@
 #clearsky .heading-h1 {
   color: #133667;
 }
+
+#clearsky .nav-menu.active{
+  background: #133667 !important;
+ }
+ #clearsky .nav-links{
+  color: white !important;
+ }

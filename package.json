@@ -17,6 +17,7 @@
     "react-multi-carousel": "^2.6.5",
     "react-responsive-carousel": "^3.2.21",
     "react-scripts": "4.0.3",
+    "react-search-autocomplete": "^5.4.2",
     "react-search-box": "^2.0.2",
     "react-snowfall": "^1.1.0",
     "react-toastify": "^8.0.3",

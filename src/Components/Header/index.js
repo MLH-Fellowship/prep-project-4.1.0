@@ -1,10 +1,13 @@
+import { useContext, useEffect, useState } from "react";
+
 import logo from "../../mlh-prep.png";
 import Map from "../map/map";
 import "./header.css";
-import { useContext, useEffect, useState } from "react";
 import placeContext from "../../Context/placesContext";
+import SearchBox from "../Searchbox";
+import WeatherInfo from "../WeatherInfo/index.js";
+
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
-  // const Header = ({ city, setCity }) => {
   const [included, setIncluded] = useState(false);
   const [places, setPlaces] = useContext(placeContext);
   function capitalizeFirstLetter(string) {
@@ -21,12 +24,9 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
   return (
     <div>
       <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-      <div class="center-text-div">
-        <div class="temparature">{results.main.temp}°C</div>
-        <p class="weather">
-          {results.weather[0].main} | {results.name}, {results.sys.country}
-        </p>
-      </div>
+
+      <WeatherInfo data={results} />
+
       <div className="input-container">
         <div className="input-div">
           <div className="inputElement">
@@ -79,11 +79,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
               </div>
               <div className="Wrapper-fav">
                 <h2>Enter a city below 👇</h2>
-                <input
-                  type="text"
-                  value={city}
-                  onChange={(event) => onChangeCity(event.target.value)}
-                />
+                <SearchBox city={city} setCity={onChangeCity} />
               </div>
             </div>
           </div>

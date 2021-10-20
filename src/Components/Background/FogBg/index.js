@@ -1,4 +1,4 @@
-import "../background.css";
+// import "../background.css";
 import "./fog.css";
 const FogBg = ({ children }) => {
   return (
