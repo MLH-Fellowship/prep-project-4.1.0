@@ -38,6 +38,10 @@
   margin: 15px;
 }
 
+.hourly-padding{
+  padding: 10px;
+}
+
 .item3,
 .item4,
 .grid-sub-item {

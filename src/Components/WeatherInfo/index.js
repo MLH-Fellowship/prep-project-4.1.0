@@ -56,7 +56,7 @@ const WeatherInfo = (props) => {
           let data = await fetchWeather(lat, ling);
           let hourly = data['hourly'];
           let return_arr = []
-          let number_of_hours = 4
+          let number_of_hours = 6
           
           for(let i = 0; i<number_of_hours; i++){
               return_arr.push( {
@@ -202,12 +202,12 @@ const WeatherInfo = (props) => {
         <div class="hourly-information">
           {
             hourlyData.map((val, index) => {
-              return <div key={index} class="grid-sub-item">  
+              return <div key={index} class="grid-sub-item hourly-padding">  
                   <div class="item-icon">
                     +{index+1} H: 
                   </div>
                   <div class="item-information">
-                    <div class="item-value">Feels like: {val.feels_like}</div>
+                    <div class="item-value">Feels like: {(val.feels_like + "0").substr(0,5)}</div>
                     <div class="item-name">Temp: {val.temp}</div>
                   </div>
               </div>
