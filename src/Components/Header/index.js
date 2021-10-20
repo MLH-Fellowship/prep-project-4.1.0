@@ -7,6 +7,8 @@ import placeContext from "../../Context/placesContext";
 import SearchBox from "../Searchbox";
 import WeatherInfo from "../WeatherInfo/index.js";
 
+import PlacesNearby from "../PlacesNearby";
+
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
   const [included, setIncluded] = useState(false);
   const [places, setPlaces] = useContext(placeContext);
@@ -85,6 +87,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
             <Map city={city} setCity={onChangeCity} />
           </div>
         </div>
+        <PlacesNearby city={city} setCity={onChangeCity} />
       </div>
     </div>
   );
