@@ -28,7 +28,7 @@ class Navbar extends Component{
                     })}
                  
                 </ul>
-                <Button onclick={()=> {window.location.href = "./trip-planner" }}>Trip Planner</Button>
+                <Button onclick={()=> {window.location.href = "./trip" }}>Trip Planner</Button>
             </nav>
         );
     }
