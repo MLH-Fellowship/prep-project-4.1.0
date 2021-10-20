@@ -21,6 +21,10 @@
   margin: 15px;
 }
 
+.middle-row {
+  flex-wrap: wrap;
+}
+
 .other-information {
   justify-content: space-around;
   flex-wrap: wrap;
