@@ -23,7 +23,6 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
   }, [city]);
   return (
     <div>
-
       <WeatherInfo data={results} />
 
       <div className="input-container">
