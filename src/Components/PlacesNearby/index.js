@@ -1,6 +1,7 @@
 import React from "react";
 import "./placesNearby.css";
 import axios from "axios";
+import Carrousel from "./carrousel";
 
 export default class PlacesNearby extends React.Component {
   constructor(props) {
@@ -48,18 +49,9 @@ export default class PlacesNearby extends React.Component {
     const { placesNearby, loading } = this.state;
     return (
       <div className="places-nearby">
-        {/* {loading ? (
-          <div className="loading">Loading...</div>
-        ) : (
-          <ul>
-            {placesNearby.map((place) => (
-              <li key={place.id}>
-                <h3>{place.name}</h3>
-                <p>{place.vicinity}</p>
-              </li>
-            ))}
-          </ul>
-        )} */}
+        {!loading && (
+          <Carrousel placesNearby={placesNearby} />
+        )}  
       </div>
     );
   }
