@@ -15,6 +15,7 @@
     "react-loader-spinner": "^4.0.0",
     "react-multi-carousel": "^2.6.5",
     "react-responsive-carousel": "^3.2.21",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-search-autocomplete": "^5.4.2",
     "react-search-box": "^2.0.2",
