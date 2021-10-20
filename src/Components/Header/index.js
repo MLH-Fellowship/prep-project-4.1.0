@@ -23,8 +23,6 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
   }, [city]);
   return (
     <div>
-      <img className="logo" src={logo} alt="MLH Prep Logo"></img>
-
       <WeatherInfo data={results} />
 
       <div className="input-container">
