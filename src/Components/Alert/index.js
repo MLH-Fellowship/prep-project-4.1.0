@@ -111,10 +111,7 @@ function Index({ city }) {
                       <strong>Expires on:</strong> &nbsp;&nbsp;
                       {new Date(alert?.expires).toUTCString()}
                     </span>
-                    <div className="blog-slider__title">
-                      <strong>Event: </strong> &nbsp;&nbsp;
-                      {alert?.event}
-                    </div>
+                    <div className="blog-slider__title">{alert?.event}</div>
                     <div className="blog-slider__text">
                       <strong>Description:</strong>&nbsp;&nbsp;
                       {alert?.desc}
