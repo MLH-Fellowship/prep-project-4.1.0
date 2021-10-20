@@ -7,36 +7,74 @@ export default class PlacesNearby extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      placesNearby: [],
-      loading: true,
+      restaurantsNearby: [],
+      lodgingNearby: [],
+      loading: false,
     };
   }
 
   componentDidMount() {
-    this.getPlacesNearby();
+    this.getRestaurantsNearby();
+    this.getLodgingNearby();
   }
 
   // reference Link : https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
   // https://cors-anywhere.herokuapp.com/corsdemo
 
-  getPlacesNearby() {
+  getRestaurantsNearby() {
     this.setState({ loading: true });
-    const { lat, lng } = this.props;
-    // const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=500&type=restaurant&key=${process.env.REACT_APP_GMAPSAPI}`;
-    const url = `https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=18.6517%2C73.7684&radius=5000&type=restaurant|food&key=${process.env.REACT_APP_GMAPSAPI}`;
+    // const { lat, lng } = this.props;
+    const lat = 18.6517;
+    const lng = 73.7684;
+
+    const url = `https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lng}&radius=5000&type=restaurant|food&key=${process.env.REACT_APP_GMAPSAPI}`;
     fetch(url, {
       method: "GET",
       headers: {},
     })
       .then((response) => response.json())
       .then((data) => {
-        for (var i = 0; i < 7; i++) {
-          console.log("name: ", data["results"][i]["name"]);
-          console.log("address: ", data["results"][i]["vicinity"]);
-          console.log("icon: ", data["results"][i]["icon"]);
+        var formated_data_RESTURANTS = [];
+        for (var i = 0; i < 3; i++) {
+          formated_data_RESTURANTS.push({
+            name: data["results"][i]["name"],
+            vicinity: data["results"][i]["vicinity"],
+            rating: data["results"][i]["rating"],
+          });
         }
         this.setState({
-          placesNearby: data["results"],
+          restaurantsNearby: formated_data_RESTURANTS,
+          loading: true,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  getLodgingNearby() {
+    this.setState({ loading: true });
+    // const { lat, lng } = this.props;
+    const lat = 18.6517;
+    const lng = 73.7684;
+
+    const url = `https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lng}&radius=5000&type=lodging&key=${process.env.REACT_APP_GMAPSAPI}`;
+    fetch(url, {
+      method: "GET",
+      headers: {},
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        var formated_data_LODGES = [];
+        for (var i = 0; i < 3; i++) {
+          formated_data_LODGES.push({
+            name: data["results"][i]["name"],
+            vicinity: data["results"][i]["vicinity"],
+            rating: data["results"][i]["rating"],
+          });
+        }
+        this.setState({
+          lodgingNearby: formated_data_LODGES,
           loading: false,
         });
       })
@@ -46,12 +84,15 @@ export default class PlacesNearby extends React.Component {
   }
 
   render() {
-    const { placesNearby, loading } = this.state;
+    // if (!this.state.loading) {
+    //   console.log("RESTURANTS RENDER: ", this.state.restaurantsNearby);
+    //   console.log("LODGES RENDER: ", this.state.lodgingNearby);
+    // }
+
+    const { restaurantsNearby, lodgingNearby, loading } = this.state;
     return (
       <div className="places-nearby">
-        {!loading && (
-          <Carrousel placesNearby={placesNearby} />
-        )}  
+        {!loading && <Carrousel placesNearby={restaurantsNearby} />}
       </div>
     );
   }
