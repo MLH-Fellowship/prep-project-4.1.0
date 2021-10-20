@@ -6,17 +6,11 @@ import {
   tempDown,
   tempUp,
 } from "../../assets/icons";
-<<<<<<< Updated upstream
-
-import "./weatherinfo.css";
-
-=======
 import React, { useState, useEffect } from "react";
 import "./weatherinfo.css";
 
 
 
->>>>>>> Stashed changes
 const getTime = (timeStamp) => {
   return `${new Date(timeStamp * 1000).getHours()} : ${new Date(
     timeStamp * 1000
@@ -25,8 +19,6 @@ const getTime = (timeStamp) => {
 
 const WeatherInfo = (props) => {
   const { data } = props;
-<<<<<<< Updated upstream
-=======
 
   const [dates, setddates] = useState(new Date());
  
@@ -157,32 +149,24 @@ const WeatherInfo = (props) => {
             
   };
  
->>>>>>> Stashed changes
   const icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   const { temp, temp_max, temp_min, pressure, humidity } = data.main;
   const isDay = data?.weather[0].icon?.includes("d");
   console.log(data);
-<<<<<<< Updated upstream
-=======
 
   
 
 
   
->>>>>>> Stashed changes
   return (
     <div class="grid-container">
       <div class="top-row">
         <div class="grid-item item1">
-<<<<<<< Updated upstream
-          <b>{data.name}</b>, {data.sys.country}
-=======
           <b>{data.name}</b>, {data.sys.country}<br/>
           <div class="grid-item">
             {getLocalTime(data.timezone).final}
             
           </div>
->>>>>>> Stashed changes
         </div>
         <div class="grid-item item2">
           <div className="temperature-info">
