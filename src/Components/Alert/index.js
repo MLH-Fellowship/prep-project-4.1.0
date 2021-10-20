@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar } from "swiper";
 import { Link } from "react-router-dom";
@@ -11,23 +11,28 @@ import axios from "axios";
 import "./styles.css";
 
 const CustomToastWithLink = (msg) => {
-  if (typeof msg == 'string') {
+  if (typeof msg == "string") {
     return (
-      <div onClick={() => {
-        let div = document.querySelector("#alertDiv")
-        div.scrollIntoView();
-      }}>{msg}</div>
-    )
+      <div
+        onClick={() => {
+          let div = document.querySelector("#alertDiv");
+          div.scrollIntoView();
+        }}
+      >
+        {msg}
+      </div>
+    );
   }
+};
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 function Index({ city }) {
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   const [data, setData] = useState([]);
+  // const [isTrue, SetIsTrue] = useState(false);
+  let isTrue = useRef(false);
   useEffect(() => {
-    console.log(city)
+    console.log(city);
     fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_ALERTKEY}&q=${city}&alerts=yes`
     )
@@ -36,15 +41,27 @@ function Index({ city }) {
         console.log(res);
         console.log(res?.alerts?.alert);
         const apiData = res?.alerts?.alert;
-        console.log(apiData)
-        setData(apiData);
-        if (apiData.length > 0) {
-          toast.error(() => CustomToastWithLink(`Some alerts have been detected in ${capitalizeFirstLetter(city)}`), {
-            theme: "colored",
-            hideProgressBar: true,
-            closeButton: false,
-          });
+        console.log(apiData);
+
+        if (data.length === 0 && apiData.length > 0) {
+          console.log("true is", isTrue);
+          // SetIsTrue(true);
+          // isTrue.current = true;
+          toast.error(
+            () =>
+              CustomToastWithLink(
+                `Some alerts have been detected in ${capitalizeFirstLetter(
+                  city
+                )}`
+              ),
+            {
+              theme: "colored",
+              hideProgressBar: true,
+              closeButton: false,
+            }
+          );
         }
+        setData(apiData);
       })
       .catch((err) => {
         console.log(err);
@@ -57,7 +74,7 @@ function Index({ city }) {
   SwiperCore.use([Scrollbar]);
   return (
     <>
-      {data?.length &&
+      {data?.length && (
         <Swiper
           // install Swiper modules
           modules={["Navigation", "Pagination", "Scrollbar", "A11y"]}
@@ -72,7 +89,6 @@ function Index({ city }) {
             renderBullet: () => {
               return <span>Hey</span>;
             },
-
           }}
           scrollbar={{ draggable: true, className: "swiperScrollbar" }}
           onSwiper={(swiper) => console.log(swiper)}
@@ -87,10 +103,10 @@ function Index({ city }) {
                 </div>
                 <div className="blog-slider__content">
                   <span className="blog-slider__code">
-                    Effective from: {alert?.effective}
+                    Effective from: {new Date(alert?.effective).toUTCString()}
                   </span>
                   <span className="blog-slider__code">
-                    Expires on: {alert?.expires}
+                    Expires on: {new Date(alert?.expires).toUTCString()}
                   </span>
                   <div className="blog-slider__title">{alert?.event}</div>
                   <div className="blog-slider__text">{alert?.desc}</div>
@@ -99,7 +115,7 @@ function Index({ city }) {
             );
           })}
         </Swiper>
-      }
+      )}
       <div id="alertDiv"></div>
     </>
   );
