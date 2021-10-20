@@ -73,7 +73,7 @@
   height: 100%;
   /* background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%); */
   border-radius: 20px;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .blog-slider__img img {

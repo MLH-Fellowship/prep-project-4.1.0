@@ -44,9 +44,6 @@ function Index({ city }) {
         console.log(apiData);
 
         if (data.length === 0 && apiData.length > 0) {
-          console.log("true is", isTrue);
-          // SetIsTrue(true);
-          // isTrue.current = true;
           toast.error(
             () =>
               CustomToastWithLink(
@@ -103,13 +100,21 @@ function Index({ city }) {
                 </div>
                 <div className="blog-slider__content">
                   <span className="blog-slider__code">
-                    Effective from: {new Date(alert?.effective).toUTCString()}
+                    <strong>Effective from:</strong> &nbsp;&nbsp;
+                    {new Date(alert?.effective).toUTCString()}
                   </span>
                   <span className="blog-slider__code">
-                    Expires on: {new Date(alert?.expires).toUTCString()}
+                    <strong>Expires on:</strong> &nbsp;&nbsp;
+                    {new Date(alert?.expires).toUTCString()}
                   </span>
-                  <div className="blog-slider__title">{alert?.event}</div>
-                  <div className="blog-slider__text">{alert?.desc}</div>
+                  <div className="blog-slider__title">
+                    <strong>Event: </strong> &nbsp;&nbsp;
+                    {alert?.event}
+                  </div>
+                  <div className="blog-slider__text">
+                    <strong>Description:</strong>&nbsp;&nbsp;
+                    {alert?.desc}
+                  </div>
                 </div>
               </SwiperSlide>
             );
