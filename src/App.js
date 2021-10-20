@@ -5,6 +5,8 @@ import Card from "./Components/Card";
 import FavPlaceCard from "./Components/FavPlaces";
 import placeContext from "./Context/placesContext";
 import Loader from "react-loader-spinner";
+import WeeklyForecast from "./Components/WeeklyForecast";
+import alanBtn from "@alan-ai/alan-sdk-web";
 import Navbar from "./Components/navbar/Navbar";
 import Background from "./Components/Background";
 import RequiredThings from "./Components/RequiredThings";
@@ -23,6 +25,26 @@ function App() {
     setPlaces,
     error,
   } = useWeather();
+
+  useEffect(() => {
+    alanBtn({
+      key: process.env.REACT_APP_ALAN_APIKEY,
+      onCommand: function (commandData) {
+        if (commandData.command === "search") {
+          setCity(commandData.text);
+        }
+        if (commandData.command === "handleCity") {
+          setCity(commandData.cityname);
+        }
+        if (commandData.command === "scrollToWeeklyForecast") {
+          window.scrollTo({
+            top: document.querySelector(".weatherCards").offsetTop,
+            behavior: "smooth",
+          });
+        }
+      },
+    });
+  }, []);
 
   const handleCity = (city) => {
     setCity(city);
