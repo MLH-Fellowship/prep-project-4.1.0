@@ -17,10 +17,9 @@
     max-width: 680px;
     height: 400px !important;
   }
-  .blog-slider__img{
+  .blog-slider__img {
     display: none;
   }
-  
 }
 
 @media screen and (max-width: 768px) {
@@ -36,7 +35,6 @@
   .swiper-container {
     height: 350px;
   }
-  
 }
 
 .swiper-slide {
@@ -44,7 +42,9 @@
   align-items: center;
   justify-content: flex-start;
   text-align: left !important;
-  height: 400px !important;
+  height: 360px !important;
+  max-height: 360px !important;
+  overflow: auto;
   margin: 0px !important;
 }
 /* @media screen and (max-width: 768px) {
@@ -66,8 +66,6 @@
   width: 300px;
   flex-shrink: 0;
   height: 300px !important;
-  /* background-image: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%); */
-  /* box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2); */
   border-radius: 20px;
   transform: translateX(-22px);
   overflow: hidden;
@@ -162,7 +160,7 @@
 .blog-slider__text {
   color: rgba(255, 255, 255, 0.774);
   margin-bottom: 30px;
-  line-height: 1.5em;
+  line-height: 1.2em;
 }
 .blog-slider__button {
   display: inline-flex;
@@ -249,7 +247,6 @@
   transform: translateY(-50%);
 }
 
-
 /* This is the bullet point for current slide */
 .swiper-scrollbar-drag {
   opacity: 1;
@@ -259,12 +256,12 @@
 }
 
 @media screen and (max-width: 800px) {
-  .blog-slider__content{
+  .blog-slider__content {
     margin-top: 180px !important;
   }
 }
 @media screen and (max-width: 500px) {
-  .blog-slider__content{
+  .blog-slider__content {
     margin-top: 380px !important;
   }
 }

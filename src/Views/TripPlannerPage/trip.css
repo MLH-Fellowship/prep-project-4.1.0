@@ -1,0 +1,12 @@
+.tripheader{
+    
+   height: 70vh !important;
+   background-image: url(https://static.pexels.com/photos/92090/pexels-photo-92090-large.jpeg);
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+#tripPlanner {
+    background:transparent;
+}
