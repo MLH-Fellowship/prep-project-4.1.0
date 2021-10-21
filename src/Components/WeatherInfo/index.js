@@ -210,7 +210,7 @@ const WeatherInfo = (props) => {
       </div>
     </div>
     <div class="hrs">
-    <div class="grid-sub-title"><h3>Hourly Forcast</h3></div>
+    <div class="grid-sub-title"><h3>Hourly Forecast</h3></div>
     {
             hourlyData.map((val, index) => {
               return <div key={index} class="grid-sub-itemss">  
