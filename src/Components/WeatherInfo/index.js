@@ -11,11 +11,13 @@ import "./weatherinfo.css";
 
 const getTime = (timestamp) => {
   var date = new Date(timestamp * 1000);
-  var hours = date.getHours();
-  var minutes = "0" + date.getMinutes();
+  var hours = date.getHours();  
+  // Minutes part from the timestamp
+  var minutes = "0" + date.getMinutes();  
+  // Seconds part from the timestamp
   var seconds = "0" + date.getSeconds();
 
-
+  // Will display time in 10:30:23 format
   var formattedTime =
     hours + ":" + minutes.substr(-2) + ":" + seconds.substr(-2);
 
@@ -27,7 +29,6 @@ const WeatherInfo = (props) => {
 
   const [dates, setddates] = useState(new Date());
   const [hourlyData, setHourlyData] = useState(new Array());
- 
 
   useEffect(async () => {    
       async function fetchWeather(lat, lon){
@@ -42,10 +43,7 @@ const WeatherInfo = (props) => {
         return result;
       }
 
-    
-
-      async function fetchHourly(lat, ling){
-          
+      async function fetchHourly(lat, ling){          
           let data = await fetchWeather(lat, ling);
           let hourly = data['hourly'];
           let return_arr = []
@@ -71,8 +69,6 @@ const WeatherInfo = (props) => {
       setHourlyData(x["data"]);
   }, [data]);
 
-
-
   const getLocalTime = (timezone_offset) => {
     var currDate = new Date();
     var offsetHours = Math.floor(timezone_offset / 3600);
@@ -88,17 +84,12 @@ const WeatherInfo = (props) => {
     return {'final':finalTime,
             'dater' : currDate
           }
-            
   };
  
   const icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
   const { temp, temp_max, temp_min, pressure, humidity } = data.main;
   const isDay = data?.weather[0].icon?.includes("d");
   console.log(data);
-
-  
-
-
   
   return (
     <div class="grid-container">
@@ -107,7 +98,6 @@ const WeatherInfo = (props) => {
           <b>{data.name}</b>, {data.sys.country}<br/>
           <div class="grid-item">
             {getLocalTime(data.timezone).final}
-            
           </div>
         </div>
         <div class="grid-item item2">
@@ -186,10 +176,10 @@ const WeatherInfo = (props) => {
       </div>
 
       <div class="grid-item item5">
-        <div class="hourly-information">
+        <div class="other-information">
           {
             hourlyData.map((val, index) => {
-              return <div key={index} class="grid-sub-item hourly-padding">  
+              return <div key={index} class="grid-sub-item">  
                   <div class="item-icon">
                     +{index+1} H: 
                   </div>
