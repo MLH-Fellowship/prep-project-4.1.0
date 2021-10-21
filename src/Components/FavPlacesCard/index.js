@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import "./style.css";
+import { ToggleUnitsContext } from "../../Views/HomePage";
+
 function Index(props) {
   const { place } = props;
   const BASE_URL = "https://api.openweathermap.org/data/2.5/";
@@ -14,6 +16,7 @@ function Index(props) {
   const [weekly, setWeekly] = useState([]);
   const [minTemp, setminTemp] = useState([]);
   const [maxTemp, setmaxTemp] = useState([]);
+  const [selected, setSelected] = useContext(ToggleUnitsContext);
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -25,7 +28,6 @@ function Index(props) {
       );
       const { coord } = data; //long lat
       const { lat, lon } = coord;
-
       let oneApiData = await axios.get(
         `${BASE_URL}onecall?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
       );
@@ -77,10 +79,19 @@ function Index(props) {
           {capitalizeFirstLetter(description)}
           <br />
           <span>
-            Wind {wind}km/h <span className="dot">•</span> Humidity {humidity}%
+            Wind{" "}
+            {selected
+              ? Math.floor(wind).toPrecision(3) + " m/s"
+              : (Math.floor(wind) * 3.6).toPrecision(3) + " km/hr"}{" "}
+            <span className="dot">•</span> Humidity {humidity}%
           </span>
         </h3>
-        <h1 className="h1-heading">{Math.floor(temperature)}°C</h1>
+        <h1 className="h1-heading">
+          {/* {Math.floor(temperature)}°C */}
+          {selected
+            ? Math.floor(temperature).toPrecision(4) + " °C"
+            : (Math.floor(temperature) * 1.8 + 32).toPrecision(4) + " °F"}
+        </h1>
         <div className="image">
           <img
             src={`http://openweathermap.org/img/w/${icon}.png`}
@@ -96,12 +107,25 @@ function Index(props) {
           </tr>
           <tr>
             {minTemp.map((temp) => {
-              return <td>{Math.floor(temp)}°C</td>;
+              return (
+                <td>
+                  {/* {Math.floor(temp)}°C */}
+                  {selected
+                    ? Math.floor(temp).toPrecision(2) + " °C"
+                    : (Math.floor(temp) * 1.8 + 32).toPrecision(2) + " °F"}
+                </td>
+              );
             })}
           </tr>
           <tr>
             {maxTemp.map((temp) => {
-              return <td>{Math.floor(temp)}°C</td>;
+              return (
+                <td>
+                  {selected
+                    ? Math.floor(temp).toPrecision(2) + " °C"
+                    : (Math.floor(temp) * 1.8 + 32).toPrecision(2) + " °F"}
+                </td>
+              );
             })}
           </tr>
         </table>
