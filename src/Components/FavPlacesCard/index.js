@@ -81,8 +81,8 @@ function Index(props) {
           <span>
             Wind{" "}
             {selected
-              ? wind.toPrecision(2) + " m/s"
-              : (wind * 3.6).toPrecision(2) + " km/hr"}{" "}
+              ? Math.floor(wind).toPrecision(3) + " m/s"
+              : (Math.floor(wind) * 3.6).toPrecision(3) + " km/hr"}{" "}
             <span className="dot">•</span> Humidity {humidity}%
           </span>
         </h3>
