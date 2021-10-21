@@ -48,7 +48,7 @@ const WeatherInfo = (props) => {
           let data = await fetchWeather(lat, ling);
           let hourly = data['hourly'];
           let return_arr = []
-          let number_of_hours = 6
+          let number_of_hours = 4
           
           for(let i = 0; i<number_of_hours; i++){
               return_arr.push( {
