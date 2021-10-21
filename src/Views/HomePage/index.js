@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../Components/Header";
 import FavPlaceCard from "../../Components/FavPlaces";
 import placeContext from "../../Context/placesContext";
@@ -12,7 +12,12 @@ import { ToastContainer, toast } from "react-toastify";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import "react-toastify/dist/ReactToastify.css";
 import Alert from "../../Components/Alert/index";
+
+export const ToggleUnitsContext = React.createContext();
+
 const HomePage = () => {
+  const [selected, setSelected] = useState(true);
+
   const {
     city,
     results,
@@ -72,23 +77,25 @@ const HomePage = () => {
 
         {results && (
           <placeContext.Provider value={[places, setPlaces]}>
-            <Background results={results}>
-              <Navbar />
-              <Header
-                city={city}
-                onChangeCity={handleCity}
-                results={results}
-                isLoaded={isLoaded}
-              />
-              <RequiredThings results={results} />
-              <WeeklyForecastContainer
-                results={results}
-                city={city}
-                isLoaded={isLoaded}
-              />
-              <FavPlaceCard />
+            <ToggleUnitsContext.Provider value={[selected, setSelected]}>
+              <Background results={results}>
+                <Navbar />
+                <Header
+                  city={city}
+                  onChangeCity={handleCity}
+                  results={results}
+                  isLoaded={isLoaded}
+                />
+                <RequiredThings results={results} />
+                <WeeklyForecastContainer
+                  results={results}
+                  city={city}
+                  isLoaded={isLoaded}
+                />
+                <FavPlaceCard />
+              </Background>
               <Alert city={city} />
-            </Background>
+            </ToggleUnitsContext.Provider>
           </placeContext.Provider>
         )}
       </>
