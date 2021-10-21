@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import "./searchbox.css";
 
-export default class SearchBox extends React.Component {
+export default class TripSearchFrom extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,25 +46,29 @@ export default class SearchBox extends React.Component {
 
   _handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      this.props.setCity(this.state.city);
+      this.props.setFrom(this.state.city);
+      console.log();
     }
   };
 
   render() {
     return (
       <>
-        <div className="search-box" onKeyDown={this._handleKeyDown}>
+        <div className="from-search-box" onKeyDown={this._handleKeyDown}>
           <header className="box-header">
             <ReactSearchAutocomplete
               items={this.state.items}
               onSearch={(record) => this.autoCompleteCity(record)}
-              onSelect={(city) => this.props.setCity(city.name)}
+              onSelect={(city) =>
+                this.props.setFrom({ city: city, type: "from" })
+              }
+              onClear={() => this.props.setFrom({})}
               autoFocus
               styling={{
                 borderRadius: "12px",
               }}
               useCaching={false}
-              placeholder="Search for a city"
+              placeholder="From:"
             />
           </header>
         </div>

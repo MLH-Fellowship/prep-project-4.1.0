@@ -1,39 +1,37 @@
+import React, { useContext } from "react";
 import "../trip.css";
 import "./header.css";
+import TripSearchFrom from "../TripSearchFrom";
+import TripSearchTo from "../TripSearchTo";
+import { useState } from "react";
+import { CityContext } from "../index";
+
 const TripHeader = ({ children }) => {
+  const [results, setResults, cities, setCities] = useContext(CityContext);
+
+  const [from, setFrom] = useState({});
+  const [to, setTo] = useState({});
+
+  function onSearch(event) {
+    event.preventDefault();
+    setCities([from, to]);
+    setResults([]);
+  }
+
   return (
     <div class="tripheader">
       {children}
 
-           <h1>Trip Planner</h1>
+      <h1>Trip Planner</h1>
       <br />
       <div class="d-flex justify-content-center">
-        <form action="#">
-          <div class="form-group d-sm-flex">
-            <div class="d-flex ml-2 align-items-center flex-fill me-sm-1 my-sm-0 my-4 border-bottom position-relative">
-              {" "}
-              <input
-                type="text"
-                required
-                placeholder="From"
-                class="form-control"
-              />
-              <div class="label" id="from"></div>
-            </div>
-            <div class="d-flex ml-2 align-items-center flex-fill ms-sm-1 my-sm-0 my-4 border-bottom position-relative">
-              {" "}
-              <input
-                type="text"
-                required
-                placeholder="To"
-                class="form-control"
-              />
-              <div class="label" id="to"></div>
-            </div>
-          </div>
+        <form onSubmit={onSearch}>
+          <TripSearchFrom setFrom={setFrom} />
+          <TripSearchTo setTo={setTo} />
+          <input type="submit" required value="Submit" />
         </form>
-        </div>
       </div>
+    </div>
   );
 };
 
