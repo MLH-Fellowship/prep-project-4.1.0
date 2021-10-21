@@ -3,7 +3,6 @@ import TripHeader from "./TripHeader";
 import TripNavBar from "./TripNavbar";
 import RequiredThings from "../../Components/RequiredThings";
 
-
 export const CityContext = React.createContext();
 
 const TripPlannerPage = (props) => {
@@ -15,10 +14,10 @@ const TripPlannerPage = (props) => {
   useEffect(() => {
     cities.map((obj) => {
       console.log(obj);
-      const cityname = obj.city.name.split(', ');
+      const cityname = obj.city.name.split(", ");
       fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=" +
-        cityname[0] +
+          cityname[0] +
           "&units=metric" +
           "&appid=" +
           process.env.REACT_APP_APIKEY
@@ -32,6 +31,7 @@ const TripPlannerPage = (props) => {
               setIsLoaded(true);
               if (obj.type == "from") {
                 results.splice(0, 0, result);
+               
               } else {
                 results.splice(1, 0, result);
               }
@@ -48,7 +48,6 @@ const TripPlannerPage = (props) => {
   return (
     <>
       <CityContext.Provider value={[results, setResults, cities, setCities]}>
-        {console.log(results)}
         <TripHeader>
           <TripNavBar />
         </TripHeader>
@@ -60,3 +59,6 @@ const TripPlannerPage = (props) => {
 };
 
 export default TripPlannerPage;
+
+
+
