@@ -1,6 +1,6 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./weathercard.css";
-import {ToggleUnitsContext} from "../../Views/HomePage"
+import { ToggleUnitsContext } from "../../Views/HomePage";
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -22,7 +22,6 @@ const WeatherCard = ({ day, index }) => {
     .slice(0, 3); // December
   const date = dateObject.toLocaleString("en-US", { day: "numeric" }); // 9
 
-
   return (
     <div className="weatherCard" key={index}>
       <div className="app-card__subtext">
@@ -36,7 +35,9 @@ const WeatherCard = ({ day, index }) => {
           className="card__img app-card-img-1"
           alt="card__img"
         />
-        {selected? day.temp.day : "Fahren"}
+        {selected
+          ? day.temp.day.toPrecision(4) + " °C"
+          : (day.temp.day * 1.8 + 32).toPrecision(4) + " °F"}
         {/* {day.temp.day} °C */}
       </span>
       <div className="app-card__subtext" style={{ color: "#ccd1d9" }}>
