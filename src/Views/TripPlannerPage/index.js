@@ -1,59 +1,58 @@
-import React, {useState, useEffect} from "react";
-import TripHeader from "./TripHeader"
-import TripNavBar from "./TripNavbar"
-import WeatherInfo from "../../Components/WeatherInfo";
-import useWeather from "../../customHooks/useWeather";
+import React, { useState, useEffect } from "react";
+import TripHeader from "./TripHeader";
+import TripNavBar from "./TripNavbar";
+
 
 export const CityContext = React.createContext();
 
 const TripPlannerPage = (props) => {
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
-  const [cities, setCities] = useState(["", ""])
-  const [results, setResults] = useState([])
+  const [cities, setCities] = useState([]);
+  const [results, setResults] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(cities);
-  
   useEffect(() => {
-  cities.map(city => {
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city.name + "&units=metric" + "&appid=" + process.env.REACT_APP_APIKEY)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          if (result['cod'] !== 200) {
-            setIsLoaded(false)
-          } else {
-            setIsLoaded(true);
-            setResults([...results, result]);
-          }
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
+    cities.map((obj) => {
+      console.log(obj);
+      fetch(
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+          obj.city.name +
+          "&units=metric" +
+          "&appid=" +
+          process.env.REACT_APP_APIKEY
       )
-    })
-  }, [cities])
-  console.log(results);
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if (result["cod"] !== 200) {
+              setIsLoaded(false);
+            } else {
+              setIsLoaded(true);
+              if (obj.type == "from") {
+                results.splice(0, 0, result);
+              } else {
+                results.splice(1, 0, result);
+              }
+            }
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    });
+  }, [cities]);
 
-    return(
-<>
-<CityContext.Provider value={[from, setFrom, to, setTo, cities, setCities]}>
-<TripHeader >
-<TripNavBar />
-</TripHeader>
-</CityContext.Provider>
-{/* {results.map (result => {
-  
-<WeatherInfo data={result} />
-})} */}
-{/* <PlacesNearby city={city} setCity={onChangeCity} /> */}
+  return (
+    <>
+      <CityContext.Provider value={[results, setResults, cities, setCities]}>
+        <TripHeader>
+          <TripNavBar />
+        </TripHeader>
+      </CityContext.Provider>
+      {/* <PlacesNearby city={city} setCity={onChangeCity} /> */}
+    </>
+  );
+};
 
-
-</>
-    )
-}
-
-export default TripPlannerPage
+export default TripPlannerPage;

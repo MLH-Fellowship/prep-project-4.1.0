@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import "./searchbox.css";
 
-
 export default class TripSearchFrom extends React.Component {
   constructor(props) {
     super(props);
@@ -26,7 +25,6 @@ export default class TripSearchFrom extends React.Component {
       fetch(`${autocompleteURL}${query}`)
         .then((res) => res.json())
         .then((result) => {
-
           const set = result?.items?.map((item) => item.address.city);
           const uniqueCities = [...new Set(set)];
 
@@ -48,7 +46,7 @@ export default class TripSearchFrom extends React.Component {
   _handleKeyDown = (e) => {
     if (e.key === "Enter") {
       this.props.setFrom(this.state.city);
-      console.log()
+      console.log();
     }
   };
 
@@ -60,8 +58,10 @@ export default class TripSearchFrom extends React.Component {
             <ReactSearchAutocomplete
               items={this.state.items}
               onSearch={(record) => this.autoCompleteCity(record)}
-              onSelect={(city) => this.props.setFrom(city)}
-              onClear={() => this.props.setFrom("")}
+              onSelect={(city) =>
+                this.props.setFrom({ city: city, type: "from" })
+              }
+              onClear={() => this.props.setFrom({})}
               autoFocus
               styling={{
                 borderRadius: "12px",
