@@ -45,9 +45,13 @@ const TripPlannerPage = (props) => {
 <TripNavBar />
 </TripHeader>
 </CityContext.Provider>
-{/* <WeatherInfo data={results} /> */}
-
+{/* {results.map (result => {
+  
+<WeatherInfo data={result} />
+})} */}
 {/* <PlacesNearby city={city} setCity={onChangeCity} /> */}
+
+
 </>
     )
 }
