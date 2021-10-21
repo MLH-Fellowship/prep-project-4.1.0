@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./weathercard.css";
+import { ToggleUnitsContext } from "../../Views/HomePage";
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 const WeatherCard = ({ day, index }) => {
+  const [selected, setSelected] = useContext(ToggleUnitsContext);
+
   const icon = `http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`;
   const unixTimestamp = day.dt;
 
@@ -18,6 +21,7 @@ const WeatherCard = ({ day, index }) => {
     .toLocaleString("en-US", { month: "long" })
     .slice(0, 3); // December
   const date = dateObject.toLocaleString("en-US", { day: "numeric" }); // 9
+
   return (
     <div className="weatherCard" key={index}>
       <div className="app-card__subtext">
@@ -31,7 +35,10 @@ const WeatherCard = ({ day, index }) => {
           className="card__img app-card-img-1"
           alt="card__img"
         />
-        {day.temp.day} °C
+        {selected
+          ? day.temp.day.toPrecision(4) + " °C"
+          : (day.temp.day * 1.8 + 32).toPrecision(4) + " °F"}
+        {/* {day.temp.day} °C */}
       </span>
       <div className="app-card__subtext" style={{ color: "#ccd1d9" }}>
         {capitalizeFirstLetter(day.weather[0].description)}
@@ -52,7 +59,10 @@ const WeatherCard = ({ day, index }) => {
             alt="card__img"
           />
         </div>
-        {day.wind_speed} m/s
+        {selected
+          ? day.wind_speed.toPrecision(2) + " m/s"
+          : (day.wind_speed * 3.6).toPrecision(2) + " km/hr"}
+        {/* {day.wind_speed} m/s */}
       </span>
     </div>
   );
