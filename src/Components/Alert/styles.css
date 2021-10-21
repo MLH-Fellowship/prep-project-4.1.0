@@ -25,10 +25,8 @@
 
 @media screen and (max-width: 768px) {
   .swiper-container {
-    /* min-height: 500px; */
     height: 400px !important;
     width: 80% !important;
-    /* margin: 180px auto; */
   }
 }
 
@@ -87,11 +85,6 @@
   transition: all 0.3s;
 }
 
-/* @media screen and (max-width: 992px) {
-    .blog-slider__img{
-    // width: 45%;
-    }
-  } */
 @media screen and (max-width: 768px) {
   .blog-slider__img {
     height: 100%;
@@ -119,9 +112,7 @@
 @media screen and (max-width: 800px) {
   .blog-slider__content {
     transform: translateY(-50%);
-    /* text-align: center; */
     margin-top: 0px !important;
-    /* padding: 0 30px; */
   }
 }
 
