@@ -26,7 +26,7 @@ export default class SearchBox extends React.Component {
         .then((res) => res.json())
         .then((result) => {
 
-          const set = result?.items?.map((item) => item.address.city);
+          const set = result?.items?.map((item) => `${item.address.city}, ${item.address.state}, ${item.address.countryCode}`);
           const uniqueCities = [...new Set(set)];
 
           var filterdCities = uniqueCities.filter(function (x) {
