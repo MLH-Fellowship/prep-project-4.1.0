@@ -94,6 +94,7 @@ const WeatherInfo = (props) => {
   console.log(data);
   
   return (
+    <div class="grid-main">
     <div class="grid-container">
       <div class="top-row">
         <div class="grid-item item1">
@@ -192,7 +193,7 @@ const WeatherInfo = (props) => {
 
       <div class="grid-item item5">
         <div class="other-information">
-          {
+          {/* {
             hourlyData.map((val, index) => {
               return <div key={index} class="grid-sub-item">  
                   <div class="item-icon">
@@ -204,9 +205,29 @@ const WeatherInfo = (props) => {
                   </div>
               </div>
             })
-          }
+          } */}
         </div>
       </div>
+    </div>
+    <div class="hrs">
+    {
+            hourlyData.map((val, index) => {
+              return <div key={index} class="grid-sub-itemss">  
+                  <div class="item-icon">
+                    +{index+1} H: 
+                  </div>
+                  <div class="item-information">
+                    <div class="item-value">
+                    {selected
+              ? Math.floor(val.feels_like).toPrecision(4) + " °C"
+              : (Math.floor(val.feels_like) * 1.8 + 32).toPrecision(4) + " °F"}
+              </div>
+                   
+                  </div>
+              </div>
+            })
+          }
+    </div>
     </div>
   );
 };
