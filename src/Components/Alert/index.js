@@ -33,14 +33,13 @@ function Index({ city }) {
   // const [isTrue, SetIsTrue] = useState(false);
   let isTrue = useRef(false);
   useEffect(() => {
-    console.log(City);
     fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_ALERTKEY}&q=${City}&alerts=yes`
     )
       .then((res) => res.json())
       .then((res) => {
         const apiData = res?.alerts?.alert;
-
+        console.log("data is:", apiData);
         if (data.length === 0 && apiData.length > 0) {
           toast.error(
             () =>
