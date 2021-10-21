@@ -29,12 +29,13 @@ function capitalizeFirstLetter(string) {
 }
 function Index({ city }) {
   const [data, setData] = useState([]);
+  const [City, setCity] = useState(city);
   // const [isTrue, SetIsTrue] = useState(false);
   let isTrue = useRef(false);
   useEffect(() => {
-    console.log(city);
+    console.log(City);
     fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_ALERTKEY}&q=${city}&alerts=yes`
+      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_ALERTKEY}&q=${City}&alerts=yes`
     )
       .then((res) => res.json())
       .then((res) => {
@@ -48,7 +49,7 @@ function Index({ city }) {
             () =>
               CustomToastWithLink(
                 `Some alerts have been detected in ${capitalizeFirstLetter(
-                  city
+                  City
                 )}`
               ),
             {
@@ -65,7 +66,7 @@ function Index({ city }) {
       });
 
     console.log("dats is ", data);
-  }, [city]);
+  }, [City]);
   SwiperCore.use([Navigation]);
   SwiperCore.use([Pagination]);
   SwiperCore.use([Scrollbar]);
