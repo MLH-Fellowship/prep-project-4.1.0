@@ -1,7 +1,7 @@
-.search-box {
+.to-search-box {
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 50%;
 }
 
 .box-header {

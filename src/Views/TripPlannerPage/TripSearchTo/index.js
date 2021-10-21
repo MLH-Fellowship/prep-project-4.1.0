@@ -54,7 +54,7 @@ export default class TripSearchTo extends React.Component {
   render() {
     return (
       <>
-        <div className="search-box" onKeyDown={this._handleKeyDown}>
+        <div className="to-search-box" onKeyDown={this._handleKeyDown}>
           <header className="box-header">
             <ReactSearchAutocomplete
               items={this.state.items}

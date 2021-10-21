@@ -16,32 +16,6 @@ const TripHeader = ({ children }) => {
 
   function onSearch() {
     setCities([from, to])
-    cities.forEach(city => {
-      fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q=" +
-          city +
-          "&units=metric" +
-          "&appid=" +
-          process.env.REACT_APP_APIKEY
-      )
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            if (result["cod"] !== 200) {
-              alert("Location not found!");
-              notifyForInvalidLocation();
-              setCity("New York City");
-            } else {
-              setIsLoaded(true);
-              setResults(result);
-            }
-          },
-          (error) => {
-            setIsLoaded(true);
-            setError(error);
-          }
-        );
-    });
   }
 
   //console.log(cities)
