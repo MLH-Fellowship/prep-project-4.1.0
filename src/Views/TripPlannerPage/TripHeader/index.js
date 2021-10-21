@@ -1,42 +1,62 @@
+import React, {useContext} from "react";
 import "../trip.css";
 import "./header.css";
-import SearchBox from "../../../Components/Searchbox";
+import TripSearchFrom from "../TripSearchFrom";
+import TripSearchTo from "../TripSearchTo";
 import { useState } from "react";
+import {CityContext} from "../index";
+
 const TripHeader = ({ children }) => {
 
-  const [city1, setCity1] = useState("");
-  const [city2, setCity2] = useState("");
+  const [from, setFrom, to, setTo, cities, setCities] = useContext(CityContext)
 
-  const handleCity1 = (city) => {
-    setCity1(city);
-  };
+  // const [from, setFrom] = useState("");
+  // const [to, setTo] = useState("");
+  // const [cities, setCities] = useState(["", ""])
 
-  const handleCity2 = (city) => {
-    setCity2(city);
-  };
+  function onSearch() {
+    setCities([from, to])
+    cities.forEach(city => {
+      fetch(
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+          city +
+          "&units=metric" +
+          "&appid=" +
+          process.env.REACT_APP_APIKEY
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            if (result["cod"] !== 200) {
+              alert("Location not found!");
+              notifyForInvalidLocation();
+              setCity("New York City");
+            } else {
+              setIsLoaded(true);
+              setResults(result);
+            }
+          },
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    });
+  }
+
+  //console.log(cities)
 
   return (
     <div class="tripheader">
       {children}
 
-           <h1>Trip Planner</h1>
+      <h1>Trip Planner</h1>
       <br />
       <div class="d-flex justify-content-center">
-        {/* <form action="#"> */}
-          {/* <div class="form-group d-sm-flex">
-            <div class="d-flex ml-2 align-items-center flex-fill me-sm-1 my-sm-0 my-4 border-bottom position-relative">
-              {" "} */}
-              <SearchBox city1={city1} setCity={handleCity1} />
-              {/* <div class="label" id="from"></div>
-            </div>
-            <div class="d-flex ml-2 align-items-center flex-fill ms-sm-1 my-sm-0 my-4 border-bottom position-relative">
-              {" "} */}
-              <SearchBox city2={city2} setCity={handleCity2} />
-              {/* <div class="label" id="to"></div> */}
-            {/* </div>
-          </div>
-        </form> */}
-        </div>
+        <TripSearchFrom setFrom={setFrom} />
+        <TripSearchTo setTo={setTo} />
+        <button onClick={onSearch}>Search</button>
+      </div>
     </div>
   );
 };
