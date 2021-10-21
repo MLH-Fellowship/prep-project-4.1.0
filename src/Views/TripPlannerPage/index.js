@@ -46,6 +46,7 @@ const TripPlannerPage = (props) => {
   return (
     <>
       <CityContext.Provider value={[results, setResults, cities, setCities]}>
+        {console.log(results)}
         <TripHeader>
           <TripNavBar />
         </TripHeader>
