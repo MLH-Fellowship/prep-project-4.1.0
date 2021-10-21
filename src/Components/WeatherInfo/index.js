@@ -84,7 +84,7 @@ const WeatherInfo = (props) => {
     
     var hours = currDate.getHours();
     var AmOrPm = hours >= 12 ? 'pm' : 'am';
-    hours = "0" + (hours % 12) || 12;
+    hours = "0" + ((hours % 12) || 12);
     var minutes = "0" + currDate.getMinutes() ;
     var finalTime = "Local Time: " + hours.substr(-2) + ":" + minutes.substr(-2) + " " + AmOrPm; 
     return {'final':finalTime,
