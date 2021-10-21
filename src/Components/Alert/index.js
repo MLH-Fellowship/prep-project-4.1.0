@@ -66,7 +66,7 @@ function Index({ city }) {
   SwiperCore.use([Scrollbar]);
   return (
     <>
-      {data?.length && (
+      {data?.length !== 0 && (
         <>
           <div className="heading" id="weather">
             <h1 className="heading-h1">Weather Alerts</h1>
