@@ -114,7 +114,12 @@ const WeatherInfo = (props) => {
               <img src={windIcon} className="weather-icon" alt="temp-icon" />
             </div>
             <div class="item-information">
-              <div class="item-value">{data.wind.speed}m/s</div>
+              <div class="item-value">
+                {/* {data.wind.speed}m/s */}
+                {selected
+                  ? data.wind.speed.toPrecision(2) + " m/s"
+                  : (data.wind.speed * 3.6).toPrecision(2) + " km/hr"}
+              </div>
               <div class="item-name">Wind</div>
             </div>
           </div>

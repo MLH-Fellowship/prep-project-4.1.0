@@ -79,7 +79,11 @@ function Index(props) {
           {capitalizeFirstLetter(description)}
           <br />
           <span>
-            Wind {wind}km/h <span className="dot">•</span> Humidity {humidity}%
+            Wind{" "}
+            {selected
+              ? wind.toPrecision(2) + " m/s"
+              : (wind * 3.6).toPrecision(2) + " km/hr"}{" "}
+            <span className="dot">•</span> Humidity {humidity}%
           </span>
         </h3>
         <h1 className="h1-heading">

@@ -59,7 +59,10 @@ const WeatherCard = ({ day, index }) => {
             alt="card__img"
           />
         </div>
-        {day.wind_speed} m/s
+        {selected
+          ? day.wind_speed.toPrecision(2) + " m/s"
+          : (day.wind_speed * 3.6).toPrecision(2) + " km/hr"}
+        {/* {day.wind_speed} m/s */}
       </span>
     </div>
   );
