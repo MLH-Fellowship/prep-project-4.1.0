@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import "./searchbox.css";
 
-
 export default class TripSearchTo extends React.Component {
   constructor(props) {
     super(props);
@@ -59,7 +58,7 @@ export default class TripSearchTo extends React.Component {
             <ReactSearchAutocomplete
               items={this.state.items}
               onSearch={(record) => this.autoCompleteCity(record)}
-              onSelect={(city) => this.props.setTo(city)}
+              onSelect={(city) => this.props.setTo({ city: city, type: "to" })}
               onClear={() => this.props.setTo("")}
               autoFocus
               styling={{
