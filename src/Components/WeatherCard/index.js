@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import "./weathercard.css";
-import { ToggleUnitsContext } from "../../App";
+import {ToggleUnitsContext} from "../../Views/HomePage"
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);

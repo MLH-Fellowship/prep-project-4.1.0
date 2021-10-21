@@ -1,24 +1,13 @@
 import React, { Component } from "react";
 import "./toggleButton.css";
 
-import { ToggleUnitsContext } from "../../App";
+import {ToggleUnitsContext} from "../../Views/HomePage"
 
 export class ToggleButton extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
-  // render() {
-  //   const { selected, toggleSelected } = this.props;
-  //   return (
-  //     <div className="toggle-container" onClick={toggleSelected}>
-  //       <div className={`dialog-button ${selected ? "" : "disabled"}`}>
-  //         {selected ? "°C" : "°F"}
-  //       </div>
-  //     </div>
-  //   );
-  // }
 
   render() {
     return (
