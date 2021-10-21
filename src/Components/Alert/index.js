@@ -74,7 +74,7 @@ function Index({ city }) {
     <>
       {data?.length && (
         <>
-          <div className="heading" id="Bookmarks">
+          <div className="heading" id="weather">
             <h1 className="heading-h1">Weather Alerts</h1>
           </div>
           <Swiper
