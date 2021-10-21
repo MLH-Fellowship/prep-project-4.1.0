@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import "./searchbox.css";
 
+
 export default class SearchBox extends React.Component {
   constructor(props) {
     super(props);
