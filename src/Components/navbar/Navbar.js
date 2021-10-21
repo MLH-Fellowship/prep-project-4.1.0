@@ -3,7 +3,7 @@ import { MenuItems } from "./MenuItems";
 import "./Navbar.css";
 import { Button } from "../Button";
 import logo from "../../mlh-prep.png";
-import { ToggleButton } from "../ToggleButton";
+import {ToggleButton} from "../ToggleButton";
 
 class Navbar extends Component {
   state = { clicked: false };
@@ -34,10 +34,14 @@ class Navbar extends Component {
             );
           })}
         </ul>
-        <Button>Trip Planner</Button>
-        <ToggleButton>
-          {" "}
-        </ToggleButton>
+        <Button
+          onclick={() => {
+            window.location.href = "./trip-planner";
+          }}
+        >
+          Trip Planner
+        </Button>
+        <ToggleButton> </ToggleButton>
       </nav>
     );
   }
