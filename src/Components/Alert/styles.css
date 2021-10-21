@@ -47,11 +47,6 @@
   max-height: 400px !important;
   margin: 0px !important;
 }
-/* @media screen and (max-width: 768px) {
-  .swiper-slide {
-    flex-direction: column;
-  }
-} */
 
 .blog-slider__img img {
   opacity: 1;
@@ -120,11 +115,7 @@
   padding-right: 25px;
   padding-bottom: 30px !important;
 }
-/* @media screen and (max-width: 992px) {
-    .blog-slider__content{
-    // width: 55%;
-    }
-  } */
+
 @media screen and (max-width: 800px) {
   .blog-slider__content {
     transform: translateY(-50%);

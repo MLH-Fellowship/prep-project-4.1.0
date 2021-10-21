@@ -39,10 +39,7 @@ function Index({ city }) {
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-        console.log(res?.alerts?.alert);
         const apiData = res?.alerts?.alert;
-        console.log(apiData);
 
         if (data.length === 0 && apiData.length > 0) {
           toast.error(
@@ -64,8 +61,6 @@ function Index({ city }) {
       .catch((err) => {
         console.log(err);
       });
-
-    console.log("dats is ", data);
   }, [City]);
   SwiperCore.use([Navigation]);
   SwiperCore.use([Pagination]);
