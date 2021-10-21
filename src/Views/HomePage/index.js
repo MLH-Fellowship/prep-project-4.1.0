@@ -11,6 +11,7 @@ import useWeather from "../../customHooks/useWeather";
 import { ToastContainer, toast } from "react-toastify";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import "react-toastify/dist/ReactToastify.css";
+import Alert from "../../Components/Alert/index";
 
 export const ToggleUnitsContext = React.createContext();
 
@@ -93,6 +94,7 @@ const HomePage = () => {
                 />
                 <FavPlaceCard />
               </Background>
+              <Alert city={city} />
             </ToggleUnitsContext.Provider>
           </placeContext.Provider>
         )}

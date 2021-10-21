@@ -3,6 +3,7 @@
   min-width: 100vw;
   /* background-color: #133667; */
   background-attachment: fixed !important;
+  padding-bottom: 50px;
 }
 
 .vanta-canvas {
