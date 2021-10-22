@@ -12,8 +12,9 @@ const TripPlannerPage = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    setResults(prevResults => [])
+
     cities.map((obj) => {
-      console.log(obj);
       const cityname = obj.city.name.split(", ");
       fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -29,12 +30,7 @@ const TripPlannerPage = (props) => {
               setIsLoaded(false);
             } else {
               setIsLoaded(true);
-              if (obj.type == "from") {
-                results.splice(0, 0, result);
-               
-              } else {
-                results.splice(1, 0, result);
-              }
+              setResults(prevResults => [...prevResults, result]);
             }
           },
           (error) => {
@@ -53,7 +49,7 @@ const TripPlannerPage = (props) => {
         </TripHeader>
       </CityContext.Provider>
 
-      {/* <PlacesNearby city={city} setCity={onChangeCity} /> */}
+      {results.length === 2 && <RequiredThings results={results[1]} /> }
     </>
   );
 };

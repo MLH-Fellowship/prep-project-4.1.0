@@ -15,7 +15,6 @@ const TripHeader = ({ children }) => {
   function onSearch(event) {
     event.preventDefault();
     setCities([from, to]);
-    setResults([]);
   }
 
   return (
