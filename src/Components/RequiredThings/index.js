@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../Card/index";
 
 function RequiredThings({ results }) {
+  console.log(results)
   return (
     <>
       <div className="heading">

@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import TripHeader from "./TripHeader";
 import TripNavBar from "./TripNavbar";
 import RequiredThings from "../../Components/RequiredThings";
-
+import WeatherInfo from "../../Components/WeatherInfo";
+import TripCard from "./TripCard";
 export const CityContext = React.createContext();
 
 const TripPlannerPage = (props) => {
   const [cities, setCities] = useState([]);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState({});
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    setResults((prevResults) => []);
+
     cities.map((obj) => {
-      console.log(obj);
       const cityname = obj.city.name.split(", ");
       fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -29,28 +31,37 @@ const TripPlannerPage = (props) => {
               setIsLoaded(false);
             } else {
               setIsLoaded(true);
-              if (obj.type == "from") {
-                results.splice(0, 0, result);
-              } else {
-                results.splice(1, 0, result);
-              }
+              setResults((prevResults) => [...prevResults, result]);
             }
           },
           (error) => {
             setIsLoaded(true);
             setError(error);
           }
-        );
+        )
+        .catch((e) => {
+          alert(e);
+        });
     });
   }, [cities]);
 
   return (
     <>
       <CityContext.Provider value={[results, setResults, cities, setCities]}>
-        {console.log(results)}
         <TripHeader>
           <TripNavBar />
         </TripHeader>
+        {results.length === 2 && (
+          <>
+            <div class="trip-container">
+              {results.map((result) => {
+                return <TripCard results={result} />;
+              })}
+            </div>
+            <RequiredThings results={results[1]} />
+            {console.log(results[1])}
+          </>
+        )}
       </CityContext.Provider>
     </>
   );

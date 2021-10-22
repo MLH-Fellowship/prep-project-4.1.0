@@ -93,8 +93,8 @@ const HomePage = () => {
                   isLoaded={isLoaded}
                 />
                 <FavPlaceCard />
+                <Alert city={city} />
               </Background>
-              <Alert city={city} />
             </ToggleUnitsContext.Provider>
           </placeContext.Provider>
         )}
