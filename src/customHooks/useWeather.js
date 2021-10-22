@@ -15,6 +15,13 @@ function useWeather() {
       closeButton: false,
     });
   };
+  const notifyAlan = () => {
+    toast.info("Say Hi to use your personal Voice Assistant!", {
+      theme: "colored",
+      hideProgressBar: true,
+      closeButton: false,
+    });
+  };
   const notifyForInvalidLocation = () => {
     toast.info("Showing results for New York City.", {
       theme: "colored",
@@ -33,6 +40,7 @@ function useWeather() {
     function onSuccess(position) {
       let latitude = position.coords.latitude;
       let longitude = position.coords.longitude;
+      notifyAlan();
 
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_APIKEY}`
