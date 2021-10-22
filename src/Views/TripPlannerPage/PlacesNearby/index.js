@@ -1,7 +1,6 @@
 import React from "react";
 import "./placesNearby.css";
 import axios from "axios";
-import Carrousel from "./carrousel";
 import HotelCard from "../HotelCard";
 
 export default class PlacesNearby extends React.Component {
@@ -10,6 +9,7 @@ export default class PlacesNearby extends React.Component {
     this.state = {
       restaurantsNearby: [],
       lodgingNearby: [],
+      placesNearby: [],
       loading: false,
     };
   }
@@ -17,11 +17,52 @@ export default class PlacesNearby extends React.Component {
   componentDidMount() {
     this.getRestaurantsNearby();
     this.getLodgingNearby();
+    this.getPlacesNearby();
   }
 
   // reference Link : https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
   // https://cors-anywhere.herokuapp.com/corsdemo
 
+  getPlacesNearby() {
+    this.setState({ loading: true });
+    // const { lat, lng } = this.props;
+    if (
+      this.props.results != null &&
+      this.props.results != undefined &&
+      this.props.results.length > 0
+    ) {
+      console.log("Results");
+      console.log(this.props.results);
+      const lat = this.props.results[1].coord.lat;
+      const lng = this.props.results[1].coord.lon;
+
+      const url = `https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lng}&radius=10000&type=tourist_attraction&key=${process.env.REACT_APP_GMAPSAPI}`;
+      fetch(url, {
+        method: "GET",
+        headers: {},
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          var formated_data_Places = [];
+          for (var i = 0; i < 3; i++) {
+            formated_data_Places.push({
+              name: data["results"][i]["name"],
+              vicinity: data["results"][i]["vicinity"],
+              rating: data["results"][i]["rating"],
+            });
+          }
+          console.log(formated_data_Places);
+          this.setState({
+            placesNearby: formated_data_Places,
+            loading: false,
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
   getRestaurantsNearby() {
     this.setState({ loading: true });
     // const { lat, lng } = this.props;
@@ -107,6 +148,11 @@ export default class PlacesNearby extends React.Component {
       <div className="places-nearby">
         {!this.loading && (
           <>
+          <div className="heading">
+          <h1 className="heading-h1">Places NearBy</h1>
+        </div>
+          <HotelCard places={this.state.placesNearby} loading={this.loading} />
+
             <div className="heading">
               <h1 className="heading-h1">Restaurant NearBy</h1>
             </div>
@@ -114,10 +160,6 @@ export default class PlacesNearby extends React.Component {
               places={this.state.restaurantsNearby}
               loading={this.loading}
             />
-          </>
-        )}
-        {!this.loading && (
-          <>
           <div className="heading">
           <h1 className="heading-h1">Hotels NearBy</h1>
         </div>
