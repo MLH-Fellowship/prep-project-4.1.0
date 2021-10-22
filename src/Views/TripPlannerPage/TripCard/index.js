@@ -5,10 +5,9 @@ import {
   temp as sunsetIcon,
   tempDown,
   tempUp,
-} from "../../assets/icons";
-import { ToggleUnitsContext } from "../../Views/HomePage";
-import React, { useContext } from "react";
-import "./weatherinfo.css";
+} from "../../../assets/icons";
+import React from "react";
+import "../../../Components/WeatherInfo/weatherinfo.css";
 
 const getTime = (timestamp) => {
   var date = new Date(timestamp * 1000);
@@ -25,27 +24,20 @@ const getTime = (timestamp) => {
   return formattedTime;
 };
 
-const WeatherInfo = (props) => {
-  const { data } = props;
- 
-  const icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-  const { temp, temp_max, temp_min, pressure, humidity } = data.main;
-  const isDay = data?.weather[0].icon?.includes("d");
-  const [selected, setSelected] = useContext(ToggleUnitsContext);
-  console.log(data);
+const TripCard = ({ results }) => {
+  const icon = `http://openweathermap.org/img/wn/${results.weather[0].icon}@2x.png`;
+  const { temp, temp_max, temp_min, pressure, humidity } = results.main;
+  const isDay = results?.weather[0].icon?.includes("d");
+
   return (
     <div class="grid-container">
       <div class="top-row">
         <div class="grid-item item1">
-          <b>{data.name}</b>, {data.sys.country}
+          <b>{results.name}</b>, {results.sys.country}
         </div>
         <div class="grid-item item2">
           <div className="temperature-info">
-            <div className="temp-head">{`${
-              selected
-                ? Math.floor(temp).toPrecision(4) + " °C"
-                : (Math.floor(temp) * 1.8 + 32).toPrecision(4) + " °F"
-            }`}</div>
+            <div className="temp-head">{temp}</div>
           </div>
         </div>
       </div>
@@ -54,20 +46,16 @@ const WeatherInfo = (props) => {
         <div class="grid-item item3">
           <div className="max-min-temp">
             <img src={tempUp} className="weather-icon" alt="temp-icon" />{" "}
-            {selected
-              ? Math.floor(temp_max).toPrecision(4) + " °C"
-              : (Math.floor(temp_max) * 1.8 + 32).toPrecision(4) + " °F"}
+            {temp_max}
             <img src={tempDown} className="weather-icon" alt="temp-icon" />{" "}
-            {selected
-              ? Math.floor(temp_min).toPrecision(4) + " °C"
-              : (Math.floor(temp_min) * 1.8 + 32).toPrecision(4) + " °F"}
+            {temp_min}
           </div>
         </div>
         <div class="grid-item item4">
           <div className="temp-status-icon">
             <img src={icon} alt="weather-icon" />
           </div>
-          <div className="temp-status">{data.weather[0].main}</div>
+          <div className="temp-status">{results.weather[0].main}</div>
         </div>
       </div>
 
@@ -105,7 +93,7 @@ const WeatherInfo = (props) => {
             </div>
             <div class="item-information">
               <div class="item-value">
-                {`${getTime(data?.sys[isDay ? "sunrise" : "sunset"])}`}{" "}
+                {`${getTime(results?.sys[isDay ? "sunrise" : "sunset"])}`}{" "}
               </div>
               <div class="item-name">{isDay ? "Sunrise" : "Sunset"}</div>
             </div>
@@ -115,12 +103,7 @@ const WeatherInfo = (props) => {
               <img src={windIcon} className="weather-icon" alt="temp-icon" />
             </div>
             <div class="item-information">
-              <div class="item-value">
-                {/* {data.wind.speed}m/s */}
-                {selected
-                  ? data.wind.speed.toPrecision(2) + " m/s"
-                  : (data.wind.speed * 3.6).toPrecision(2) + " km/hr"}
-              </div>
+              <div class="item-value">{results.wind.speed}m/s</div>
               <div class="item-name">Wind</div>
             </div>
           </div>
@@ -130,4 +113,4 @@ const WeatherInfo = (props) => {
   );
 };
 
-export default WeatherInfo;
+export default TripCard;

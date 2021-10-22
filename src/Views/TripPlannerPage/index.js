@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import TripHeader from "./TripHeader";
 import TripNavBar from "./TripNavbar";
 import RequiredThings from "../../Components/RequiredThings";
-
+import WeatherInfo from "../../Components/WeatherInfo";
+import TripCard from "./TripCard";
 export const CityContext = React.createContext();
 
 const TripPlannerPage = (props) => {
   const [cities, setCities] = useState([]);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState({});
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setResults(prevResults => [])
+    setResults((prevResults) => []);
 
     cities.map((obj) => {
       const cityname = obj.city.name.split(", ");
@@ -30,14 +31,15 @@ const TripPlannerPage = (props) => {
               setIsLoaded(false);
             } else {
               setIsLoaded(true);
-              setResults(prevResults => [...prevResults, result]);
+              setResults((prevResults) => [...prevResults, result]);
             }
           },
           (error) => {
             setIsLoaded(true);
             setError(error);
           }
-        ).catch((e)=>{
+        )
+        .catch((e) => {
           alert(e);
         });
     });
@@ -49,16 +51,20 @@ const TripPlannerPage = (props) => {
         <TripHeader>
           <TripNavBar />
         </TripHeader>
-        {results.length === 2 && <RequiredThings results={results[1]} /> }
+        {results.length === 2 && (
+          <>
+            {/* <p>{results[1].weather[0].main}</p>
+            <p>{results[0].weather[0].main}</p> */}
+            {results.map (result => {
+              return (
+             <TripCard results={result} /> )})}
+            <RequiredThings results={results[1]} />
+            {console.log(results[1])}
+          </>
+        )}
       </CityContext.Provider>
-   
-
-   
     </>
   );
 };
 
 export default TripPlannerPage;
-
-
-
