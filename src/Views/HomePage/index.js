@@ -39,6 +39,12 @@ const HomePage = () => {
         if (commandData.command === "handleCity") {
           setCity(commandData.cityname);
         }
+        if (commandData.command === "tripPlanner") {
+          window.location.href = "./trip-planner";
+        }
+        if (commandData.command === "changeUnit") {
+          setSelected(!selected);
+        }
         if (commandData.command === "scrollToWeeklyForecast") {
           window.scrollTo({
             top: document.querySelector(".weatherCards").offsetTop,

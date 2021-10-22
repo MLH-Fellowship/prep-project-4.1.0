@@ -15,7 +15,6 @@ const TripHeader = ({ children }) => {
   function onSearch(event) {
     event.preventDefault();
     setCities([from, to]);
-    setResults([]);
   }
 
   return (
@@ -23,12 +22,18 @@ const TripHeader = ({ children }) => {
       {children}
 
       <h1>Trip Planner</h1>
+      <h4>Are you planing a Trip? Well you came to the right place!</h4>
       <br />
       <div class="d-flex justify-content-center">
         <form onSubmit={onSearch}>
           <TripSearchFrom setFrom={setFrom} />
           <TripSearchTo setTo={setTo} />
-          <input type="submit" required value="Submit" />
+          <input
+            className="submitButton"
+            type="submit"
+            required
+            value="Submit"
+          />
         </form>
       </div>
     </div>

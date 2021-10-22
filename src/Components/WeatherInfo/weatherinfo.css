@@ -65,6 +65,7 @@
 .grid-sub-item {
   display: flex;
   align-items: center;
+  padding: 10px;
 }
 .grid-sub-itemss {
   display: flex;
@@ -104,8 +105,9 @@
 }
 
 .temp-head {
-  font-size: 60px;
+  font-size: 40px;
   margin-left: 16px;
+
 }
 
 .temp-status {
@@ -125,7 +127,7 @@
   }
 
   .item1 {
-    font-size: 30px;
+    font-size: 20px;
   }
 
   .item-name {
@@ -137,7 +139,7 @@
   }
 
   .temp-head {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   .temp-status-icon img {

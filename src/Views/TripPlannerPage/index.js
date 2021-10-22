@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
 import TripHeader from "./TripHeader";
 import TripNavBar from "./TripNavbar";
-
-
+import RequiredThings from "../../Components/RequiredThings";
+import TripCard from "./TripCard";
+import PlacesNearby from "./PlacesNearby";
+import TripFooter from "./TripFooter";
+import TripSection from "./TripSection";
 export const CityContext = React.createContext();
 
 const TripPlannerPage = (props) => {
   const [cities, setCities] = useState([]);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState({});
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    setResults((prevResults) => []);
+
     cities.map((obj) => {
-      console.log(obj);
+      const cityname = obj.city.name.split(", ");
       fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=" +
-          obj.city.name +
+          cityname[0] +
           "&units=metric" +
           "&appid=" +
           process.env.REACT_APP_APIKEY
@@ -28,30 +33,44 @@ const TripPlannerPage = (props) => {
               setIsLoaded(false);
             } else {
               setIsLoaded(true);
-              if (obj.type == "from") {
-                results.splice(0, 0, result);
-              } else {
-                results.splice(1, 0, result);
-              }
+              setResults((prevResults) => [...prevResults, result]);
             }
           },
           (error) => {
             setIsLoaded(true);
             setError(error);
           }
-        );
+        )
+        .catch((e) => {
+          alert(e);
+        });
     });
   }, [cities]);
 
   return (
     <>
       <CityContext.Provider value={[results, setResults, cities, setCities]}>
-        {console.log(results)}
         <TripHeader>
           <TripNavBar />
         </TripHeader>
+        <TripSection />
+        {results.length === 2 && (
+          <>
+            <div class="trip-container">
+              <div className="heading">
+                <h1 className="heading-h1">Weather Condition</h1>
+              </div>
+              {results.map((result) => {
+                return <TripCard results={result} />;
+              })}
+            </div>
+            <RequiredThings results={results[1]} />
+            {console.log(results[1])}
+            <PlacesNearby results={results} />
+          </>
+        )}
+        <TripFooter />
       </CityContext.Provider>
-      {/* <PlacesNearby city={city} setCity={onChangeCity} /> */}
     </>
   );
 };

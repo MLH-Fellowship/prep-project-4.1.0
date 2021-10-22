@@ -7,7 +7,6 @@ import placeContext from "../../Context/placesContext";
 import SearchBox from "../Searchbox";
 import WeatherInfo from "../WeatherInfo/index.js";
 
-import PlacesNearby from "../PlacesNearby";
 
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
   const [included, setIncluded] = useState(false);
@@ -26,7 +25,7 @@ const Header = ({ city, onChangeCity, results, isLoaded }) => {
   return (
     <div>
       <WeatherInfo data={results} />
-
+    {console.log(results)}
       <div className="input-container">
         <div className="input-div">
           <div className="inputElement">
