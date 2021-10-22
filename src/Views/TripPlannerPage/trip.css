@@ -10,5 +10,20 @@
 #tripPlanner {
     background:transparent;
 }
+.trip-grid-container {
+    margin: 2em;
+    max-width: 800px;
+    color: white;
+    padding: 5px;
+    background: rgba(154, 150, 170, 0.288);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+    display: inline-block;
+    
+  }
 
 

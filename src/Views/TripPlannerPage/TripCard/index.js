@@ -8,6 +8,7 @@ import {
 } from "../../../assets/icons";
 import React from "react";
 import "../../../Components/WeatherInfo/weatherinfo.css";
+import "../trip.css"
 
 const getTime = (timestamp) => {
   var date = new Date(timestamp * 1000);
@@ -30,14 +31,14 @@ const TripCard = ({ results }) => {
   const isDay = results?.weather[0].icon?.includes("d");
 
   return (
-    <div class="grid-container">
+    <div class="trip-grid-container">
       <div class="top-row">
         <div class="grid-item item1">
           <b>{results.name}</b>, {results.sys.country}
         </div>
         <div class="grid-item item2">
           <div className="temperature-info">
-            <div className="temp-head">{temp}</div>
+            <div className="temp-head">{temp} °C</div>
           </div>
         </div>
       </div>
@@ -46,9 +47,9 @@ const TripCard = ({ results }) => {
         <div class="grid-item item3">
           <div className="max-min-temp">
             <img src={tempUp} className="weather-icon" alt="temp-icon" />{" "}
-            {temp_max}
+            {temp_max} °C
             <img src={tempDown} className="weather-icon" alt="temp-icon" />{" "}
-            {temp_min}
+            {temp_min} °C
           </div>
         </div>
         <div class="grid-item item4">

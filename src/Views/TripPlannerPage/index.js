@@ -53,11 +53,11 @@ const TripPlannerPage = (props) => {
         </TripHeader>
         {results.length === 2 && (
           <>
-            {/* <p>{results[1].weather[0].main}</p>
-            <p>{results[0].weather[0].main}</p> */}
-            {results.map (result => {
-              return (
-             <TripCard results={result} /> )})}
+            <div class="trip-container">
+              {results.map((result) => {
+                return <TripCard results={result} />;
+              })}
+            </div>
             <RequiredThings results={results[1]} />
             {console.log(results[1])}
           </>
