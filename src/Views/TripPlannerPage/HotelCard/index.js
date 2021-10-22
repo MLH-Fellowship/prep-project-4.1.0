@@ -33,7 +33,7 @@ const HotelCard = (props) => {
         </h3>
         <StarRatings
         rating={item.rating}
-        starDimension="40px"
+        starDimension="30px"
         starSpacing="15px"
         starRatedColor ="#FEDC56"
       />

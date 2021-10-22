@@ -1,6 +1,5 @@
 import React from "react";
 import "./placesNearby.css";
-import axios from "axios";
 import HotelCard from "../HotelCard";
 
 export default class PlacesNearby extends React.Component {
@@ -25,7 +24,6 @@ export default class PlacesNearby extends React.Component {
 
   getPlacesNearby() {
     this.setState({ loading: true });
-    // const { lat, lng } = this.props;
     if (
       this.props.results != null &&
       this.props.results != undefined &&
@@ -45,7 +43,7 @@ export default class PlacesNearby extends React.Component {
         .then((data) => {
           console.log(data);
           var formated_data_Places = [];
-          for (var i = 0; i < 3; i++) {
+          for (var i = 0; i < 5; i++) {
             formated_data_Places.push({
               name: data["results"][i]["name"],
               vicinity: data["results"][i]["vicinity"],
@@ -85,7 +83,7 @@ export default class PlacesNearby extends React.Component {
         .then((data) => {
           console.log(data);
           var formated_data_RESTURANTS = [];
-          for (var i = 0; i < 3; i++) {
+          for (var i = 0; i < 5; i++) {
             formated_data_RESTURANTS.push({
               name: data["results"][i]["name"],
               vicinity: data["results"][i]["vicinity"],
@@ -124,7 +122,7 @@ export default class PlacesNearby extends React.Component {
         .then((response) => response.json())
         .then((data) => {
           var formated_data_LODGES = [];
-          for (var i = 0; i < 3; i++) {
+          for (var i = 0; i < 5; i++) {
             formated_data_LODGES.push({
               name: data["results"][i]["name"],
               vicinity: data["results"][i]["vicinity"],
