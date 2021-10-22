@@ -24,13 +24,17 @@ export default class PlacesNearby extends React.Component {
   getRestaurantsNearby() {
     this.setState({ loading: true });
     // const { lat, lng } = this.props;
-    if (this.props.results != null || this.props.results != undefined) {
+    if (
+      this.props.results != null &&
+      this.props.results != undefined &&
+      this.props.results.length > 0
+    ) {
       console.log("Results");
       console.log(this.props.results);
       const lat = this.props.results[1].coord.lat;
       const lng = this.props.results[1].coord.lon;
 
-      const url = `https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lng}&radius=5000&type=restaurant&key=${process.env.REACT_APP_GMAPSAPI}`;
+      const url = `https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lng}&radius=10000&type=restaurant&key=${process.env.REACT_APP_GMAPSAPI}`;
       fetch(url, {
         method: "GET",
         headers: {},
@@ -60,14 +64,17 @@ export default class PlacesNearby extends React.Component {
 
   getLodgingNearby() {
     this.setState({ loading: true });
-    // const { lat, lng } = this.props;
-    if (this.props.results != null || this.props.results != undefined) {
+    if (
+      this.props.results != null &&
+      this.props.results != undefined &&
+      this.props.results.length > 0
+    ) {
       console.log("Results");
       console.log(this.props.results);
       const lat = this.props.results[1].coord.lat;
       const lng = this.props.results[1].coord.lon;
 
-      const url = `https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lng}&radius=5000&type=lodging&key=${process.env.REACT_APP_GMAPSAPI}`;
+      const url = `https://cryptic-oasis-82460.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${lng}&radius=10000&type=lodging&key=${process.env.REACT_APP_GMAPSAPI}`;
       fetch(url, {
         method: "GET",
         headers: {},
@@ -95,14 +102,20 @@ export default class PlacesNearby extends React.Component {
   }
 
   render() {
-    // if (!this.state.loading) {
-    //   console.log("RESTURANTS RENDER: ", this.state.restaurantsNearby);
-    //   console.log("LODGES RENDER: ", this.state.lodgingNearby);
-    // }
     return (
       <div className="places-nearby">
-        {/* {!loading && <Carrousel places={restaurantsNearby} loading={loading} />}
-        {!loading && <Carrousel places={lodgingNearby} loading={loading} />} */}
+        {!this.loading && (
+          <Carrousel
+            places={this.state.restaurantsNearby}
+            loading={this.state.loading}
+          />
+        )}
+        {!this.loading && (
+          <Carrousel
+            places={this.state.lodgingNearby}
+            loading={this.state.loading}
+          />
+        )}
       </div>
     );
   }

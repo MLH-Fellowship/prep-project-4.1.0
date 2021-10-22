@@ -7,7 +7,6 @@ import placeContext from "../../Context/placesContext";
 import SearchBox from "../Searchbox";
 import WeatherInfo from "../WeatherInfo/index.js";
 
-import PlacesNearby from "../PlacesNearby";
 
 const Header = ({ city, onChangeCity, results, isLoaded }) => {
   const [included, setIncluded] = useState(false);
