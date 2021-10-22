@@ -1,0 +1,14 @@
+.footer {
+   padding-bottom: 0px;
+    position: relative;
+    margin-bottom: -200px!important;
+    background-color: white;
+  }
+  
+  .tripfooter {
+      position: absolute;
+      bottom : 0;
+      left:0;
+      width: 100%;
+
+  }

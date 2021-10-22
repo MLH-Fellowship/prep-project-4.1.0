@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import TripHeader from "./TripHeader";
 import TripNavBar from "./TripNavbar";
 import RequiredThings from "../../Components/RequiredThings";
-import WeatherInfo from "../../Components/WeatherInfo";
 import TripCard from "./TripCard";
 import PlacesNearby from "./PlacesNearby";
+import TripFooter from "./TripFooter";
 export const CityContext = React.createContext();
 
 const TripPlannerPage = (props) => {
@@ -64,6 +64,7 @@ const TripPlannerPage = (props) => {
             <PlacesNearby results={results} />
           </>
         )}
+        <TripFooter />
       </CityContext.Provider>
     </>
   );
