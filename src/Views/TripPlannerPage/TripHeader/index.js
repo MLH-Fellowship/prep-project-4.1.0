@@ -28,7 +28,12 @@ const TripHeader = ({ children }) => {
         <form onSubmit={onSearch}>
           <TripSearchFrom setFrom={setFrom} />
           <TripSearchTo setTo={setTo} />
-          <input type="submit" required value="Submit" />
+          <input
+            className="submitButton"
+            type="submit"
+            required
+            value="Submit"
+          />
         </form>
       </div>
     </div>
