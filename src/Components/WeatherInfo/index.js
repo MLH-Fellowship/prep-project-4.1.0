@@ -190,24 +190,6 @@ const WeatherInfo = (props) => {
           </div>
         </div>
       </div>
-
-      <div class="grid-item item5">
-        <div class="other-information">
-          {/* {
-            hourlyData.map((val, index) => {
-              return <div key={index} class="grid-sub-item">  
-                  <div class="item-icon">
-                    +{index+1} H: 
-                  </div>
-                  <div class="item-information">
-                    <div class="item-value">Feels like: {(val.feels_like + "0").substr(0,5)}</div>
-                    <div class="item-name">Temp: {val.temp}</div>
-                  </div>
-              </div>
-            })
-          } */}
-        </div>
-      </div>
     </div>
     <div class="hrs">
     <div class="grid-sub-title"><h3>Hourly Forecast</h3></div>
