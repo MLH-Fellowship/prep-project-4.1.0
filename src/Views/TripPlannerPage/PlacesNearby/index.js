@@ -147,19 +147,19 @@ export default class PlacesNearby extends React.Component {
         {!this.loading && (
           <>
           <div className="heading">
-          <h1 className="heading-h1">Places NearBy</h1>
+          <h1 className="heading-h1" id="places">Places NearBy</h1>
         </div>
           <HotelCard places={this.state.placesNearby} loading={this.loading} />
 
             <div className="heading">
-              <h1 className="heading-h1">Restaurant NearBy</h1>
+              <h1 className="heading-h1" id="restaurants">Restaurants NearBy</h1>
             </div>
             <HotelCard
               places={this.state.restaurantsNearby}
               loading={this.loading}
             />
           <div className="heading">
-          <h1 className="heading-h1">Hotels NearBy</h1>
+          <h1 className="heading-h1" id="hotels">Hotels NearBy</h1>
         </div>
           <HotelCard places={this.state.lodgingNearby} loading={this.loading} />
           </>

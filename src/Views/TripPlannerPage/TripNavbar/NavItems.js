@@ -5,13 +5,16 @@ export const NavItems = [
         cName:'nav-links'
     },
     {
-        title:'Hotels',
-        url:'#hotel',
-        cName:'nav-links'
-    },
-    {
         title:'Places',
         url:'#places',
         cName:'nav-links'
-    } 
+    } ,{
+        title:'Hotels',
+        url:'#hotels',
+        cName:'nav-links'
+    },{
+        title:'Restaurants',
+        url:'#restaurants',
+        cName:'nav-links'
+    },
 ]
