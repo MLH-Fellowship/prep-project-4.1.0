@@ -5,6 +5,7 @@ import RequiredThings from "../../Components/RequiredThings";
 import TripCard from "./TripCard";
 import PlacesNearby from "./PlacesNearby";
 import TripFooter from "./TripFooter";
+import TripSection from "./TripSection";
 export const CityContext = React.createContext();
 
 const TripPlannerPage = (props) => {
@@ -52,9 +53,13 @@ const TripPlannerPage = (props) => {
         <TripHeader>
           <TripNavBar />
         </TripHeader>
+        <TripSection />
         {results.length === 2 && (
           <>
             <div class="trip-container">
+              <div className="heading">
+                <h1 className="heading-h1">Weather Condition</h1>
+              </div>
               {results.map((result) => {
                 return <TripCard results={result} />;
               })}
