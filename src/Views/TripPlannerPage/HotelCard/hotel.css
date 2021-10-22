@@ -49,6 +49,7 @@ h4 {
 
 h2 {
   color: black;
+  font-size: 1.1em;
   font-weight: 600;
   -webkit-animation: up 2s cubic-bezier(0.39, 0, 0.38, 1);
 }
@@ -57,10 +58,9 @@ h2 {
   margin: auto;
   color: white;
   font-weight: 400;
-  font-size: 1em;
+  font-size: 0.8em;
   height: 80px;
   -webkit-animation: up 2s cubic-bezier(0.39, 0, 0.38, 1) 0.1s;
-  
 }
 
 .hotel-head-fav span {
