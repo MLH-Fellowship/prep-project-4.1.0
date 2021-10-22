@@ -30,7 +30,6 @@
 .tripheader form .form-group {
   padding-bottom: 0.5rem;
   align-items: center;
-  /* width: 400px !important; */
 }
 
 .tripheader form input[type="text"]:focus::placeholder {

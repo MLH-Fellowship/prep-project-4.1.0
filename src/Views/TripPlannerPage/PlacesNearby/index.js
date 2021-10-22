@@ -63,7 +63,6 @@ export default class PlacesNearby extends React.Component {
   }
   getRestaurantsNearby() {
     this.setState({ loading: true });
-    // const { lat, lng } = this.props;
     if (
       this.props.results != null &&
       this.props.results != undefined &&
