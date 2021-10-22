@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "./hotel.css";
+import StarRatings from 'react-star-ratings';
 
 
 const HotelCard = (props) => {
@@ -30,8 +31,13 @@ const HotelCard = (props) => {
         {item.vicinity}
           <br />
         </h3>
-        {/* <div class="Stars" style={getStyles}></div> */}
-        
+        <StarRatings
+        rating={item.rating}
+        starDimension="40px"
+        starSpacing="15px"
+        starRatedColor ="#FEDC56"
+      />
+
       </div>
     </div>
     ))}
