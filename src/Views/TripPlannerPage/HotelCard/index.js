@@ -4,9 +4,6 @@ import "./hotel.css";
 import StarRatings from "react-star-ratings";
 
 const HotelCard = (props) => {
-  // const getStyles= {
-  //     "--rating" : item.rating
-  // }
   return (
     <>
       <Carousel
