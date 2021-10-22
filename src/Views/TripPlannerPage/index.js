@@ -10,11 +10,7 @@ const TripPlannerPage = (props) => {
   const [results, setResults] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  function getPara(){
-    console.log('results is ',results);
-    console.log('results length is',results.length);
-    console.log('results',results[0])
-  }
+
   useEffect(() => {
     setResults(prevResults => [])
 
@@ -50,15 +46,14 @@ const TripPlannerPage = (props) => {
   return (
     <>
       <CityContext.Provider value={[results, setResults, cities, setCities]}>
-      {getPara()}
         <TripHeader>
           <TripNavBar />
         </TripHeader>
-       {results.length > 0 && <RequiredThings results={results[0]} />}
+        {results.length === 2 && <RequiredThings results={results[1]} /> }
       </CityContext.Provider>
    
 
-      {results.length === 2 && <RequiredThings results={results[1]} /> }
+   
     </>
   );
 };
