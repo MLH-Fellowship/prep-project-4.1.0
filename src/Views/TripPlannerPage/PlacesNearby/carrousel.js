@@ -1,28 +1,18 @@
 import { React, Component } from "react";
 import ReactCardCarousel from "react-card-carousel";
-import './placesNearby.css'
+import "./placesNearby.css";
 
 export default class Carrousel extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     items: this.props.places,
+  //   };
+  // }
 
-  
-
-  constructor(props) {
-      super(props);
-      this.state = {
-        items: []
-      }
-      this.props.places.map((place) => {
-          var name = place.name;
-          var address = place.vicinity;
-          var rating = place.rating;
-          var item = {name, address, rating};
-          this.state.items.push(item);
-      });
-  }
-
-  componentDidMount() {
-    console.log(this.state.items);
-  }
+  // componentDidMount() {
+  //   console.log(this.state.items);
+  // }
 
   static get CARD_STYLE() {
     return {
@@ -42,14 +32,14 @@ export default class Carrousel extends Component {
     return (
       <div className="carrousel">
         <ReactCardCarousel autoplay={true} autoplay_speed={3500}>
-        {this.state.items.map((item, index) => (
-          <div key={index} style={Carrousel.CARD_STYLE}>
-            <p className="name">{item.name}</p>
-            <p className="address">Address: {item.vicinity}</p>
-            <p className="rating">Ratings: {item.rating}</p>
-          </div>
-        ))}
-      </ReactCardCarousel>
+          {this.props.places.map((item, index) => (
+            <div key={index} style={Carrousel.CARD_STYLE}>
+              <p className="name">{item.name}</p>
+              <p className="address">Address: {item.vicinity}</p>
+              <p className="rating">Ratings: {item.rating}</p>
+            </div>
+          ))}
+        </ReactCardCarousel>
       </div>
     );
   }

@@ -4,6 +4,7 @@ import TripNavBar from "./TripNavbar";
 import RequiredThings from "../../Components/RequiredThings";
 import WeatherInfo from "../../Components/WeatherInfo";
 import TripCard from "./TripCard";
+import PlacesNearby from "./PlacesNearby";
 export const CityContext = React.createContext();
 
 const TripPlannerPage = (props) => {
@@ -60,6 +61,7 @@ const TripPlannerPage = (props) => {
             </div>
             <RequiredThings results={results[1]} />
             {console.log(results[1])}
+            <PlacesNearby results={results} />
           </>
         )}
       </CityContext.Provider>

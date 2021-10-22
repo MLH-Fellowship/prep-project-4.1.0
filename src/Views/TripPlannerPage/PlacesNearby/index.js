@@ -89,11 +89,11 @@ export default class PlacesNearby extends React.Component {
               rating: data["results"][i]["rating"],
             });
           }
-          console.log(formated_data_LODGES);
           this.setState({
             lodgingNearby: formated_data_LODGES,
             loading: false,
           });
+          console.log(formated_data_LODGES);
         })
         .catch(function (error) {
           console.log(error);
@@ -105,16 +105,15 @@ export default class PlacesNearby extends React.Component {
     return (
       <div className="places-nearby">
         {!this.loading && (
+          // <p> {JSON.stringify(this.state.restaurantsNearby)}</p>
           <Carrousel
             places={this.state.restaurantsNearby}
-            loading={this.state.loading}
+            loading={this.loading}
           />
         )}
         {!this.loading && (
-          <Carrousel
-            places={this.state.lodgingNearby}
-            loading={this.state.loading}
-          />
+          // <p> {JSON.stringify(this.state.lodgingNearby)} </p>
+          <Carrousel places={this.state.lodgingNearby} loading={this.loading} />
         )}
       </div>
     );
