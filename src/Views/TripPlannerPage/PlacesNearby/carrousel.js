@@ -25,6 +25,7 @@ export default class Carrousel extends Component {
       fontSize: "12px",
       textTransform: "uppercase",
       borderRadius: "10px",
+      
     };
   }
 

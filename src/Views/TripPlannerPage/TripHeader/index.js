@@ -22,6 +22,7 @@ const TripHeader = ({ children }) => {
       {children}
 
       <h1>Trip Planner</h1>
+      <h4>Are you planing a Trip? Well you came to the right place!</h4>
       <br />
       <div class="d-flex justify-content-center">
         <form onSubmit={onSearch}>

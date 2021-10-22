@@ -2,6 +2,7 @@ import React from "react";
 import "./placesNearby.css";
 import axios from "axios";
 import Carrousel from "./carrousel";
+import HotelCard from "../HotelCard";
 
 export default class PlacesNearby extends React.Component {
   constructor(props) {
@@ -105,15 +106,23 @@ export default class PlacesNearby extends React.Component {
     return (
       <div className="places-nearby">
         {!this.loading && (
-          // <p> {JSON.stringify(this.state.restaurantsNearby)}</p>
-          <Carrousel
-            places={this.state.restaurantsNearby}
-            loading={this.loading}
-          />
+          <>
+            <div className="heading">
+              <h1 className="heading-h1">Restaurant NearBy</h1>
+            </div>
+            <HotelCard
+              places={this.state.restaurantsNearby}
+              loading={this.loading}
+            />
+          </>
         )}
         {!this.loading && (
-          // <p> {JSON.stringify(this.state.lodgingNearby)} </p>
-          <Carrousel places={this.state.lodgingNearby} loading={this.loading} />
+          <>
+          <div className="heading">
+          <h1 className="heading-h1">Hotels NearBy</h1>
+        </div>
+          <HotelCard places={this.state.lodgingNearby} loading={this.loading} />
+          </>
         )}
       </div>
     );
